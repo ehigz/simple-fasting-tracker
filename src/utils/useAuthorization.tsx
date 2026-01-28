@@ -97,8 +97,8 @@ async function persistAuthorization(
 }
 
 export const APP_IDENTITY = {
-  name: "Solana Mobile Expo Template",
-  uri: "https://fakedomain.com",
+  name: "The Simple Fasting Tracker",
+  uri: "https://simplefasting.io",
 };
 
 export function useAuthorization() {
@@ -107,7 +107,7 @@ export function useAuthorization() {
     queryKey: ["wallet-authorization"],
     queryFn: () => fetchAuthorization(),
   });
-  const { mutate: setAuthorization } = useMutation({
+  const { mutateAsync: setAuthorization } = useMutation({
     mutationFn: persistAuthorization,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["wallet-authorization"] });
