@@ -148,7 +148,13 @@ function AppContent() {
       {/* Gradient background + header + tab content */}
       <SunriseBackground>
         <View style={styles.header}>
+          <Text className="text-primary text-xs uppercase tracking-widest opacity-60">
+            &#10022; Track Your Journey &#10022;
+          </Text>
           <Text style={styles.headerText}>Fasting made simple.</Text>
+          <Text className="text-muted-fg text-sm text-center leading-relaxed" style={{ paddingHorizontal: 8 }}>
+            Discover when you'll reach each beneficial milestone and make informed decisions about your health.
+          </Text>
         </View>
         <View style={styles.content}>
           {activeTab === "track"   && <FastingTracker />}
@@ -192,6 +198,7 @@ const styles = StyleSheet.create({
   header: {
     alignItems: "center",
     marginBottom: 20,
+    gap: 6,
   },
   headerText: {
     color: "#340247",
