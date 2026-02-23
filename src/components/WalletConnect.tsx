@@ -3,11 +3,7 @@ import { useState } from "react";
 import { useMobileWallet } from "../utils/useMobileWallet";
 import { alertAndLog } from "../utils/alertAndLog";
 
-interface WalletConnectProps {
-  onConnected: () => void;
-}
-
-export function WalletConnect({ onConnected }: WalletConnectProps) {
+export function WalletConnect() {
   const { connect } = useMobileWallet();
   const [connecting, setConnecting] = useState(false);
 
@@ -15,7 +11,6 @@ export function WalletConnect({ onConnected }: WalletConnectProps) {
     try {
       setConnecting(true);
       await connect();
-      onConnected();
     } catch (err: any) {
       alertAndLog(
         "Connection failed",

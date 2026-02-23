@@ -13,7 +13,7 @@ import DateTimePicker, {
 } from "@react-native-community/datetimepicker";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useAuthorization } from "../utils/useAuthorization";
-import { FASTING_ZONES } from "../utils/fasting";
+import { FASTING_ZONES, FastingSession, getZonesReached } from "../utils/fasting";
 import { FastingZone } from "./FastingZone";
 
 export function FastingTracker() {
@@ -25,9 +25,12 @@ export function FastingTracker() {
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [showTimePicker, setShowTimePicker] = useState(false);
 
-  // Storage key based on wallet public key
+  // Storage keys scoped to wallet
   const storageKey = selectedAccount
     ? `fasting_${selectedAccount.publicKey.toBase58()}`
+    : null;
+  const historyKey = selectedAccount
+    ? `fasting_history_${selectedAccount.publicKey.toBase58()}`
     : null;
 
   // Load saved fasting session
@@ -74,7 +77,29 @@ export function FastingTracker() {
     setStartTime(fastStart);
   };
 
-  const handleReset = () => {
+  const handleStopFasting = async () => {
+    if (!startTime || !historyKey) {
+      setStartTime(null);
+      setPickerTime(null);
+      setPickerDate(subDays(new Date(), 1));
+      return;
+    }
+    const endTime = new Date();
+    const durationMs = endTime.getTime() - startTime.getTime();
+    // Only save sessions longer than 1 hour
+    if (durationMs >= 60 * 60 * 1000) {
+      const session: FastingSession = {
+        id: startTime.toISOString(),
+        startTime: startTime.toISOString(),
+        endTime: endTime.toISOString(),
+        durationHours: durationMs / (60 * 60 * 1000),
+        zonesReached: getZonesReached(startTime, endTime),
+      };
+      const existing = await AsyncStorage.getItem(historyKey);
+      const sessions: FastingSession[] = existing ? JSON.parse(existing) : [];
+      sessions.unshift(session);
+      await AsyncStorage.setItem(historyKey, JSON.stringify(sessions));
+    }
     setStartTime(null);
     setPickerTime(null);
     setPickerDate(subDays(new Date(), 1));
@@ -261,10 +286,10 @@ export function FastingTracker() {
               </View>
 
               <Pressable
-                onPress={handleReset}
+                onPress={handleStopFasting}
                 className="border border-primary/[0.15] px-4 py-2 rounded-xl active:bg-secondary"
               >
-                <Text className="text-primary text-sm">Reset Timer</Text>
+                <Text className="text-primary text-sm">Stop Fasting</Text>
               </Pressable>
             </View>
 
