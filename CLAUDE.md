@@ -213,6 +213,37 @@ Use in `StyleSheet.create()` and icon `color` props — never hardcode hex strin
 </Card>
 ```
 
+### Icon container
+
+Lucide icons are always displayed in a rounded container — never bare.
+
+```tsx
+<View className="w-16 h-16 bg-secondary rounded-2xl items-center justify-center">
+  <Clock size={32} color={colors.primary} />
+</View>
+```
+
+- Size: `w-16 h-16` (64px), `rounded-2xl`
+- Background: `bg-secondary` (`#f4ecff`)
+- Icon size: 32, color: `colors.primary`
+- Never use emoji as icons — always use Lucide icons with `colors.*` tokens
+
+### Empty state anatomy
+
+```tsx
+<Card className="items-center gap-4">
+  <View className="w-16 h-16 bg-secondary rounded-2xl items-center justify-center">
+    <SomeLucideIcon size={32} color={colors.primary} />
+  </View>
+  <View className="items-center gap-2">
+    <CardTitle className="text-center">Nothing here yet</CardTitle>
+    <BodyText className="text-center">
+      Helpful description of what will appear and how to get started.
+    </BodyText>
+  </View>
+</Card>
+```
+
 ---
 
 ## Next Steps (Roadmap)

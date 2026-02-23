@@ -3,9 +3,10 @@ import { View, Text, ScrollView, Pressable } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { format, isToday, isYesterday } from "date-fns";
 import Animated, { FadeIn } from "react-native-reanimated";
+import { Clock } from "lucide-react-native";
 import { useAuthorization } from "../utils/useAuthorization";
 import { FastingSession, FASTING_ZONES } from "../utils/fasting";
-import { Card, MutedText, StatValue } from "../ui";
+import { Card, CardTitle, BodyText, MutedText, StatValue, colors } from "../ui";
 
 const ZONE_COLOR: Record<string, string> = Object.fromEntries(
   FASTING_ZONES.map((z) => [z.name, z.color]),
@@ -49,7 +50,7 @@ function SessionCard({ session }: { session: FastingSession }) {
           <View className="items-end">
             <StatValue className="text-xl">{formatDuration(session.durationHours)}</StatValue>
             {topZone ? (
-              <Text className="text-xs mt-0.5" style={{ color: ZONE_COLOR[topZone] ?? "#6e5fa7" }}>
+              <Text className="text-xs mt-0.5" style={{ color: ZONE_COLOR[topZone] ?? colors.accentPurple }}>
                 {topZone}
               </Text>
             ) : (
@@ -66,7 +67,7 @@ function SessionCard({ session }: { session: FastingSession }) {
                 key={name}
                 className="px-2.5 py-1 rounded-full border border-primary/[0.08] bg-secondary"
               >
-                <Text className="text-xs" style={{ color: ZONE_COLOR[name] ?? "#340247" }}>
+                <Text className="text-xs" style={{ color: ZONE_COLOR[name] ?? colors.primary }}>
                   {name}
                 </Text>
               </View>
@@ -124,20 +125,26 @@ export function FastingHistory() {
           {sessions.length} {sessions.length === 1 ? "session" : "sessions"}
         </Text>
         {sessions.length > 0 && (
-          <Pressable onPress={handleClearHistory} className="active:opacity-60">
+          <Pressable
+            onPress={handleClearHistory}
+            className="px-3 py-1 rounded-lg border border-primary/[0.10] active:opacity-60"
+          >
             <MutedText className="text-xs">Clear all</MutedText>
           </Pressable>
         )}
       </View>
 
       {sessions.length === 0 ? (
-        <Card className="p-10 items-center">
-          <Text className="text-4xl mb-4">🕐</Text>
-          <StatValue className="text-center mb-2">No sessions yet</StatValue>
-          <MutedText className="text-center leading-relaxed">
-            Start a fast and tap "Stop Fasting" when you're done — sessions over
-            1 hour are saved here.
-          </MutedText>
+        <Card className="items-center gap-4">
+          <View className="w-16 h-16 bg-secondary rounded-2xl items-center justify-center">
+            <Clock size={32} color={colors.primary} />
+          </View>
+          <View className="items-center gap-2">
+            <CardTitle className="text-center">No sessions yet</CardTitle>
+            <BodyText className="text-center">
+              Start a fast and tap "Stop Fasting" when you're done — sessions over 1 hour are saved here.
+            </BodyText>
+          </View>
         </Card>
       ) : (
         sessions.map((s) => <SessionCard key={s.id} session={s} />)
