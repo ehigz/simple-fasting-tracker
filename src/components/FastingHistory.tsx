@@ -5,7 +5,7 @@ import { format, isToday, isYesterday } from "date-fns";
 import Animated, { FadeIn } from "react-native-reanimated";
 import { useAuthorization } from "../utils/useAuthorization";
 import { FastingSession, FASTING_ZONES } from "../utils/fasting";
-import { Card, MutedText } from "../ui";
+import { Card, MutedText, StatValue } from "../ui";
 
 const ZONE_COLOR: Record<string, string> = Object.fromEntries(
   FASTING_ZONES.map((z) => [z.name, z.color]),
@@ -41,15 +41,13 @@ function SessionCard({ session }: { session: FastingSession }) {
         {/* Date + duration row */}
         <View className="flex-row items-center justify-between">
           <View>
-            <Text className="text-primary font-medium">
+            <Text className="text-primary font-semibold">
               {formatSessionDate(session.startTime)}
             </Text>
             <MutedText className="text-xs mt-0.5">Started at {timeStr}</MutedText>
           </View>
           <View className="items-end">
-            <Text className="text-primary text-xl font-semibold">
-              {formatDuration(session.durationHours)}
-            </Text>
+            <StatValue className="text-xl">{formatDuration(session.durationHours)}</StatValue>
             {topZone ? (
               <Text className="text-xs mt-0.5" style={{ color: ZONE_COLOR[topZone] ?? "#6e5fa7" }}>
                 {topZone}
@@ -135,9 +133,7 @@ export function FastingHistory() {
       {sessions.length === 0 ? (
         <Card className="p-10 items-center">
           <Text className="text-4xl mb-4">🕐</Text>
-          <Text className="text-primary font-semibold text-lg text-center mb-2">
-            No sessions yet
-          </Text>
+          <StatValue className="text-center mb-2">No sessions yet</StatValue>
           <MutedText className="text-center leading-relaxed">
             Start a fast and tap "Stop Fasting" when you're done — sessions over
             1 hour are saved here.

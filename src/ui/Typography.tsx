@@ -62,3 +62,16 @@ export function MutedText({ children, className = "" }: TypographyProps) {
     </Text>
   );
 }
+
+/**
+ * Numeric or data value displayed alongside a FieldLabel.
+ * e.g. "16h 30m", "Today, 8:00 PM", session duration.
+ * Use className="text-xl" to scale up for hero metrics.
+ */
+export function StatValue({ children, className = "" }: TypographyProps) {
+  return (
+    <Text className={`text-primary text-lg font-semibold ${className}`}>
+      {children}
+    </Text>
+  );
+}

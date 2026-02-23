@@ -15,7 +15,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useAuthorization } from "../utils/useAuthorization";
 import { FASTING_ZONES, FastingSession, getZonesReached } from "../utils/fasting";
 import { FastingZone } from "./FastingZone";
-import { Card, Button, FieldLabel, CardTitle, BodyText, colors } from "../ui";
+import { Card, Button, FieldLabel, CardTitle, BodyText, StatValue, colors } from "../ui";
 
 export function FastingTracker() {
   const { selectedAccount } = useAuthorization();
@@ -252,18 +252,14 @@ export function FastingTracker() {
               <View className="flex-row items-center gap-8 mb-6">
                 <View className="items-center flex-1">
                   <FieldLabel className="mb-1">Fasting Since</FieldLabel>
-                  <Text className="text-primary text-lg font-medium">
-                    {formatDateTime(startTime)}
-                  </Text>
+                  <StatValue>{formatDateTime(startTime)}</StatValue>
                 </View>
 
                 <View className="w-px h-12 bg-primary/10" />
 
                 <View className="items-center flex-1">
                   <FieldLabel className="mb-1">Time Elapsed</FieldLabel>
-                  <Text className="text-primary text-lg font-medium">
-                    {elapsedTime?.hours}h {elapsedTime?.minutes}m
-                  </Text>
+                  <StatValue>{elapsedTime?.hours}h {elapsedTime?.minutes}m</StatValue>
                 </View>
               </View>
 
