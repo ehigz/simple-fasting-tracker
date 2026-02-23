@@ -42,3 +42,9 @@ android/app/build/
 android/.gradle/
 android/build/
 *.apk
+
+debug/
+
+# Tool-generated
+.claude/settings.json
+src/**/.ai/
