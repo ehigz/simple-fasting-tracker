@@ -13,8 +13,9 @@ import DateTimePicker, {
 } from "@react-native-community/datetimepicker";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useAuthorization } from "../utils/useAuthorization";
-import { FASTING_ZONES } from "../utils/fasting";
+import { FASTING_ZONES, FastingSession, getZonesReached } from "../utils/fasting";
 import { FastingZone } from "./FastingZone";
+import { Card, Button, FieldLabel, CardTitle, BodyText, StatValue, colors } from "../ui";
 
 export function FastingTracker() {
   const { selectedAccount } = useAuthorization();
@@ -25,9 +26,12 @@ export function FastingTracker() {
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [showTimePicker, setShowTimePicker] = useState(false);
 
-  // Storage key based on wallet public key
+  // Storage keys scoped to wallet
   const storageKey = selectedAccount
     ? `fasting_${selectedAccount.publicKey.toBase58()}`
+    : null;
+  const historyKey = selectedAccount
+    ? `fasting_history_${selectedAccount.publicKey.toBase58()}`
     : null;
 
   // Load saved fasting session
@@ -74,7 +78,29 @@ export function FastingTracker() {
     setStartTime(fastStart);
   };
 
-  const handleReset = () => {
+  const handleStopFasting = async () => {
+    if (!startTime || !historyKey) {
+      setStartTime(null);
+      setPickerTime(null);
+      setPickerDate(subDays(new Date(), 1));
+      return;
+    }
+    const endTime = new Date();
+    const durationMs = endTime.getTime() - startTime.getTime();
+    // Only save sessions longer than 1 hour
+    if (durationMs >= 60 * 60 * 1000) {
+      const session: FastingSession = {
+        id: startTime.toISOString(),
+        startTime: startTime.toISOString(),
+        endTime: endTime.toISOString(),
+        durationHours: durationMs / (60 * 60 * 1000),
+        zonesReached: getZonesReached(startTime, endTime),
+      };
+      const existing = await AsyncStorage.getItem(historyKey);
+      const sessions: FastingSession[] = existing ? JSON.parse(existing) : [];
+      sessions.unshift(session);
+      await AsyncStorage.setItem(historyKey, JSON.stringify(sessions));
+    }
     setStartTime(null);
     setPickerTime(null);
     setPickerDate(subDays(new Date(), 1));
@@ -138,35 +164,33 @@ export function FastingTracker() {
       contentContainerClassName="pb-12"
       showsVerticalScrollIndicator={false}
     >
-      <View className="bg-white/95 rounded-3xl p-6 border border-primary/[0.08]">
+      <Card className={!startTime ? "gap-8" : "gap-6"}>
         {!startTime ? (
           <View className="gap-8">
             {/* Input state */}
             <View className="items-center gap-6">
               <View className="w-16 h-16 bg-secondary rounded-2xl items-center justify-center">
-                <Clock size={32} color="#340247" />
+                <Clock size={32} color={colors.primary} />
               </View>
               <View className="items-center gap-3">
-                <Text className="text-primary text-2xl text-center tracking-tight font-semibold">
+                <CardTitle className="text-center">
                   When did you start fasting?
-                </Text>
-                <Text className="text-muted-fg text-base text-center">
+                </CardTitle>
+                <BodyText className="text-center">
                   Select the date and time you had your last meal
-                </Text>
+                </BodyText>
               </View>
             </View>
 
             <View className="gap-4">
               {/* Date picker button */}
               <View>
-                <Text className="text-muted-fg text-xs uppercase tracking-widest mb-2">
-                  Start Date
-                </Text>
+                <FieldLabel className="mb-2">Start Date</FieldLabel>
                 <Pressable
                   onPress={() => setShowDatePicker(true)}
                   className="flex-row items-center bg-secondary px-4 py-4 rounded-2xl border border-primary/10"
                 >
-                  <CalendarIcon size={16} color="#340247" opacity={0.5} />
+                  <CalendarIcon size={16} color={colors.primary} opacity={0.5} />
                   <Text className="text-primary ml-2 text-base">
                     {formatPickerDate()}
                   </Text>
@@ -175,14 +199,12 @@ export function FastingTracker() {
 
               {/* Time picker button */}
               <View>
-                <Text className="text-muted-fg text-xs uppercase tracking-widest mb-2">
-                  Start Time
-                </Text>
+                <FieldLabel className="mb-2">Start Time</FieldLabel>
                 <Pressable
                   onPress={() => setShowTimePicker(true)}
                   className="flex-row items-center bg-secondary px-4 py-4 rounded-2xl border border-primary/10"
                 >
-                  <Clock size={16} color="#340247" opacity={0.5} />
+                  <Clock size={16} color={colors.primary} opacity={0.5} />
                   <Text
                     className={`ml-2 text-base ${
                       pickerTime ? "text-primary" : "text-muted-fg"
@@ -214,24 +236,13 @@ export function FastingTracker() {
                 />
               )}
 
-              {/* Submit */}
-              <Pressable
+              <Button
+                variant="primary"
+                label="View Insights"
                 onPress={handleStartFasting}
                 disabled={!pickerTime}
-                className={`py-4 rounded-2xl items-center mt-2 ${
-                  pickerTime
-                    ? "bg-primary active:bg-primary-hover"
-                    : "bg-muted"
-                }`}
-              >
-                <Text
-                  className={`font-medium text-base ${
-                    pickerTime ? "text-white" : "text-muted-fg"
-                  }`}
-                >
-                  View Insights
-                </Text>
-              </Pressable>
+                className="mt-2"
+              />
             </View>
           </View>
         ) : (
@@ -240,31 +251,23 @@ export function FastingTracker() {
             <View className="items-center pb-6 border-b border-primary/[0.08]">
               <View className="flex-row items-center gap-8 mb-6">
                 <View className="items-center flex-1">
-                  <Text className="text-muted-fg text-xs uppercase tracking-widest mb-1">
-                    Fasting Since
-                  </Text>
-                  <Text className="text-primary text-lg font-medium">
-                    {formatDateTime(startTime)}
-                  </Text>
+                  <FieldLabel className="mb-1">Fasting Since</FieldLabel>
+                  <StatValue>{formatDateTime(startTime)}</StatValue>
                 </View>
 
                 <View className="w-px h-12 bg-primary/10" />
 
                 <View className="items-center flex-1">
-                  <Text className="text-muted-fg text-xs uppercase tracking-widest mb-1">
-                    Time Elapsed
-                  </Text>
-                  <Text className="text-primary text-lg font-medium">
-                    {elapsedTime?.hours}h {elapsedTime?.minutes}m
-                  </Text>
+                  <FieldLabel className="mb-1">Time Elapsed</FieldLabel>
+                  <StatValue>{elapsedTime?.hours}h {elapsedTime?.minutes}m</StatValue>
                 </View>
               </View>
 
               <Pressable
-                onPress={handleReset}
+                onPress={handleStopFasting}
                 className="border border-primary/[0.15] px-4 py-2 rounded-xl active:bg-secondary"
               >
-                <Text className="text-primary text-sm">Reset Timer</Text>
+                <Text className="text-primary text-sm">Stop Fasting</Text>
               </Pressable>
             </View>
 
@@ -281,7 +284,7 @@ export function FastingTracker() {
             </View>
           </View>
         )}
-      </View>
+      </Card>
     </ScrollView>
   );
 }

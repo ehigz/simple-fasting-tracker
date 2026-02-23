@@ -9,9 +9,9 @@ import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withTiming,
-  withSpring,
 } from "react-native-reanimated";
 import { FastingZoneData, formatCountdown, formatTargetTime } from "../utils/fasting";
+import { MutedText, colors } from "../ui";
 
 interface FastingZoneProps {
   zone: FastingZoneData;
@@ -53,19 +53,17 @@ export function FastingZone({ zone, startTime, currentTime }: FastingZoneProps) 
           <View className="flex-row items-center gap-3 mb-2">
             {isCompleted ? (
               <Animated.View entering={FadeIn.duration(500)}>
-                <CheckCircle2 size={22} color="#6e5fa7" />
+                <CheckCircle2 size={22} color={colors.accentPurple} />
               </Animated.View>
             ) : (
-              <Circle size={22} color="#d4cfe6" />
+              <Circle size={22} color={colors.accent} />
             )}
             <Text className="text-primary tracking-tight">
               {zone.name}{" "}
               <Text className="text-muted-fg">({zone.hours}h)</Text>
             </Text>
           </View>
-          <Text className="text-muted-fg text-sm ml-9 leading-relaxed">
-            {zone.benefits}
-          </Text>
+          <MutedText className="ml-9 leading-relaxed">{zone.benefits}</MutedText>
         </View>
 
         <View className="items-end">
@@ -80,9 +78,9 @@ export function FastingZone({ zone, startTime, currentTime }: FastingZoneProps) 
               <Text className="text-primary text-sm text-right">
                 {formatCountdown(timeToTarget)}
               </Text>
-              <Text className="text-muted-fg text-xs text-right">
+              <MutedText className="text-xs text-right">
                 {formatTargetTime(targetTime)}
-              </Text>
+              </MutedText>
             </View>
           )}
         </View>
@@ -109,9 +107,9 @@ export function FastingZone({ zone, startTime, currentTime }: FastingZoneProps) 
           <Text className="text-accent-light text-sm">
             {showBreakingInfo ? "\u2212" : "+"}
           </Text>
-          <Text className="text-muted-fg text-sm">
+          <MutedText>
             {showBreakingInfo ? "Hide" : "Show"} breaking fast guidance
-          </Text>
+          </MutedText>
         </Pressable>
 
         {showBreakingInfo && (

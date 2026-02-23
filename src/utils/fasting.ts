@@ -1,3 +1,18 @@
+export interface FastingSession {
+  id: string;
+  startTime: string; // ISO string
+  endTime: string;   // ISO string
+  durationHours: number;
+  zonesReached: string[];
+}
+
+export function getZonesReached(startTime: Date, endTime: Date): string[] {
+  const elapsed = endTime.getTime() - startTime.getTime();
+  return FASTING_ZONES.filter(
+    (z) => elapsed >= z.hours * 60 * 60 * 1000,
+  ).map((z) => z.name);
+}
+
 export interface FastingZoneData {
   name: string;
   hours: number;

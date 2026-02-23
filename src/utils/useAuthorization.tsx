@@ -7,7 +7,6 @@ import {
   AuthToken,
   Base64EncodedAddress,
   DeauthorizeAPI,
-  SignInPayloadWithRequiredFields,
   SignInPayload,
 } from "@solana-mobile/mobile-wallet-adapter-protocol";
 import { toUint8Array } from "js-base64";
@@ -78,22 +77,25 @@ function cacheReviver(key: string, value: any) {
 const AUTHORIZATION_STORAGE_KEY = "authorization-cache";
 
 async function fetchAuthorization(): Promise<WalletAuthorization | null> {
-  const cacheFetchResult = await AsyncStorage.getItem(
-    AUTHORIZATION_STORAGE_KEY
-  );
-
-  if (!cacheFetchResult) {
+  try {
+    const cached = await AsyncStorage.getItem(AUTHORIZATION_STORAGE_KEY);
+    if (!cached) return null;
+    return JSON.parse(cached, cacheReviver);
+  } catch {
+    // Corrupt or incompatible cache — clear it so the user can reconnect cleanly
+    await AsyncStorage.removeItem(AUTHORIZATION_STORAGE_KEY);
     return null;
   }
-
-  // Return prior authorization, if found.
-  return JSON.parse(cacheFetchResult, cacheReviver);
 }
 
 async function persistAuthorization(
   auth: WalletAuthorization | null
 ): Promise<void> {
-  await AsyncStorage.setItem(AUTHORIZATION_STORAGE_KEY, JSON.stringify(auth));
+  if (auth === null) {
+    await AsyncStorage.removeItem(AUTHORIZATION_STORAGE_KEY);
+  } else {
+    await AsyncStorage.setItem(AUTHORIZATION_STORAGE_KEY, JSON.stringify(auth));
+  }
 }
 
 export const APP_IDENTITY = {
@@ -105,12 +107,16 @@ export function useAuthorization() {
   const queryClient = useQueryClient();
   const { data: authorization, isLoading } = useQuery({
     queryKey: ["wallet-authorization"],
-    queryFn: () => fetchAuthorization(),
+    queryFn: fetchAuthorization,
+    staleTime: Infinity,  // auth is local — only invalidate on explicit connect/disconnect
+    gcTime: Infinity,
   });
   const { mutateAsync: setAuthorization } = useMutation({
     mutationFn: persistAuthorization,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["wallet-authorization"] });
+    onSuccess: (_data, variables) => {
+      // Directly update the cache so the UI transitions immediately,
+      // rather than relying on an async invalidate → re-fetch round-trip.
+      queryClient.setQueryData(["wallet-authorization"], variables);
     },
   });
 
@@ -171,6 +177,6 @@ export function useAuthorization() {
       selectedAccount: authorization?.selectedAccount ?? null,
       isLoading,
     }),
-    [authorization, authorizeSession, deauthorizeSession]
+    [authorization, authorizeSession, authorizeSessionWithSignIn, deauthorizeSession, isLoading]
   );
 }
