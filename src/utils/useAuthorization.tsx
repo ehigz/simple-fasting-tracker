@@ -113,8 +113,10 @@ export function useAuthorization() {
   });
   const { mutateAsync: setAuthorization } = useMutation({
     mutationFn: persistAuthorization,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["wallet-authorization"] });
+    onSuccess: (_data, variables) => {
+      // Directly update the cache so the UI transitions immediately,
+      // rather than relying on an async invalidate → re-fetch round-trip.
+      queryClient.setQueryData(["wallet-authorization"], variables);
     },
   });
 

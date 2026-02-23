@@ -22,26 +22,29 @@ export function WalletConnect() {
   };
 
   return (
-    <View className="flex-1 justify-center items-center px-8">
-      <View className="items-center mb-10">
-        <View className="flex-row items-center gap-2 mb-6 opacity-70">
-          <Text className="text-primary text-xs uppercase tracking-widest">
+    <View className="flex-1 justify-center px-2">
+      <View className="bg-white/95 rounded-3xl p-6 border border-primary/[0.08] gap-6">
+        {/* Header */}
+        <View className="items-center gap-3">
+          <Text className="text-primary text-xs uppercase tracking-widest opacity-60">
             &#10022; Connect to Begin &#10022;
           </Text>
+          <Text className="text-primary text-2xl text-center tracking-tight font-semibold">
+            Simple Fasting Tracker
+          </Text>
+          <Text className="text-muted-fg text-base text-center leading-relaxed">
+            Connect your Solana wallet to start tracking your fasting journey.
+          </Text>
         </View>
-        <Text className="text-primary text-3xl text-center tracking-tight mb-3 font-semibold">
-          Simple Fasting Tracker
-        </Text>
-        <Text className="text-muted-fg text-base text-center leading-relaxed max-w-xs">
-          Connect your Solana wallet to start tracking your fasting journey.
-        </Text>
-      </View>
 
-      <View className="w-full max-w-xs">
+        {/* Divider */}
+        <View className="h-px bg-primary/[0.06]" />
+
+        {/* Connect button */}
         <Pressable
           onPress={handleConnect}
           disabled={connecting}
-          className="bg-primary py-4 rounded-2xl items-center active:bg-primary-hover disabled:bg-muted"
+          className="bg-primary py-4 rounded-2xl items-center active:opacity-80 disabled:bg-muted"
         >
           {connecting ? (
             <ActivityIndicator color="#ffffff" />
