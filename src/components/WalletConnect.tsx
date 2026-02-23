@@ -1,7 +1,8 @@
-import { View, Text, Pressable, ActivityIndicator } from "react-native";
+import { View } from "react-native";
 import { useState } from "react";
 import { useMobileWallet } from "../utils/useMobileWallet";
 import { alertAndLog } from "../utils/alertAndLog";
+import { Card, Button, Overline, CardTitle, BodyText, Divider } from "../ui";
 
 export function WalletConnect() {
   const { connect } = useMobileWallet();
@@ -23,38 +24,22 @@ export function WalletConnect() {
 
   return (
     <View className="flex-1 justify-center px-2">
-      <View className="bg-white/95 rounded-3xl p-6 border border-primary/[0.08] gap-6">
-        {/* Header */}
+      <Card className="gap-6">
         <View className="items-center gap-3">
-          <Text className="text-primary text-xs uppercase tracking-widest opacity-60">
-            &#10022; Connect to Begin &#10022;
-          </Text>
-          <Text className="text-primary text-2xl text-center tracking-tight font-semibold">
-            Simple Fasting Tracker
-          </Text>
-          <Text className="text-muted-fg text-base text-center leading-relaxed">
+          <Overline>&#10022; Connect to Begin &#10022;</Overline>
+          <CardTitle className="text-center">Simple Fasting Tracker</CardTitle>
+          <BodyText className="text-center">
             Connect your Solana wallet to start tracking your fasting journey.
-          </Text>
+          </BodyText>
         </View>
-
-        {/* Divider */}
-        <View className="h-px bg-primary/[0.06]" />
-
-        {/* Connect button */}
-        <Pressable
+        <Divider />
+        <Button
+          variant="primary"
+          label="Connect Wallet"
           onPress={handleConnect}
-          disabled={connecting}
-          className="bg-primary py-4 rounded-2xl items-center active:opacity-80 disabled:bg-muted"
-        >
-          {connecting ? (
-            <ActivityIndicator color="#ffffff" />
-          ) : (
-            <Text className="text-white font-medium text-base">
-              Connect Wallet
-            </Text>
-          )}
-        </Pressable>
-      </View>
+          loading={connecting}
+        />
+      </Card>
     </View>
   );
 }

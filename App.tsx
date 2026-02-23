@@ -19,6 +19,7 @@ import { FastingTracker } from "./src/components/FastingTracker";
 import { FastingHistory } from "./src/components/FastingHistory";
 import { ellipsify } from "./src/utils/ellipsify";
 import { useMobileWallet } from "./src/utils/useMobileWallet";
+import { Card, Button, FieldLabel, Divider, Overline, MutedText, colors } from "./src/ui";
 
 const queryClient = new QueryClient();
 const DISCLAIMER_KEY = "disclaimer_accepted";
@@ -48,40 +49,30 @@ function AccountTab({
 
   return (
     <View className="flex-1 justify-center px-2 gap-4">
-      <View className="bg-white/95 rounded-3xl p-6 border border-primary/[0.08] gap-6">
-        {/* Address */}
+      <Card className="gap-6">
         <View className="gap-2">
-          <Text className="text-muted-fg text-xs uppercase tracking-widest text-center">
-            Connected Wallet
-          </Text>
+          <FieldLabel className="text-center">Connected Wallet</FieldLabel>
           <Text className="text-primary text-base font-medium text-center">
             {ellipsify(address, 8)}
           </Text>
         </View>
 
-        {/* Copy address */}
-        <Pressable
+        <Button
+          variant="secondary"
+          label={copied ? "Copied!" : "Copy Address"}
           onPress={handleCopy}
-          className="flex-row items-center justify-center gap-2 bg-secondary py-3 rounded-2xl active:opacity-70 border border-primary/10"
-        >
-          <Copy size={15} color="#6e5fa7" />
-          <Text className="text-accent-purple text-sm font-medium">
-            {copied ? "Copied!" : "Copy Address"}
-          </Text>
-        </Pressable>
+          icon={<Copy size={15} color={colors.accentPurple} />}
+        />
 
-        {/* Divider */}
-        <View className="h-px bg-primary/[0.06]" />
+        <Divider />
 
-        {/* Disconnect */}
-        <Pressable
+        <Button
+          variant="ghost"
+          label="Disconnect Wallet"
           onPress={onDisconnect}
-          className="flex-row items-center justify-center gap-2 py-3 rounded-2xl active:opacity-70 border border-primary/[0.12]"
-        >
-          <LogOut size={15} color="#340247" />
-          <Text className="text-primary text-sm font-medium">Disconnect Wallet</Text>
-        </Pressable>
-      </View>
+          icon={<LogOut size={15} color={colors.primary} />}
+        />
+      </Card>
     </View>
   );
 }
@@ -116,7 +107,7 @@ function AppContent() {
     return (
       <SunriseBackground>
         <View className="flex-1 justify-center items-center">
-          <ActivityIndicator size="large" color="#340247" />
+          <ActivityIndicator size="large" color={colors.primary} />
         </View>
       </SunriseBackground>
     );
@@ -145,16 +136,13 @@ function AppContent() {
 
   return (
     <View style={styles.root}>
-      {/* Gradient background + header + tab content */}
       <SunriseBackground>
         <View style={styles.header}>
-          <Text className="text-primary text-xs uppercase tracking-widest opacity-60">
-            &#10022; Track Your Journey &#10022;
-          </Text>
+          <Overline>&#10022; Track Your Journey &#10022;</Overline>
           <Text style={styles.headerText}>Fasting made simple.</Text>
-          <Text className="text-muted-fg text-sm text-center leading-relaxed" style={{ paddingHorizontal: 8 }}>
+          <MutedText className="text-center" style={{ paddingHorizontal: 8 }}>
             Discover when you'll reach each beneficial milestone and make informed decisions about your health.
-          </Text>
+          </MutedText>
         </View>
         <View style={styles.content}>
           {activeTab === "track"   && <FastingTracker />}
@@ -177,10 +165,10 @@ function AppContent() {
             >
               <Icon
                 size={22}
-                color={active ? "#340247" : "#a89fc9"}
+                color={active ? colors.primary : colors.accentLight}
                 strokeWidth={active ? 2.2 : 1.6}
               />
-              <Text style={[styles.tabLabel, { color: active ? "#340247" : "#a89fc9" }]}>
+              <Text style={[styles.tabLabel, { color: active ? colors.primary : colors.accentLight }]}>
                 {label}
               </Text>
             </Pressable>
@@ -201,7 +189,7 @@ const styles = StyleSheet.create({
     gap: 6,
   },
   headerText: {
-    color: "#340247",
+    color: colors.primary,
     fontSize: 30,
     textAlign: "center",
     letterSpacing: -0.5,
@@ -213,9 +201,9 @@ const styles = StyleSheet.create({
   tabBar: {
     flexDirection: "row",
     paddingTop: 8,
-    backgroundColor: "rgba(255, 255, 255, 0.92)",
+    backgroundColor: colors.tabBarBg,
     borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: "rgba(52, 2, 71, 0.12)",
+    borderTopColor: colors.tabBarBorder,
   },
   tabItem: {
     flex: 1,

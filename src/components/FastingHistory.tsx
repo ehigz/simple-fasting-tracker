@@ -5,6 +5,7 @@ import { format, isToday, isYesterday } from "date-fns";
 import Animated, { FadeIn } from "react-native-reanimated";
 import { useAuthorization } from "../utils/useAuthorization";
 import { FastingSession, FASTING_ZONES } from "../utils/fasting";
+import { Card, MutedText } from "../ui";
 
 const ZONE_COLOR: Record<string, string> = Object.fromEntries(
   FASTING_ZONES.map((z) => [z.name, z.color]),
@@ -35,49 +36,46 @@ function SessionCard({ session }: { session: FastingSession }) {
   const topZone = session.zonesReached[session.zonesReached.length - 1];
 
   return (
-    <Animated.View
-      entering={FadeIn.duration(400)}
-      className="bg-white/95 rounded-2xl p-5 border border-primary/[0.08] gap-3"
-    >
-      {/* Date + duration row */}
-      <View className="flex-row items-center justify-between">
-        <View>
-          <Text className="text-primary font-medium">
-            {formatSessionDate(session.startTime)}
-          </Text>
-          <Text className="text-muted-fg text-xs mt-0.5">
-            Started at {timeStr}
-          </Text>
-        </View>
-        <View className="items-end">
-          <Text className="text-primary text-xl font-semibold">
-            {formatDuration(session.durationHours)}
-          </Text>
-          {topZone ? (
-            <Text className="text-xs mt-0.5" style={{ color: ZONE_COLOR[topZone] ?? "#6e5fa7" }}>
-              {topZone}
+    <Animated.View entering={FadeIn.duration(400)}>
+      <Card variant="sm" className="gap-3">
+        {/* Date + duration row */}
+        <View className="flex-row items-center justify-between">
+          <View>
+            <Text className="text-primary font-medium">
+              {formatSessionDate(session.startTime)}
             </Text>
-          ) : (
-            <Text className="text-muted-fg text-xs mt-0.5">No zone</Text>
-          )}
-        </View>
-      </View>
-
-      {/* Zone badges */}
-      {session.zonesReached.length > 0 && (
-        <View className="flex-row flex-wrap gap-1.5">
-          {session.zonesReached.map((name) => (
-            <View
-              key={name}
-              className="px-2.5 py-1 rounded-full border border-primary/[0.08] bg-secondary"
-            >
-              <Text className="text-xs" style={{ color: ZONE_COLOR[name] ?? "#340247" }}>
-                {name}
+            <MutedText className="text-xs mt-0.5">Started at {timeStr}</MutedText>
+          </View>
+          <View className="items-end">
+            <Text className="text-primary text-xl font-semibold">
+              {formatDuration(session.durationHours)}
+            </Text>
+            {topZone ? (
+              <Text className="text-xs mt-0.5" style={{ color: ZONE_COLOR[topZone] ?? "#6e5fa7" }}>
+                {topZone}
               </Text>
-            </View>
-          ))}
+            ) : (
+              <MutedText className="text-xs mt-0.5">No zone</MutedText>
+            )}
+          </View>
         </View>
-      )}
+
+        {/* Zone badges */}
+        {session.zonesReached.length > 0 && (
+          <View className="flex-row flex-wrap gap-1.5">
+            {session.zonesReached.map((name) => (
+              <View
+                key={name}
+                className="px-2.5 py-1 rounded-full border border-primary/[0.08] bg-secondary"
+              >
+                <Text className="text-xs" style={{ color: ZONE_COLOR[name] ?? "#340247" }}>
+                  {name}
+                </Text>
+              </View>
+            ))}
+          </View>
+        )}
+      </Card>
     </Animated.View>
   );
 }
@@ -111,7 +109,7 @@ export function FastingHistory() {
   if (loading) {
     return (
       <View className="flex-1 items-center justify-center">
-        <Text className="text-muted-fg text-sm">Loading...</Text>
+        <MutedText>Loading...</MutedText>
       </View>
     );
   }
@@ -129,22 +127,22 @@ export function FastingHistory() {
         </Text>
         {sessions.length > 0 && (
           <Pressable onPress={handleClearHistory} className="active:opacity-60">
-            <Text className="text-muted-fg text-xs">Clear all</Text>
+            <MutedText className="text-xs">Clear all</MutedText>
           </Pressable>
         )}
       </View>
 
       {sessions.length === 0 ? (
-        <View className="bg-white/95 rounded-3xl p-10 items-center border border-primary/[0.08]">
+        <Card className="p-10 items-center">
           <Text className="text-4xl mb-4">🕐</Text>
           <Text className="text-primary font-semibold text-lg text-center mb-2">
             No sessions yet
           </Text>
-          <Text className="text-muted-fg text-sm text-center leading-relaxed">
+          <MutedText className="text-center leading-relaxed">
             Start a fast and tap "Stop Fasting" when you're done — sessions over
             1 hour are saved here.
-          </Text>
-        </View>
+          </MutedText>
+        </Card>
       ) : (
         sessions.map((s) => <SessionCard key={s.id} session={s} />)
       )}
