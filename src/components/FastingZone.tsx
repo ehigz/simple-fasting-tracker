@@ -132,48 +132,6 @@ export function FastingZone({ zone, startTime, currentTime }: FastingZoneProps) 
               </Text>
             </Animated.View>
 
-            {/* Recommended foods */}
-            <Animated.View
-              entering={SlideInDown.duration(300).delay(200)}
-              className="bg-primary/[0.04] p-4 rounded-xl border border-accent/30"
-            >
-              <View className="flex-row items-center gap-2 mb-3">
-                <Text className="text-accent-purple">{"\u2713"}</Text>
-                <Text className="text-primary text-sm">Recommended foods</Text>
-              </View>
-              <View className="flex-row flex-wrap gap-2">
-                {zone.breakingFast.foods.map((food, index) => (
-                  <View
-                    key={index}
-                    className="bg-white px-3 py-1.5 rounded-full border border-primary/[0.08]"
-                  >
-                    <Text className="text-primary text-xs">{food}</Text>
-                  </View>
-                ))}
-              </View>
-            </Animated.View>
-
-            {/* Avoid */}
-            <Animated.View
-              entering={SlideInDown.duration(300).delay(300)}
-              className="bg-warn p-4 rounded-xl border border-warn-border"
-            >
-              <View className="flex-row items-center gap-2 mb-3">
-                <Text className="text-warn-icon">{"\u2717"}</Text>
-                <Text className="text-primary text-sm">Avoid</Text>
-              </View>
-              <View className="flex-row flex-wrap gap-2">
-                {zone.breakingFast.avoid.map((item, index) => (
-                  <View
-                    key={index}
-                    className="bg-white px-3 py-1.5 rounded-full border border-primary/[0.08]"
-                  >
-                    <Text className="text-primary text-xs">{item}</Text>
-                  </View>
-                ))}
-              </View>
-            </Animated.View>
-
             {/* Learn more link */}
             <Pressable onPress={() => Linking.openURL(zone.learnMoreUrl)}>
               <MutedText className="text-xs text-right underline">Learn more →</MutedText>

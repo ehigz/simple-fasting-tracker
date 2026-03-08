@@ -20,8 +20,6 @@ export interface FastingZoneData {
   color: string;
   learnMoreUrl: string;
   breakingFast: {
-    foods: string[];
-    avoid: string[];
     notes: string;
   };
 }
@@ -34,12 +32,6 @@ export const FASTING_ZONES: FastingZoneData[] = [
     color: "#d97706",
     learnMoreUrl: "https://www.health.harvard.edu/heart-health/time-to-try-intermittent-fasting",
     breakingFast: {
-      foods: [
-        "Any balanced meal",
-        "Protein and vegetables",
-        "Whole grains",
-      ],
-      avoid: ["Excessive sugar"],
       notes:
         "At this stage your digestive system remains fully active. The fasting community generally treats this as a normal eating window with no special refeeding considerations.",
     },
@@ -51,13 +43,6 @@ export const FASTING_ZONES: FastingZoneData[] = [
     color: "#65a30d",
     learnMoreUrl: "https://my.clevelandclinic.org/health/articles/24003-ketosis",
     breakingFast: {
-      foods: [
-        "Bone broth",
-        "Small protein portions",
-        "Leafy greens",
-        "Avocado",
-      ],
-      avoid: ["Large meals", "Heavy carbs", "Processed foods"],
       notes:
         "At 12 hours, the fasting community commonly begins lighter refeeding approaches. As always, consult your doctor about what works for your individual health situation.",
     },
@@ -69,14 +54,6 @@ export const FASTING_ZONES: FastingZoneData[] = [
     color: "#059669",
     learnMoreUrl: "https://www.health.harvard.edu/staying-healthy/can-intermittent-fasting-help-with-weight-loss",
     breakingFast: {
-      foods: [
-        "Bone broth",
-        "Eggs",
-        "Nuts",
-        "Greek yogurt",
-        "Lean protein",
-      ],
-      avoid: ["Large meals", "Refined carbs", "Sugary foods"],
       notes:
         "16 hours is a widely discussed milestone in the intermittent fasting community, often associated with a gradual reintroduction of protein and healthy fats. Research into 16:8 fasting continues — consult your doctor for guidance specific to you.",
     },
@@ -88,17 +65,6 @@ export const FASTING_ZONES: FastingZoneData[] = [
     color: "#0f766e",
     learnMoreUrl: "https://my.clevelandclinic.org/health/articles/24058-autophagy",
     breakingFast: {
-      foods: [
-        "Bone broth first",
-        "Then small portions of salmon",
-        "Steamed vegetables",
-        "Fermented foods",
-      ],
-      avoid: [
-        "Large meals immediately",
-        "Dairy initially",
-        "High-fiber foods at first",
-      ],
       notes:
         "At this milestone, the fasting community commonly discusses slower refeeding over time. The science of autophagy at this duration is actively researched — consult your doctor about what's appropriate for your individual circumstances.",
     },
@@ -110,18 +76,6 @@ export const FASTING_ZONES: FastingZoneData[] = [
     color: "#57534e",
     learnMoreUrl: "https://my.clevelandclinic.org/health/articles/24058-autophagy",
     breakingFast: {
-      foods: [
-        "Bone broth or vegetable broth",
-        "Watermelon or berries",
-        "Small amounts of cooked vegetables",
-        "Later: light protein",
-      ],
-      avoid: [
-        "Heavy proteins initially",
-        "Large portions",
-        "Processed foods",
-        "Dairy",
-      ],
       notes:
         "Extended fasts of 24 hours carry meaningful considerations for how eating resumes. Research into autophagy at this stage is ongoing. Consult a qualified doctor before and after fasts of this length.",
     },
@@ -133,20 +87,6 @@ export const FASTING_ZONES: FastingZoneData[] = [
     color: "#b45309",
     learnMoreUrl: "https://www.medicalnewstoday.com/articles/277860",
     breakingFast: {
-      foods: [
-        "Diluted fruit juice",
-        "Bone broth",
-        "Watermelon",
-        "Cooked vegetables (no raw)",
-        "Gradual reintroduction over 24h",
-      ],
-      avoid: [
-        "Solid foods immediately",
-        "Raw vegetables",
-        "Nuts",
-        "Dairy",
-        "Heavy proteins",
-      ],
       notes:
         "Fasts of 48 hours carry serious physiological considerations, including risks associated with refeeding. Research by Valter Longo and others has explored immune regeneration at this duration. Consult a qualified doctor before undertaking a fast of this length.",
     },
@@ -158,16 +98,6 @@ export const FASTING_ZONES: FastingZoneData[] = [
     color: "#166534",
     learnMoreUrl: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4102383/",
     breakingFast: {
-      foods: [
-        "Medical supervision recommended",
-        "Diluted juices",
-        "Bone broth",
-        "Very gradual reintroduction over 2-3 days",
-      ],
-      avoid: [
-        "Any solid foods for first 24h",
-        "All recommendations from 48h fast",
-      ],
       notes:
         "72-hour fasts carry significant health risks including refeeding syndrome. Peer-reviewed research has explored stem cell regeneration at this duration. This length of fast should only be undertaken under the supervision of a qualified medical professional.",
     },
