@@ -8,8 +8,8 @@ import { Timer, History, Info } from "lucide-react-native";
 import { SafeAreaProvider, useSafeAreaInsets } from "react-native-safe-area-context";
 import { SunriseBackground } from "./src/components/SunriseBackground";
 import { DisclaimerModal } from "./src/components/DisclaimerModal";
-import { FastingTracker } from "./src/components/FastingTracker";
-import { FastingHistory } from "./src/components/FastingHistory";
+import { FastingTracker } from "./src/screens/FastingTracker";
+import { FastingHistory } from "./src/screens/FastingHistory";
 import { AboutScreen } from "./src/screens/AboutScreen";
 import { Overline, MutedText, colors } from "./src/ui";
 

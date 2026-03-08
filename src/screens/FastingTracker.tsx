@@ -13,7 +13,7 @@ import DateTimePicker, {
 } from "@react-native-community/datetimepicker";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { FASTING_ZONES, FastingSession, getZonesReached } from "../utils/fasting";
-import { FastingZone } from "./FastingZone";
+import { FastingZone } from "../components/FastingZone";
 import { Card, Button, FieldLabel, CardTitle, BodyText, StatValue, colors } from "../ui";
 
 const STORAGE_KEY = "fasting_active";

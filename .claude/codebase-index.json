@@ -1,0 +1,31 @@
+Scanning react codebase...
+Generated component-usage.json
+Generated dependencies.json
+Generated data-flow.json
+Generated index.json
+
+==================================================
+Summary:
+==================================================
+Framework: react
+Format: JSON
+12 components indexed
+128 relationships mapped
+1 utilities tracked
+0 schemas tracked
+0 queries documented
+Output: /Users/erikhigbee/Desktop/_apps/InterFastApp/src/components/.ai
+
+WARNING: 3 errors (showing first 3):
+   - WARNING: Component name collision for 'src/components/DisclaimerModal.tsx'
+  Existing: src/components/DisclaimerModal.tsx
+  New: src/components/DisclaimerModal.tsx
+  Using new entry (overwriting)
+   - WARNING: Component name collision for 'src/components/SunriseBackground.tsx'
+  Existing: src/components/SunriseBackground.tsx
+  New: src/components/SunriseBackground.tsx
+  Using new entry (overwriting)
+   - WARNING: Component name collision for 'src/components/FastingZone.tsx'
+  Existing: src/components/FastingZone.tsx
+  New: src/components/FastingZone.tsx
+  Using new entry (overwriting)
