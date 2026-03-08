@@ -48,3 +48,8 @@ debug/
 # Tool-generated
 .claude/settings.json
 src/**/.ai/
+
+# Design system architect — contains secrets / ephemeral output
+.mcp.json
+src/ui/drift-report.md
+figma-export.json

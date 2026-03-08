@@ -12,13 +12,14 @@ import DateTimePicker, {
   DateTimePickerEvent,
 } from "@react-native-community/datetimepicker";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useAuthorization } from "../utils/useAuthorization";
 import { FASTING_ZONES, FastingSession, getZonesReached } from "../utils/fasting";
 import { FastingZone } from "./FastingZone";
 import { Card, Button, FieldLabel, CardTitle, BodyText, StatValue, colors } from "../ui";
 
+const STORAGE_KEY = "fasting_active";
+const HISTORY_KEY = "fasting_history";
+
 export function FastingTracker() {
-  const { selectedAccount } = useAuthorization();
   const [startTime, setStartTime] = useState<Date | null>(null);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [pickerDate, setPickerDate] = useState<Date>(() => subDays(new Date(), 1));
@@ -26,18 +27,9 @@ export function FastingTracker() {
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [showTimePicker, setShowTimePicker] = useState(false);
 
-  // Storage keys scoped to wallet
-  const storageKey = selectedAccount
-    ? `fasting_${selectedAccount.publicKey.toBase58()}`
-    : null;
-  const historyKey = selectedAccount
-    ? `fasting_history_${selectedAccount.publicKey.toBase58()}`
-    : null;
-
   // Load saved fasting session
   useEffect(() => {
-    if (!storageKey) return;
-    AsyncStorage.getItem(storageKey).then((saved) => {
+    AsyncStorage.getItem(STORAGE_KEY).then((saved) => {
       if (saved) {
         const parsed = JSON.parse(saved);
         if (parsed.startTime) {
@@ -45,20 +37,19 @@ export function FastingTracker() {
         }
       }
     });
-  }, [storageKey]);
+  }, []);
 
   // Save fasting session whenever startTime changes
   useEffect(() => {
-    if (!storageKey) return;
     if (startTime) {
       AsyncStorage.setItem(
-        storageKey,
+        STORAGE_KEY,
         JSON.stringify({ startTime: startTime.toISOString() }),
       );
     } else {
-      AsyncStorage.removeItem(storageKey);
+      AsyncStorage.removeItem(STORAGE_KEY);
     }
-  }, [startTime, storageKey]);
+  }, [startTime]);
 
   // Tick every second
   useEffect(() => {
@@ -79,7 +70,7 @@ export function FastingTracker() {
   };
 
   const handleStopFasting = async () => {
-    if (!startTime || !historyKey) {
+    if (!startTime) {
       setStartTime(null);
       setPickerTime(null);
       setPickerDate(subDays(new Date(), 1));
@@ -96,10 +87,10 @@ export function FastingTracker() {
         durationHours: durationMs / (60 * 60 * 1000),
         zonesReached: getZonesReached(startTime, endTime),
       };
-      const existing = await AsyncStorage.getItem(historyKey);
+      const existing = await AsyncStorage.getItem(HISTORY_KEY);
       const sessions: FastingSession[] = existing ? JSON.parse(existing) : [];
       sessions.unshift(session);
-      await AsyncStorage.setItem(historyKey, JSON.stringify(sessions));
+      await AsyncStorage.setItem(HISTORY_KEY, JSON.stringify(sessions));
     }
     setStartTime(null);
     setPickerTime(null);

@@ -1,4 +1,4 @@
-import { View, Text, Pressable } from "react-native";
+import { View, Text, Pressable, Linking } from "react-native";
 import { useState } from "react";
 import { CheckCircle2, Circle } from "lucide-react-native";
 import Animated, {
@@ -173,6 +173,11 @@ export function FastingZone({ zone, startTime, currentTime }: FastingZoneProps) 
                 ))}
               </View>
             </Animated.View>
+
+            {/* Learn more link */}
+            <Pressable onPress={() => Linking.openURL(zone.learnMoreUrl)}>
+              <MutedText className="text-xs text-right underline">Learn more →</MutedText>
+            </Pressable>
           </Animated.View>
         )}
       </View>

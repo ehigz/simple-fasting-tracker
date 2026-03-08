@@ -246,6 +246,26 @@ Lucide icons are always displayed in a rounded container — never bare.
 
 ---
 
+## Compliance Rules
+
+> Full detail: see `COMPLIANCE.md` at the project root.
+
+### Hard constraints (v1 — no exceptions without human sign-off)
+- **No network calls** — zero HTTP/WebSocket requests from the app
+- **No third-party SDKs** — no Firebase, Sentry, Mixpanel, Amplitude, Crashlytics, etc.
+- **No wallet integration in v1** — wallet code lives in `feat/wallet-connect` branch only
+- **No user accounts or persistent identifiers**
+- **No medical advice language** — all content must be informational/community framing
+
+### Prohibited content patterns
+- "You should..." / "We recommend..." / "Break your fast with..." (directive language)
+- Any instruction framed as a personal health directive
+
+### Compliance trigger phrases — pause and flag before implementing
+If asked to implement: analytics, backend, cloud storage, wallet, push notifications, user accounts, crash reporting, or ads — respond with the flag message in `COMPLIANCE.md` and do not proceed.
+
+---
+
 ## Next Steps (Roadmap)
 
 1. **On-chain fasting records** — Store fasting sessions as Solana account data

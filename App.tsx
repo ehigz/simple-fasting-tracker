@@ -1,85 +1,29 @@
 import "./global.css";
-import "./src/polyfills";
 
 import { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View, Text, Pressable, ActivityIndicator } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import * as Clipboard from "expo-clipboard";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Timer, History, Wallet, Copy, LogOut } from "lucide-react-native";
+import { Timer, History, Info } from "lucide-react-native";
 import { SafeAreaProvider, useSafeAreaInsets } from "react-native-safe-area-context";
-import { ConnectionProvider } from "./src/utils/ConnectionProvider";
-import { ClusterProvider } from "./src/components/cluster/cluster-data-access";
-import { useAuthorization } from "./src/utils/useAuthorization";
 import { SunriseBackground } from "./src/components/SunriseBackground";
 import { DisclaimerModal } from "./src/components/DisclaimerModal";
-import { WalletConnect } from "./src/components/WalletConnect";
 import { FastingTracker } from "./src/components/FastingTracker";
 import { FastingHistory } from "./src/components/FastingHistory";
-import { ellipsify } from "./src/utils/ellipsify";
-import { useMobileWallet } from "./src/utils/useMobileWallet";
-import { Card, Button, FieldLabel, Divider, Overline, MutedText, colors } from "./src/ui";
+import { AboutScreen } from "./src/screens/AboutScreen";
+import { Overline, MutedText, colors } from "./src/ui";
 
-const queryClient = new QueryClient();
 const DISCLAIMER_KEY = "disclaimer_accepted";
 
-type Tab = "track" | "history" | "account";
+type Tab = "track" | "history" | "about";
 
 const TABS: { id: Tab; label: string; Icon: any }[] = [
   { id: "track",   label: "Track",   Icon: Timer   },
   { id: "history", label: "History", Icon: History  },
-  { id: "account", label: "Account", Icon: Wallet   },
+  { id: "about",   label: "About",   Icon: Info     },
 ];
 
-function AccountTab({
-  address,
-  onDisconnect,
-}: {
-  address: string;
-  onDisconnect: () => void;
-}) {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopy = async () => {
-    await Clipboard.setStringAsync(address);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  return (
-    <View className="flex-1 justify-center px-2 gap-4">
-      <Card className="gap-6">
-        <View className="gap-2">
-          <FieldLabel className="text-center">Connected Wallet</FieldLabel>
-          <Text className="text-primary text-base font-medium text-center">
-            {ellipsify(address, 8)}
-          </Text>
-        </View>
-
-        <Button
-          variant="secondary"
-          label={copied ? "Copied!" : "Copy Address"}
-          onPress={handleCopy}
-          icon={<Copy size={15} color={colors.accentPurple} />}
-        />
-
-        <Divider />
-
-        <Button
-          variant="ghost"
-          label="Disconnect Wallet"
-          onPress={onDisconnect}
-          icon={<LogOut size={15} color={colors.primary} />}
-        />
-      </Card>
-    </View>
-  );
-}
-
 function AppContent() {
-  const { selectedAccount, isLoading } = useAuthorization();
-  const { disconnect } = useMobileWallet();
   const insets = useSafeAreaInsets();
   const [disclaimerAccepted, setDisclaimerAccepted] = useState<boolean | null>(null);
   const [activeTab, setActiveTab] = useState<Tab>("track");
@@ -95,15 +39,7 @@ function AppContent() {
     setDisclaimerAccepted(true);
   };
 
-  const handleDisconnect = async () => {
-    try {
-      await disconnect();
-    } catch {
-      // Ignore disconnect errors
-    }
-  };
-
-  if (disclaimerAccepted === null || isLoading) {
+  if (disclaimerAccepted === null) {
     return (
       <SunriseBackground>
         <View className="flex-1 justify-center items-center">
@@ -124,32 +60,20 @@ function AppContent() {
     );
   }
 
-  if (!selectedAccount) {
-    return (
-      <SunriseBackground>
-        <WalletConnect />
-      </SunriseBackground>
-    );
-  }
-
-  const address = selectedAccount.publicKey.toBase58();
-
   return (
     <View style={styles.root}>
       <SunriseBackground>
         <View style={styles.header}>
           <Overline>&#10022; Track Your Journey &#10022;</Overline>
           <Text style={styles.headerText}>Fasting made simple.</Text>
-          <MutedText className="text-center" style={{ paddingHorizontal: 8 }}>
+          <MutedText className="text-center px-2">
             Discover when you'll reach each beneficial milestone and make informed decisions about your health.
           </MutedText>
         </View>
         <View style={styles.content}>
           {activeTab === "track"   && <FastingTracker />}
           {activeTab === "history" && <FastingHistory />}
-          {activeTab === "account" && (
-            <AccountTab address={address} onDisconnect={handleDisconnect} />
-          )}
+          {activeTab === "about"   && <AboutScreen />}
         </View>
       </SunriseBackground>
 
@@ -220,14 +144,8 @@ const styles = StyleSheet.create({
 export default function App() {
   return (
     <SafeAreaProvider>
-      <QueryClientProvider client={queryClient}>
-        <ClusterProvider>
-          <ConnectionProvider config={{ commitment: "processed" }}>
-            <StatusBar style="dark" />
-            <AppContent />
-          </ConnectionProvider>
-        </ClusterProvider>
-      </QueryClientProvider>
+      <StatusBar style="dark" />
+      <AppContent />
     </SafeAreaProvider>
   );
 }

@@ -18,6 +18,7 @@ export interface FastingZoneData {
   hours: number;
   benefits: string;
   color: string;
+  learnMoreUrl: string;
   breakingFast: {
     foods: string[];
     avoid: string[];
@@ -31,6 +32,7 @@ export const FASTING_ZONES: FastingZoneData[] = [
     hours: 4,
     benefits: "Blood sugar and insulin decrease",
     color: "#d97706",
+    learnMoreUrl: "https://www.health.harvard.edu/heart-health/time-to-try-intermittent-fasting",
     breakingFast: {
       foods: [
         "Any balanced meal",
@@ -39,7 +41,7 @@ export const FASTING_ZONES: FastingZoneData[] = [
       ],
       avoid: ["Excessive sugar"],
       notes:
-        "Your digestive system is fully active. You can eat normally.",
+        "At this stage your digestive system remains fully active. The fasting community generally treats this as a normal eating window with no special refeeding considerations.",
     },
   },
   {
@@ -47,6 +49,7 @@ export const FASTING_ZONES: FastingZoneData[] = [
     hours: 12,
     benefits: "Ketosis begins, fat burning starts",
     color: "#65a30d",
+    learnMoreUrl: "https://my.clevelandclinic.org/health/articles/24003-ketosis",
     breakingFast: {
       foods: [
         "Bone broth",
@@ -56,7 +59,7 @@ export const FASTING_ZONES: FastingZoneData[] = [
       ],
       avoid: ["Large meals", "Heavy carbs", "Processed foods"],
       notes:
-        "Start with something light. Your body is in fat-burning mode.",
+        "At 12 hours, the fasting community commonly begins lighter refeeding approaches. As always, consult your doctor about what works for your individual health situation.",
     },
   },
   {
@@ -64,6 +67,7 @@ export const FASTING_ZONES: FastingZoneData[] = [
     hours: 16,
     benefits: "Peak fat burning and ketone production",
     color: "#059669",
+    learnMoreUrl: "https://www.health.harvard.edu/staying-healthy/can-intermittent-fasting-help-with-weight-loss",
     breakingFast: {
       foods: [
         "Bone broth",
@@ -74,7 +78,7 @@ export const FASTING_ZONES: FastingZoneData[] = [
       ],
       avoid: ["Large meals", "Refined carbs", "Sugary foods"],
       notes:
-        "Break gently with protein and healthy fats. Wait 30-60 min before a full meal.",
+        "16 hours is a widely discussed milestone in the intermittent fasting community, often associated with a gradual reintroduction of protein and healthy fats. Research into 16:8 fasting continues — consult your doctor for guidance specific to you.",
     },
   },
   {
@@ -82,6 +86,7 @@ export const FASTING_ZONES: FastingZoneData[] = [
     hours: 18,
     benefits: "Cellular repair and autophagy increase",
     color: "#0f766e",
+    learnMoreUrl: "https://my.clevelandclinic.org/health/articles/24058-autophagy",
     breakingFast: {
       foods: [
         "Bone broth first",
@@ -95,7 +100,7 @@ export const FASTING_ZONES: FastingZoneData[] = [
         "High-fiber foods at first",
       ],
       notes:
-        "Break slowly over 1-2 hours. Start with broth, wait 30 min, then small protein portions.",
+        "At this milestone, the fasting community commonly discusses slower refeeding over time. The science of autophagy at this duration is actively researched — consult your doctor about what's appropriate for your individual circumstances.",
     },
   },
   {
@@ -103,6 +108,7 @@ export const FASTING_ZONES: FastingZoneData[] = [
     hours: 24,
     benefits: "Maximum autophagy and growth hormone",
     color: "#57534e",
+    learnMoreUrl: "https://my.clevelandclinic.org/health/articles/24058-autophagy",
     breakingFast: {
       foods: [
         "Bone broth or vegetable broth",
@@ -117,7 +123,7 @@ export const FASTING_ZONES: FastingZoneData[] = [
         "Dairy",
       ],
       notes:
-        "IMPORTANT: Break very gently. Start with broth and fruits. Wait several hours before regular meals.",
+        "Extended fasts of 24 hours carry meaningful considerations for how eating resumes. Research into autophagy at this stage is ongoing. Consult a qualified doctor before and after fasts of this length.",
     },
   },
   {
@@ -125,6 +131,7 @@ export const FASTING_ZONES: FastingZoneData[] = [
     hours: 48,
     benefits: "Immune system regeneration begins",
     color: "#b45309",
+    learnMoreUrl: "https://www.medicalnewstoday.com/articles/277860",
     breakingFast: {
       foods: [
         "Diluted fruit juice",
@@ -141,7 +148,7 @@ export const FASTING_ZONES: FastingZoneData[] = [
         "Heavy proteins",
       ],
       notes:
-        "CRITICAL: Take 24+ hours to refeed. Start with liquids only. Risk of refeeding syndrome - consult doctor.",
+        "Fasts of 48 hours carry serious physiological considerations, including risks associated with refeeding. Research by Valter Longo and others has explored immune regeneration at this duration. Consult a qualified doctor before undertaking a fast of this length.",
     },
   },
   {
@@ -149,6 +156,7 @@ export const FASTING_ZONES: FastingZoneData[] = [
     hours: 72,
     benefits: "Stem cell regeneration activated",
     color: "#166534",
+    learnMoreUrl: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4102383/",
     breakingFast: {
       foods: [
         "Medical supervision recommended",
@@ -161,7 +169,7 @@ export const FASTING_ZONES: FastingZoneData[] = [
         "All recommendations from 48h fast",
       ],
       notes:
-        "MEDICAL SUPERVISION REQUIRED: Refeeding syndrome is a serious risk. Break over 48-72 hours minimum.",
+        "72-hour fasts carry significant health risks including refeeding syndrome. Peer-reviewed research has explored stem cell regeneration at this duration. This length of fast should only be undertaken under the supervision of a qualified medical professional.",
     },
   },
 ];

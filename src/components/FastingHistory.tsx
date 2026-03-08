@@ -4,7 +4,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { format, isToday, isYesterday } from "date-fns";
 import Animated, { FadeIn } from "react-native-reanimated";
 import { Clock } from "lucide-react-native";
-import { useAuthorization } from "../utils/useAuthorization";
 import { FastingSession, FASTING_ZONES } from "../utils/fasting";
 import { Card, CardTitle, BodyText, MutedText, StatValue, colors } from "../ui";
 
@@ -79,29 +78,24 @@ function SessionCard({ session }: { session: FastingSession }) {
   );
 }
 
+const HISTORY_KEY = "fasting_history";
+
 export function FastingHistory() {
-  const { selectedAccount } = useAuthorization();
   const [sessions, setSessions] = useState<FastingSession[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const historyKey = selectedAccount
-    ? `fasting_history_${selectedAccount.publicKey.toBase58()}`
-    : null;
-
   const load = useCallback(async () => {
-    if (!historyKey) return;
-    const raw = await AsyncStorage.getItem(historyKey);
+    const raw = await AsyncStorage.getItem(HISTORY_KEY);
     setSessions(raw ? JSON.parse(raw) : []);
     setLoading(false);
-  }, [historyKey]);
+  }, []);
 
   useEffect(() => {
     load();
   }, [load]);
 
   const handleClearHistory = async () => {
-    if (!historyKey) return;
-    await AsyncStorage.removeItem(historyKey);
+    await AsyncStorage.removeItem(HISTORY_KEY);
     setSessions([]);
   };
 

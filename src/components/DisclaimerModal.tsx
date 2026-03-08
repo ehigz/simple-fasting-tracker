@@ -25,31 +25,20 @@ export function DisclaimerModal({ visible, onAccept }: DisclaimerModalProps) {
           </View>
 
           <ScrollView className="max-h-64 mb-6">
-            <Text className="text-muted-fg text-sm leading-6 mb-4">
-              This application is designed for{" "}
-              <Text className="font-semibold text-primary">
-                informational purposes only
-              </Text>{" "}
-              and does not constitute medical advice, diagnosis, or treatment.
+            <Text className="text-primary text-sm leading-6 font-semibold mb-3">
+              This app does not provide medical advice.
             </Text>
 
             <Text className="text-muted-fg text-sm leading-6 mb-4">
-              The fasting phases, timelines, and dietary suggestions presented
-              are based on general wellness information and may not be
-              appropriate for your individual health situation.
+              All milestone information shown in this app is general and informational only. It is not tailored to your individual health circumstances and is not a substitute for professional medical advice, diagnosis, or treatment.
             </Text>
 
             <Text className="text-muted-fg text-sm leading-6 mb-4">
-              Always consult with a qualified healthcare provider before
-              starting any fasting regimen, especially if you have existing
-              medical conditions, are pregnant or nursing, or are taking
-              medication.
+              Fasting is not appropriate for everyone. If you have any medical condition, are pregnant or breastfeeding, take prescription medication, or have any concern about your health, consult a qualified doctor before beginning or modifying a fasting practice.
             </Text>
 
-            <Text className="text-primary text-sm leading-6 font-semibold">
-              By continuing, you acknowledge that you understand this
-              information is not a substitute for professional medical advice
-              and that you use this app at your own discretion.
+            <Text className="text-muted-fg text-sm leading-6">
+              The developer is not responsible for any health outcomes, adverse events, or injuries that result from use of this app or reliance on any information it displays.
             </Text>
           </ScrollView>
 
