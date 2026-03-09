@@ -35,6 +35,7 @@ Key tools used by this skill:
 | `figma_create_variable_collection` | Push — create a new variable collection |
 | `figma_arrange_component_set` | Push — organize variants with native Figma formatting |
 | `figma_set_description` | Push — add markdown component docs |
+| `figma_get_design_changes` | Drift — poll Desktop Bridge buffer for changes since last check |
 | `figma_check_design_parity` | Drift — scored diff report: Figma vs code |
 | `figma_generate_component_doc` | Docs — merge Figma + code into markdown |
 | `figma_execute` | Advanced — run arbitrary Figma Plugin API code |
@@ -268,7 +269,40 @@ Invoke when a designer updates Figma variables or styles and you need to land th
 
 ## Phase 4 — Drift Detection
 
-Three-layer drift check: manifest ↔ live code ↔ Figma.
+Four-layer drift check: Figma Desktop buffer → manifest ↔ live code ↔ deep Figma parity.
+
+### Layer 0 — Figma Desktop change buffer (live, MCP-native)
+
+**This is the primary automation mechanism for Figma → code sync.**
+
+The figma-console-mcp Desktop Bridge plugin buffers every `documentchange` event while Figma Desktop is open. Call this first on every drift run to detect if Figma has changed since the last check.
+
+```
+figma_get_design_changes {
+  "since": <lastCheckedAt_unix_ms from manifest>,
+  "clear": true
+}
+```
+
+- `since`: read `figma.lastCheckedAt` from `design-system-manifest.json` (Unix ms). If absent, use `0` to get all buffered events.
+- `clear: true`: clears the buffer after reading so next call only gets new changes.
+
+**Interpret the result:**
+
+If the response contains changes to nodes with type `VARIABLE` or `STYLE` (i.e., token-relevant), **automatically trigger Phase 3 (Figma → Code sync)**:
+
+```
+figma_get_variables { "fileKey": "zzMTJilulVXIVzr6X29CKH" }
+```
+→ save as `figma-export.json`
+→ run `sync_from_figma.py . --figma-data figma-export.json` to show diff
+→ ask user to confirm before `--apply`
+
+If changes are only to frame/layout nodes (non-token), note it but don't sync.
+
+After reading, write the current timestamp back to `figma.lastCheckedAt` in the manifest.
+
+**Limitation:** The buffer only accumulates while Figma Desktop is open with the plugin running. Changes made in Figma web editor or when Figma Desktop is closed will not appear here — those require a manual `/design-system-architect pull`.
 
 ### Layer 1 — Code vs manifest (local, fast)
 
@@ -284,7 +318,7 @@ Use `figma_check_design_parity` — it performs a scored diff between Figma comp
 
 ```
 figma_check_design_parity {
-  "fileKey": "YOUR_FILE_KEY",
+  "fileKey": "zzMTJilulVXIVzr6X29CKH",
   "componentNodeId": "BUTTON_NODE_ID",
   "codeImplementation": "<paste Button.tsx source>"
 }
@@ -303,7 +337,7 @@ Issues:
 
 ```
 figma_generate_component_doc {
-  "fileKey": "YOUR_FILE_KEY",
+  "fileKey": "zzMTJilulVXIVzr6X29CKH",
   "componentNodeId": "BUTTON_NODE_ID",
   "codeInfo": { "sourceFile": "src/ui/Button.tsx", "variants": ["primary","secondary","ghost"] }
 }
@@ -469,7 +503,8 @@ Variable references use `{InterFast.colors.primary}` syntax for any alias/refere
   "figma": {
     "fileKey": "",
     "fileUrl": "",
-    "lastFigmaVersion": ""
+    "lastFigmaVersion": "",
+    "lastCheckedAt": 0
   },
   "tokens": {
     "colors":     { "<name>": { "value": "#hex", "figmaVariableId": "" } },
@@ -502,7 +537,7 @@ Variable references use `{InterFast.colors.primary}` syntax for any alias/refere
 | `/design-system-architect generate` | Phase 1 — full first-time generation (tokens + frames + metadata) |
 | `/design-system-architect push` | Phase 2 — push code changes to Figma |
 | `/design-system-architect pull` | Phase 3 — pull Figma changes into code |
-| `/design-system-architect drift` | Phase 4 — three-layer drift check |
+| `/design-system-architect drift` | Phase 4 — four-layer drift check (Layer 0: MCP buffer check for Figma changes → auto-pull if token changes detected) |
 | `/design-system-architect parity Button` | Run `figma_check_design_parity` on a specific component |
 | `/design-system-architect docs Button` | Run `figma_generate_component_doc` and write to `src/ui/docs/Button.md` |
 | `/design-system-architect metadata` | Regenerate all `.metadata.ts` files |
