@@ -1,6 +1,6 @@
 {
-  "version": "2.1.0",
-  "lastSyncedAt": "2026-03-09T02:10:00.000000+00:00",
+  "version": "2.2.0",
+  "lastSyncedAt": "2026-03-09T02:20:00.000000+00:00",
   "syncDirection": "code→figma",
   "figma": {
     "fileKey": "zzMTJilulVXIVzr6X29CKH",
@@ -91,6 +91,27 @@
       "tabBar": {
         "offset": { "value": 32, "figmaVariableId": "VariableID:8:27", "note": "paddingBottom to clear tab bar" }
       }
+    }
+  },
+  "componentTokens": {
+    "collectionId": "VariableCollectionId:8:28",
+    "button": {
+      "primary":   { "fill": "VariableID:8:29", "fillPressed": "VariableID:8:30", "label": "VariableID:8:31" },
+      "secondary": { "fill": "VariableID:8:32", "label": "VariableID:8:33", "border": "VariableID:8:34" },
+      "ghost":     { "label": "VariableID:8:35", "border": "VariableID:8:36" },
+      "disabled":  { "fill": "VariableID:8:37", "label": "VariableID:8:38" }
+    },
+    "card": {
+      "fill": "VariableID:8:39", "border": "VariableID:8:40",
+      "radius": { "default": "VariableID:8:41", "sm": "VariableID:8:42" }
+    },
+    "tabBar": {
+      "fill": "VariableID:8:43", "border": "VariableID:8:44",
+      "iconActive": "VariableID:8:45", "iconInactive": "VariableID:8:46"
+    },
+    "zone": {
+      "fill":   { "active": "VariableID:8:47", "inactive": "VariableID:8:48" },
+      "border": { "active": "VariableID:8:49", "inactive": "VariableID:8:50" }
     }
   },
   "components": {

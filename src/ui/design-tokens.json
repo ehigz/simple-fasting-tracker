@@ -81,6 +81,52 @@
       "header":  { "offset":   { "$type": "number", "$value": 96, "$description": "paddingTop to clear status bar + header",           "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaVariableId": "VariableID:8:26" } } } },
       "tabBar":  { "offset":   { "$type": "number", "$value": 32, "$description": "paddingBottom to clear tab bar",                   "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaVariableId": "VariableID:8:27" } } } }
     },
+    "components": {
+      "button": {
+        "primary": {
+          "fill":        { "$type": "color", "$value": "{InterFast.colors.primary}",      "$description": "Primary button background",      "$extensions": { "interfast": { "status": "stable", "tier": "component", "figmaVariableId": "VariableID:8:29" } } },
+          "fillPressed": { "$type": "color", "$value": "{InterFast.colors.primaryHover}", "$description": "Primary button pressed state",    "$extensions": { "interfast": { "status": "stable", "tier": "component", "figmaVariableId": "VariableID:8:30" } } },
+          "label":       { "$type": "color", "$value": "{InterFast.colors.white}",        "$description": "Primary button label text",       "$extensions": { "interfast": { "status": "stable", "tier": "component", "figmaVariableId": "VariableID:8:31" } } }
+        },
+        "secondary": {
+          "fill":   { "$type": "color", "$value": "{InterFast.colors.secondary}",    "$description": "Secondary button background",              "$extensions": { "interfast": { "status": "stable", "tier": "component", "figmaVariableId": "VariableID:8:32" } } },
+          "label":  { "$type": "color", "$value": "{InterFast.colors.accentPurple}", "$description": "Secondary button label text",              "$extensions": { "interfast": { "status": "stable", "tier": "component", "figmaVariableId": "VariableID:8:33" } } },
+          "border": { "$type": "color", "$value": "rgba(52, 2, 71, 0.10)",           "$description": "Secondary button border (primary/10)",     "$extensions": { "interfast": { "status": "stable", "tier": "component", "figmaVariableId": "VariableID:8:34" } } }
+        },
+        "ghost": {
+          "label":  { "$type": "color", "$value": "{InterFast.colors.primary}",  "$description": "Ghost button label text",          "$extensions": { "interfast": { "status": "stable", "tier": "component", "figmaVariableId": "VariableID:8:35" } } },
+          "border": { "$type": "color", "$value": "rgba(52, 2, 71, 0.12)",       "$description": "Ghost button border (primary/12)", "$extensions": { "interfast": { "status": "stable", "tier": "component", "figmaVariableId": "VariableID:8:36" } } }
+        },
+        "disabled": {
+          "fill":  { "$type": "color", "$value": "{InterFast.colors.muted}",   "$description": "Disabled button background", "$extensions": { "interfast": { "status": "stable", "tier": "component", "figmaVariableId": "VariableID:8:37" } } },
+          "label": { "$type": "color", "$value": "{InterFast.colors.mutedFg}", "$description": "Disabled button label text", "$extensions": { "interfast": { "status": "stable", "tier": "component", "figmaVariableId": "VariableID:8:38" } } }
+        }
+      },
+      "card": {
+        "fill":   { "$type": "color",  "$value": "rgba(255, 255, 255, 0.95)", "$description": "Card background (white/95)",      "$extensions": { "interfast": { "status": "stable", "tier": "component", "figmaVariableId": "VariableID:8:39" } } },
+        "border": { "$type": "color",  "$value": "rgba(52, 2, 71, 0.08)",     "$description": "Card border (primary/8)",          "$extensions": { "interfast": { "status": "stable", "tier": "component", "figmaVariableId": "VariableID:8:40" } } },
+        "radius": {
+          "default": { "$type": "number", "$value": "{InterFast.radius.lg}", "$description": "Card radius — default (24px)", "$extensions": { "interfast": { "status": "stable", "tier": "component", "figmaVariableId": "VariableID:8:41" } } },
+          "sm":      { "$type": "number", "$value": "{InterFast.radius.md}", "$description": "Card radius — sm variant (16px)", "$extensions": { "interfast": { "status": "stable", "tier": "component", "figmaVariableId": "VariableID:8:42" } } }
+        }
+      },
+      "tabBar": {
+        "fill":         { "$type": "color", "$value": "{InterFast.colors.tabBarBg}",     "$description": "Tab bar frosted background", "$extensions": { "interfast": { "status": "stable", "tier": "component", "figmaVariableId": "VariableID:8:43" } } },
+        "border":       { "$type": "color", "$value": "{InterFast.colors.tabBarBorder}", "$description": "Tab bar top border",          "$extensions": { "interfast": { "status": "stable", "tier": "component", "figmaVariableId": "VariableID:8:44" } } },
+        "iconActive":   { "$type": "color", "$value": "{InterFast.colors.primary}",      "$description": "Active tab icon",             "$extensions": { "interfast": { "status": "stable", "tier": "component", "figmaVariableId": "VariableID:8:45" } } },
+        "iconInactive": { "$type": "color", "$value": "{InterFast.colors.accentLight}",  "$description": "Inactive tab icon",           "$extensions": { "interfast": { "status": "stable", "tier": "component", "figmaVariableId": "VariableID:8:46" } } }
+      },
+      "zone": {
+        "fill": {
+          "active":   { "$type": "color", "$value": "{InterFast.colors.secondary}", "$description": "Completed zone card background",      "$extensions": { "interfast": { "status": "stable", "tier": "component", "figmaVariableId": "VariableID:8:47" } } },
+          "inactive": { "$type": "color", "$value": "rgba(255, 255, 255, 0.50)",    "$description": "Active zone card background (white/50)","$extensions": { "interfast": { "status": "stable", "tier": "component", "figmaVariableId": "VariableID:8:48" } } }
+        },
+        "border": {
+          "active":   { "$type": "color", "$value": "{InterFast.colors.accentLight}", "$description": "Completed zone card border",   "$extensions": { "interfast": { "status": "stable", "tier": "component", "figmaVariableId": "VariableID:8:49" } } },
+          "inactive": { "$type": "color", "$value": "rgba(52, 2, 71, 0.08)",          "$description": "Active zone card border (primary/8)","$extensions": { "interfast": { "status": "stable", "tier": "component", "figmaVariableId": "VariableID:8:50" } } }
+        }
+      }
+    },
     "typography": {
       "overline":   { "$type": "number", "$value": 12, "$description": "All-caps overline with ✦ star decorators. Section headers only.", "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "weight": "400", "transform": "uppercase", "letterSpacing": "widest", "opacity": 0.6 } } },
       "fieldLabel": { "$type": "number", "$value": 12, "$description": "All-caps label above inputs or stat pairs.",                      "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "weight": "400", "transform": "uppercase", "letterSpacing": "widest" } } },
