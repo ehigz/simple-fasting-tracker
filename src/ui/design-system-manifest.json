@@ -468,7 +468,7 @@
       "sourceFile": "src/ui/Button.tsx",
       "metadataFile": "src/ui/Button.metadata.ts",
       "figmaNodeId": "7:83",
-      "parityScore": null,
+      "parityScore": 88,
       "variants": [
         "primary",
         "secondary",
@@ -493,7 +493,7 @@
       "sourceFile": "src/ui/Card.tsx",
       "metadataFile": "src/ui/Card.metadata.ts",
       "figmaNodeId": "6:56",
-      "parityScore": null,
+      "parityScore": 95,
       "variants": [
         "default",
         "sm"
