@@ -1,0 +1,51 @@
+# InterFast Design System — AI Context Index
+# Format: llms.txt (llmstxt.org)
+# Read this file first when working on any UI, component, or token task.
+
+## Quick Rules
+- Import components from src/ui/index.ts only — never build raw View/Text/Pressable
+- Use colors.* from theme.ts — never hardcode hex strings
+- Icons: always in w-16 h-16 bg-secondary rounded-2xl container — never bare
+- One primary Button per screen max
+- Read the relevant *.metadata.ts before building any screen
+
+## Governance Files (read before changing tokens or components)
+- docs/decisions/README.md       — ADR index, all architectural decisions
+- docs/decisions/0001-*          — Icon container pattern (why icons are always wrapped)
+- docs/decisions/0002-*          — NativeWind vs StyleSheet rule
+- docs/decisions/0003-*          — Single primary button rule
+- docs/decisions/0004-*          — No wallet in v1
+- docs/decisions/0005-*          — Three-tier token model (Primitives→Semantics→Components)
+- COMPLIANCE.md                  — Hard constraints (no network, no analytics, no wallet v1)
+
+## Token Files
+- src/ui/theme.ts                — TypeScript semantic tokens (colors.*, radius.*) — source of truth in code
+- src/ui/design-tokens.json      — W3C Design Token format with $extensions governance metadata
+- src/ui/design-system-manifest.json — Figma sync index (file key, variable IDs, node IDs)
+- tailwind.config.js             — NativeWind token class names (bg-primary, text-muted-fg, etc.)
+
+## Component Files
+- src/ui/index.ts                — All exports (import from here, never from individual files)
+- src/ui/Button.tsx              — Button component source
+- src/ui/Card.tsx                — Card component source
+- src/ui/Typography.tsx          — Overline, FieldLabel, CardTitle, BodyText, MutedText, StatValue
+- src/ui/Divider.tsx             — Divider component source
+
+## AI Metadata Files (component selection + anti-patterns)
+- src/ui/design-system.metadata.ts  — System philosophy, component index, patterns, anti-patterns
+- src/ui/Button.metadata.ts         — Button variant selection criteria, props, usage rules
+- src/ui/Card.metadata.ts           — Card variant selection criteria
+- src/ui/Typography.metadata.ts     — Typography primitive selection
+- src/ui/Divider.metadata.ts        — Divider usage rules
+
+## Figma
+- File: Simple Fasting Design System
+- Key: zzMTJilulVXIVzr6X29CKH
+- Collections: InterFast/Primitives · InterFast/Colors · InterFast/Radius · InterFast/Typography
+- Components page: Button (3×4 grid) · Card · Typography · Divider · Patterns
+
+## Token Tier Model
+- Tier 1 Primitives: InterFast/Primitives (purple/*, neutral/*, amber/*, white)
+- Tier 2 Semantics:  InterFast/Colors → alias to primitives
+- Tier 3 Components: InterFast/Components → alias to semantics (v2, not yet created)
+- Rule: components consume semantics only, never primitives, never raw hex

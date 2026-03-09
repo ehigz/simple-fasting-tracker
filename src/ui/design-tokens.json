@@ -1,0 +1,55 @@
+{
+  "InterFast": {
+    "Primitives": {
+      "purple": {
+        "950": { "$type": "color", "$value": "#340247", "$description": "Deepest purple — primary text, icons, borders", "$extensions": { "interfast": { "status": "stable", "tier": "primitive" } } },
+        "900": { "$type": "color", "$value": "#4a0360", "$description": "Deep purple — pressed/hover state",              "$extensions": { "interfast": { "status": "stable", "tier": "primitive" } } },
+        "600": { "$type": "color", "$value": "#6e5fa7", "$description": "Mid purple — secondary button text, icon tint",  "$extensions": { "interfast": { "status": "stable", "tier": "primitive" } } },
+        "500": { "$type": "color", "$value": "#8b7db8", "$description": "Medium purple — hover state for accent elements","$extensions": { "interfast": { "status": "stable", "tier": "primitive" } } },
+        "400": { "$type": "color", "$value": "#a89fc9", "$description": "Light-mid purple — inactive tab icons",           "$extensions": { "interfast": { "status": "stable", "tier": "primitive" } } },
+        "200": { "$type": "color", "$value": "#d4cfe6", "$description": "Light purple tint — subtle accent surfaces",      "$extensions": { "interfast": { "status": "stable", "tier": "primitive" } } },
+        "100": { "$type": "color", "$value": "#e6e3ed", "$description": "Very light purple — disabled button background",  "$extensions": { "interfast": { "status": "stable", "tier": "primitive" } } },
+        "75":  { "$type": "color", "$value": "#eeebf4", "$description": "Near-white purple — subtle surface background",   "$extensions": { "interfast": { "status": "stable", "tier": "primitive" } } },
+        "50":  { "$type": "color", "$value": "#f4ecff", "$description": "Palest purple — card fills, icon container bg",   "$extensions": { "interfast": { "status": "stable", "tier": "primitive" } } }
+      },
+      "neutral": {
+        "500": { "$type": "color", "$value": "#6b6b7e", "$description": "Mid grey-purple — muted text, labels, body copy", "$extensions": { "interfast": { "status": "stable", "tier": "primitive" } } }
+      },
+      "white": { "$type": "color", "$value": "#ffffff", "$description": "Pure white — card backgrounds, primary button text", "$extensions": { "interfast": { "status": "stable", "tier": "primitive" } } },
+      "amber": {
+        "50":  { "$type": "color", "$value": "#fff9f0", "$description": "Warm off-white — warning card background", "$extensions": { "interfast": { "status": "stable", "tier": "primitive" } } },
+        "600": { "$type": "color", "$value": "#d97706", "$description": "Amber — warning icon color",               "$extensions": { "interfast": { "status": "stable", "tier": "primitive" } } }
+      }
+    },
+    "colors": {
+      "primary":      { "$type": "color", "$value": "{InterFast.Primitives.purple.950}", "$description": "Main text, icons, borders",                      "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "usageScope": ["text", "icons", "borders", "outlines"], "doNotUseFor": ["backgrounds", "fills"], "adrRef": "docs/decisions/0005-three-tier-token-model.md" } } },
+      "primaryHover": { "$type": "color", "$value": "{InterFast.Primitives.purple.900}", "$description": "Pressed state of primary",                       "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "usageScope": ["pressed-state"], "doNotUseFor": ["default-state"] } } },
+      "secondary":    { "$type": "color", "$value": "{InterFast.Primitives.purple.50}",  "$description": "Light purple bg — icon containers, secondary btn","$extensions": { "interfast": { "status": "stable", "tier": "semantic", "usageScope": ["backgrounds", "fills", "icon-containers"] } } },
+      "muted":        { "$type": "color", "$value": "{InterFast.Primitives.purple.100}", "$description": "Disabled button background",                     "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "usageScope": ["disabled-backgrounds"] } } },
+      "mutedFg":      { "$type": "color", "$value": "{InterFast.Primitives.neutral.500}","$description": "Muted text, field labels, body copy",             "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "usageScope": ["text", "labels", "body-copy", "disabled-text"] } } },
+      "accent":       { "$type": "color", "$value": "{InterFast.Primitives.purple.200}", "$description": "Subtle accent surfaces",                         "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "usageScope": ["accent-surfaces"] } } },
+      "accentPurple": { "$type": "color", "$value": "{InterFast.Primitives.purple.600}", "$description": "Secondary button text and icon tint",             "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "usageScope": ["secondary-button-text", "icon-tint"] } } },
+      "accentLight":  { "$type": "color", "$value": "{InterFast.Primitives.purple.400}", "$description": "Inactive tab icons",                             "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "usageScope": ["inactive-tab-icons"] } } },
+      "accentHover":  { "$type": "color", "$value": "{InterFast.Primitives.purple.500}", "$description": "Hover/pressed state for accent elements",         "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "usageScope": ["accent-hover"] } } },
+      "surface":      { "$type": "color", "$value": "{InterFast.Primitives.purple.75}",  "$description": "Subtle surface background",                      "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "usageScope": ["surface-backgrounds"] } } },
+      "warn":         { "$type": "color", "$value": "{InterFast.Primitives.amber.50}",   "$description": "Warning card background",                        "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "usageScope": ["warning-backgrounds"] } } },
+      "warnIcon":     { "$type": "color", "$value": "{InterFast.Primitives.amber.600}",  "$description": "Warning icon color",                             "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "usageScope": ["warning-icons"] } } },
+      "white":        { "$type": "color", "$value": "{InterFast.Primitives.white}",      "$description": "Pure white — card backgrounds, primary button text","$extensions": { "interfast": { "status": "stable", "tier": "semantic", "usageScope": ["card-backgrounds", "primary-button-text"] } } },
+      "tabBarBg":     { "$type": "color", "$value": "rgba(255, 255, 255, 0.92)",         "$description": "Tab bar frosted glass background",                "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "usageScope": ["tab-bar-only"], "note": "rgba — not yet in Figma variables; v2 work item" } } },
+      "tabBarBorder": { "$type": "color", "$value": "rgba(52, 2, 71, 0.12)",             "$description": "Tab bar top border",                             "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "usageScope": ["tab-bar-only"], "note": "rgba — not yet in Figma variables; v2 work item" } } }
+    },
+    "radius": {
+      "sm": { "$type": "number", "$value": 12, "$description": "rounded-xl (12px) — small controls, stop button", "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "tailwindClass": "rounded-xl",  "usageScope": ["small-controls"] } } },
+      "md": { "$type": "number", "$value": 16, "$description": "rounded-2xl (16px) — buttons, inputs, list cards","$extensions": { "interfast": { "status": "stable", "tier": "semantic", "tailwindClass": "rounded-2xl", "usageScope": ["buttons", "inputs", "list-cards", "icon-containers"] } } },
+      "lg": { "$type": "number", "$value": 24, "$description": "rounded-3xl (24px) — main content cards",         "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "tailwindClass": "rounded-3xl", "usageScope": ["main-cards"] } } }
+    },
+    "typography": {
+      "overline":   { "$type": "number", "$value": 12, "$description": "All-caps overline with ✦ star decorators. Section headers only.", "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "weight": "400", "transform": "uppercase", "letterSpacing": "widest", "opacity": 0.6 } } },
+      "fieldLabel": { "$type": "number", "$value": 12, "$description": "All-caps label above inputs or stat pairs.",                      "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "weight": "400", "transform": "uppercase", "letterSpacing": "widest" } } },
+      "cardTitle":  { "$type": "number", "$value": 24, "$description": "Primary card heading. One per card.",                             "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "weight": "600", "tracking": "tight" } } },
+      "bodyText":   { "$type": "number", "$value": 16, "$description": "Body/description copy. Muted color.",                            "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "weight": "400", "lineHeight": "relaxed" } } },
+      "mutedText":  { "$type": "number", "$value": 14, "$description": "Timestamps, subtitles, helper text.",                            "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "weight": "400" } } },
+      "statValue":  { "$type": "number", "$value": 18, "$description": "Numeric data values. Use className='text-xl' for hero metrics.", "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "weight": "600" } } }
+    }
+  }
+}

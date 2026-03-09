@@ -1,0 +1,141 @@
+{
+  "version": "2.0.0",
+  "lastSyncedAt": "2026-03-09T01:28:00.000000+00:00",
+  "syncDirection": "code→figma",
+  "figma": {
+    "fileKey": "zzMTJilulVXIVzr6X29CKH",
+    "fileUrl": "https://www.figma.com/design/zzMTJilulVXIVzr6X29CKH/Simple%20Fasting%20Design%20System",
+    "lastFigmaVersion": ""
+  },
+  "primitives": {
+    "collectionId": "VariableCollectionId:6:129",
+    "colors": {
+      "purple/950":   { "value": "#340247", "figmaVariableId": "VariableID:6:130" },
+      "purple/900":   { "value": "#4a0360", "figmaVariableId": "VariableID:6:131" },
+      "purple/600":   { "value": "#6e5fa7", "figmaVariableId": "VariableID:6:132" },
+      "purple/500":   { "value": "#8b7db8", "figmaVariableId": "VariableID:6:133" },
+      "purple/400":   { "value": "#a89fc9", "figmaVariableId": "VariableID:6:134" },
+      "purple/200":   { "value": "#d4cfe6", "figmaVariableId": "VariableID:6:135" },
+      "purple/100":   { "value": "#e6e3ed", "figmaVariableId": "VariableID:6:136" },
+      "purple/75":    { "value": "#eeebf4", "figmaVariableId": "VariableID:6:137" },
+      "purple/50":    { "value": "#f4ecff", "figmaVariableId": "VariableID:6:138" },
+      "neutral/500":  { "value": "#6b6b7e", "figmaVariableId": "VariableID:6:139" },
+      "white":        { "value": "#ffffff", "figmaVariableId": "VariableID:6:140" },
+      "amber/50":     { "value": "#fff9f0", "figmaVariableId": "VariableID:6:141" },
+      "amber/600":    { "value": "#d97706", "figmaVariableId": "VariableID:6:142" }
+    }
+  },
+  "tokens": {
+    "colors": {
+      "primary":      { "value": "#340247", "figmaVariableId": "VariableID:6:3" },
+      "primaryHover": { "value": "#4a0360", "figmaVariableId": "VariableID:6:4" },
+      "secondary":    { "value": "#f4ecff", "figmaVariableId": "VariableID:6:5" },
+      "muted":        { "value": "#e6e3ed", "figmaVariableId": "VariableID:6:6" },
+      "mutedFg":      { "value": "#6b6b7e", "figmaVariableId": "VariableID:6:7" },
+      "accent":       { "value": "#d4cfe6", "figmaVariableId": "VariableID:6:8" },
+      "accentPurple": { "value": "#6e5fa7", "figmaVariableId": "VariableID:6:9" },
+      "accentLight":  { "value": "#a89fc9", "figmaVariableId": "VariableID:6:10" },
+      "accentHover":  { "value": "#8b7db8", "figmaVariableId": "VariableID:6:11" },
+      "surface":      { "value": "#eeebf4", "figmaVariableId": "VariableID:6:12" },
+      "warn":         { "value": "#fff9f0", "figmaVariableId": "VariableID:6:13" },
+      "warnIcon":     { "value": "#d97706", "figmaVariableId": "VariableID:6:14" },
+      "white":        { "value": "#ffffff", "figmaVariableId": "VariableID:6:15" },
+      "tabBarBg":     { "value": "rgba(255, 255, 255, 0.92)", "figmaVariableId": "" },
+      "tabBarBorder": { "value": "rgba(52, 2, 71, 0.12)", "figmaVariableId": "" }
+    },
+    "radius": {
+      "sm": { "value": 12, "figmaVariableId": "VariableID:6:17", "tailwindClass": "rounded-xl" },
+      "md": { "value": 16, "figmaVariableId": "VariableID:6:18", "tailwindClass": "rounded-2xl" },
+      "lg": { "value": 24, "figmaVariableId": "VariableID:6:19", "tailwindClass": "rounded-3xl" }
+    },
+    "typography": {
+      "overline":   { "size": 12, "weight": "400", "figmaStyleId": "VariableID:6:21" },
+      "fieldLabel": { "size": 12, "weight": "400", "figmaStyleId": "VariableID:6:22" },
+      "cardTitle":  { "size": 24, "weight": "600", "figmaStyleId": "VariableID:6:23" },
+      "bodyText":   { "size": 16, "weight": "400", "figmaStyleId": "VariableID:6:24" },
+      "mutedText":  { "size": 14, "weight": "400", "figmaStyleId": "VariableID:6:25" },
+      "statValue":  { "size": 18, "weight": "600", "figmaStyleId": "VariableID:6:26" }
+    }
+  },
+  "components": {
+    "Button": {
+      "sourceFile": "src/ui/Button.tsx",
+      "metadataFile": "src/ui/Button.metadata.ts",
+      "figmaNodeId": "7:83",
+      "parityScore": null,
+      "variants": ["primary", "secondary", "ghost"],
+      "states": ["default", "pressed", "disabled", "loading"],
+      "props": ["label", "onPress", "variant", "disabled", "loading", "icon"]
+    },
+    "Card": {
+      "sourceFile": "src/ui/Card.tsx",
+      "metadataFile": "src/ui/Card.metadata.ts",
+      "figmaNodeId": "6:56",
+      "parityScore": null,
+      "variants": ["default", "sm"]
+    },
+    "Overline": {
+      "sourceFile": "src/ui/Typography.tsx",
+      "metadataFile": "src/ui/Typography.metadata.ts",
+      "figmaNodeId": "6:63",
+      "parityScore": null,
+      "variants": []
+    },
+    "FieldLabel": {
+      "sourceFile": "src/ui/Typography.tsx",
+      "metadataFile": "src/ui/Typography.metadata.ts",
+      "figmaNodeId": "6:66",
+      "parityScore": null,
+      "variants": []
+    },
+    "CardTitle": {
+      "sourceFile": "src/ui/Typography.tsx",
+      "metadataFile": "src/ui/Typography.metadata.ts",
+      "figmaNodeId": "6:69",
+      "parityScore": null,
+      "variants": []
+    },
+    "BodyText": {
+      "sourceFile": "src/ui/Typography.tsx",
+      "metadataFile": "src/ui/Typography.metadata.ts",
+      "figmaNodeId": "6:72",
+      "parityScore": null,
+      "variants": []
+    },
+    "MutedText": {
+      "sourceFile": "src/ui/Typography.tsx",
+      "metadataFile": "src/ui/Typography.metadata.ts",
+      "figmaNodeId": "6:75",
+      "parityScore": null,
+      "variants": []
+    },
+    "StatValue": {
+      "sourceFile": "src/ui/Typography.tsx",
+      "metadataFile": "src/ui/Typography.metadata.ts",
+      "figmaNodeId": "6:78",
+      "parityScore": null,
+      "variants": []
+    },
+    "Divider": {
+      "sourceFile": "src/ui/Divider.tsx",
+      "metadataFile": "src/ui/Divider.metadata.ts",
+      "figmaNodeId": "6:82",
+      "parityScore": null,
+      "variants": []
+    }
+  },
+  "patterns": {
+    "iconContainer": {
+      "figmaNodeId": "6:87",
+      "spec": "w-16 h-16 bg-secondary rounded-2xl · icon size={32} color={colors.primary}"
+    },
+    "emptyState": {
+      "figmaNodeId": "6:94",
+      "spec": "Card > iconContainer + View(items-center gap-2) > CardTitle + BodyText"
+    },
+    "cardAnatomy": {
+      "figmaNodeId": "",
+      "spec": "Card > View(items-center gap-3) > Overline + CardTitle + BodyText · Divider · Button"
+    }
+  }
+}
