@@ -491,25 +491,60 @@ Variable references use `{InterFast.colors.primary}` syntax for any alias/refere
 
 ---
 
-## Manifest Schema
+## Manifest Schema (v2.4.0)
 
-`src/ui/design-system-manifest.json` — committed to git, updated by every sync. Never edit manually; always update via scripts.
+`src/ui/design-system-manifest.json` — committed to git, updated by every sync. **Never edit manually** — use scripts or MCP tools.
+
+The manifest has three tiers of tokens:
+- **primitives** — raw design palette (e.g. `purple/950`, `amber/600`). Managed by push/pull phases.
+- **tokens** — semantic aliases (e.g. `primary`, `secondary`). Colors/radius extracted from `theme.ts`; typography/motion/layout managed by push/pull.
+- **componentTokens** — component-level variable aliases in Figma. Managed by push/pull phases.
 
 ```json
 {
-  "version": "2.0.0",
+  "version": "2.4.0",
   "lastSyncedAt": "ISO timestamp",
   "syncDirection": "code→figma | figma→code | initial",
   "figma": {
-    "fileKey": "",
-    "fileUrl": "",
+    "fileKey": "zzMTJilulVXIVzr6X29CKH",
+    "fileUrl": "https://www.figma.com/design/...",
     "lastFigmaVersion": "",
     "lastCheckedAt": 0
   },
+  "primitives": {
+    "collectionId": "VariableCollectionId:...",
+    "colors": { "<purple/950>": { "value": "#340247", "figmaVariableId": "" } }
+  },
   "tokens": {
-    "colors":     { "<name>": { "value": "#hex", "figmaVariableId": "" } },
-    "radius":     { "<name>": { "value": 0, "figmaVariableId": "", "tailwindClass": "" } },
-    "typography": { "<name>": { "size": 0, "weight": "400", "figmaStyleId": "" } }
+    "colors": { "<name>": { "value": "#hex", "figmaVariableId": "", "primitiveRef": "" } },
+    "radius": { "<name>": { "value": 0, "figmaVariableId": "", "tailwindClass": "" } },
+    "typography": {
+      "collectionId": "VariableCollectionId:...",
+      "fontFamily": {
+        "body":    { "value": "Inter",           "figmaVariableId": "" },
+        "display": { "value": "Playfair Display", "figmaVariableId": "" }
+      },
+      "scales": {
+        "<scale>": { "size": 0, "weight": "400", "fontFamily": "Inter", "letterSpacing": "0", "lineHeight": "150%", "figmaStyleId": "", "componentAlias": "" }
+      }
+    },
+    "motion": {
+      "collectionId": "VariableCollectionId:...",
+      "duration": { "<name>": { "value": 0, "figmaVariableId": "", "note": "" } }
+    },
+    "layout": {
+      "collectionId": "VariableCollectionId:...",
+      "screen":  { "paddingH": { "value": 16, "figmaVariableId": "" } },
+      "header":  { "offset":   { "value": 96, "figmaVariableId": "" } },
+      "tabBar":  { "offset":   { "value": 32, "figmaVariableId": "" } }
+    }
+  },
+  "componentTokens": {
+    "collectionId": "VariableCollectionId:...",
+    "button":  { "primary": { "fill": "VariableID:...", "label": "VariableID:..." } },
+    "card":    { "fill": "VariableID:...", "border": "VariableID:..." },
+    "tabBar":  { "fill": "VariableID:...", "border": "VariableID:..." },
+    "zone":    { "fill": { "active": "VariableID:..." } }
   },
   "components": {
     "<ComponentName>": {
@@ -518,7 +553,8 @@ Variable references use `{InterFast.colors.primary}` syntax for any alias/refere
       "figmaNodeId": "",
       "parityScore": null,
       "variants": [],
-      "states": []
+      "states": [],
+      "props": []
     }
   },
   "patterns": {
@@ -526,6 +562,8 @@ Variable references use `{InterFast.colors.primary}` syntax for any alias/refere
   }
 }
 ```
+
+**⚠️ extract_tokens.py safety:** The script ONLY re-derives `tokens.colors`, `tokens.radius`, and the fallback `tokens.typography` (if no `collectionId` exists). It passes through `primitives`, `componentTokens`, `tokens.motion`, `tokens.layout`, and the full `tokens.typography` structure (with `collectionId`, `fontFamily`, `scales`) unchanged. Running it will NOT overwrite Figma variable IDs or the v2.4+ structure.
 
 ---
 
@@ -547,12 +585,67 @@ Variable references use `{InterFast.colors.primary}` syntax for any alias/refere
 
 ## Scripts Reference
 
-| Script | Purpose |
-|--------|---------|
-| `extract_tokens.py` | Reads theme.ts + tailwind.config.js → writes manifest + W3C design-tokens.json |
-| `sync_from_figma.py` | Reads Figma export → diffs → optionally patches theme.ts + tailwind.config.js |
-| `detect_drift.py` | Cross-checks manifest vs live code; references `figma_check_design_parity` for Figma layer |
-| `generate_metadata.py` | Generates `*.metadata.ts` files for all `src/ui/` components + `design-system.metadata.ts` |
+| Script | Purpose | Key flags |
+|--------|---------|-----------|
+| `extract_tokens.py` | Reads `theme.ts` + `tailwind.config.js` → writes manifest (v2.4.0-safe) + W3C `design-tokens.json`. Passes through `primitives`, `componentTokens`, `motion`, `layout` unchanged. | `--dry-run` |
+| `sync_from_figma.py` | Reads Figma variable export → diffs against manifest → optionally patches `theme.ts` + `tailwind.config.js`. | `--figma-data <path>`, `--apply` |
+| `detect_drift.py` | Cross-checks manifest vs live code; optionally checks against Figma export for triple validation. | `--figma-data <path>`, `--output <path>` |
+| `generate_metadata.py` | Generates `*.metadata.ts` files for all `src/ui/` components + `design-system.metadata.ts`. **Component list is hardcoded in script** — add new components to the `COMPONENTS` dict in the script. | `--component <Name>` |
+| `audit_codebase.py` | Scans `src/**/*.tsx` for hardcoded hex values, raw typography, spacing, motion, and arbitrary NativeWind values. **Called automatically by the pre-commit git hook** for any commit touching `src/ui/`. Outputs `src/ui/audit-report.json` + console. Also runs as `npm run audit:tokens`. | `--json-only`, `--severity error` |
+
+---
+
+## Git Hooks
+
+Two hooks are active in `.git/hooks/`. They are **not committed** (git hooks are local-only) — each developer must install them manually or via a setup script.
+
+### pre-commit
+
+**Trigger:** Any `git commit` that stages files under `src/ui/`
+
+**What it does:**
+1. Runs `audit_codebase.py` — fails the commit if violations are found
+2. Scans the staged diff for hardcoded hex strings — fails the commit if any are introduced
+
+**To bypass in an emergency:** `git commit --no-verify` (document why in the commit message)
+
+### post-merge
+
+**Trigger:** After any `git pull` or `git merge` that touches `src/ui/theme.ts`, `design-system-manifest.json`, or `design-tokens.json`
+
+**What it does:** Runs `detect_drift.py` and prints a warning if drift is detected. **Non-blocking** — the merge always succeeds regardless of drift.
+
+### Installing hooks on a new machine
+
+```bash
+# From project root:
+cp .git/hooks/pre-commit  /path/to/new/clone/.git/hooks/pre-commit
+cp .git/hooks/post-merge  /path/to/new/clone/.git/hooks/post-merge
+chmod +x .git/hooks/pre-commit .git/hooks/post-merge
+```
+
+> **TODO:** Move hooks to a `scripts/hooks/` directory and add an `npm run install:hooks` script so they're discoverable and self-installing.
+
+---
+
+## Styleguide Dev Server
+
+A local design system dashboard lives at `styleguide/server.js`. Start it with:
+
+```bash
+cd styleguide && node server.js
+# → http://localhost:4321
+```
+
+**Endpoints:**
+- `GET /` — serves `styleguide/index.html` (full design system reference + live dashboard)
+- `GET /api/stats` — JSON: implementation score, token inventory, Figma coverage %, drift notices, component parity, action items
+- `GET /api/events` — SSE stream: pushes stat updates to connected dashboard within seconds of file changes
+- `GET /api/reload` — force recompute stats and broadcast
+
+**File watcher:** Watches `src/ui/theme.ts`, `design-tokens.json`, `design-system-manifest.json`. No external npm dependencies — pure Node.js built-ins.
+
+**Detects:** `theme.ts` mtime > `lastSyncedAt` (code ahead of Figma), missing Figma variable IDs, low parity scores, hardcoded hex from audit cache (`styleguide/.audit-cache.json`).
 
 ---
 

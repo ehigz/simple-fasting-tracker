@@ -164,7 +164,7 @@ npm run build:local     # Local build (requires Android SDK)
 All UI primitives live in `src/ui/`. Always import from there when building new screens.
 
 ```typescript
-import { Card, Button, Overline, FieldLabel, CardTitle, BodyText, MutedText, Divider, colors, radius } from "../ui";
+import { Card, Button, Overline, FieldLabel, CardTitle, BodyText, MutedText, StatValue, Divider, colors, radius, motion, layout, typography } from "../ui";
 ```
 
 ### Primitives
@@ -180,20 +180,36 @@ import { Card, Button, Overline, FieldLabel, CardTitle, BodyText, MutedText, Div
 | `<CardTitle>` | Primary card heading (text-2xl semibold) |
 | `<BodyText>` | Muted body/description copy (text-base relaxed) |
 | `<MutedText>` | Small muted text — subtitles, helpers, timestamps |
+| `<StatValue>` | Numeric data value beside a FieldLabel. Semibold. Use `className="text-xl"` for hero KPIs |
 | `<Divider>` | Hairline `h-px` separator |
 
 ### Colors (`colors.*` from `src/ui/theme.ts`)
 
-Use in `StyleSheet.create()` and icon `color` props — never hardcode hex strings.
+Use in `StyleSheet.create()` and icon `color` props — never hardcode hex strings. Full token list at `http://localhost:4321` (styleguide).
 
 | Token | Value | Use |
 | --- | --- | --- |
 | `colors.primary` | `#340247` | Main text, icons, borders |
+| `colors.secondary` | `#f4ecff` | Icon container bg, secondary button fill |
 | `colors.accentPurple` | `#6e5fa7` | Secondary icon/text tint |
 | `colors.accentLight` | `#a89fc9` | Inactive tab icons |
 | `colors.mutedFg` | `#6b6b7e` | Muted/secondary text |
+| `colors.surface` | `#eeebf4` | Subtle surface background |
+| `colors.warn` | `#fff9f0` | Warning card background |
+| `colors.warnIcon` | `#d97706` | Warning icon color |
 | `colors.tabBarBg` | `rgba(255,255,255,0.92)` | Tab bar background |
 | `colors.tabBarBorder` | `rgba(52,2,71,0.12)` | Tab bar top border |
+| `colors.zone*` | various | Fasting zone accent colors (zoneAnabolic, zoneFatBurning, etc.) |
+
+### Other token exports
+
+```typescript
+motion.duration.base    // 300ms — standard transitions
+motion.duration.fast    // 200ms — micro interactions
+layout.screen.paddingH  // 16 — horizontal screen padding (use px-4 in NativeWind)
+layout.tabBar.offset    // 32 — paddingBottom to clear tab bar
+typography.scale.h3     // { fontFamily, fontWeight, fontSize, ... } — StyleSheet-ready
+```
 
 ### NativeWind tokens (use directly as `className`)
 

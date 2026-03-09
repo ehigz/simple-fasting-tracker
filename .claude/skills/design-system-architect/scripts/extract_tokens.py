@@ -242,8 +242,21 @@ def build_manifest(colors: dict, radius: dict, existing: dict) -> dict:
         prev = existing_patterns.get(name, {})
         patterns_out[name] = {**defaults, "figmaNodeId": prev.get("figmaNodeId", "")}
 
+    # Determine typography output: preserve full v2.4+ structure (collectionId + fontFamily + scales)
+    # if it exists in the current manifest; otherwise fall back to legacy typo_out
+    existing_typo = existing.get("tokens", {}).get("typography", {})
+    typo_final = existing_typo if "collectionId" in existing_typo else typo_out
+
+    # Preserve v2.4+ token sections that are managed by push/pull phases (not derived from theme.ts)
+    existing_tokens = existing.get("tokens", {})
+    preserved_token_sections = {
+        k: existing_tokens[k]
+        for k in ("motion", "layout")
+        if k in existing_tokens
+    }
+
     return {
-        "version": "2.0.0",
+        "version": "2.4.0",
         "lastSyncedAt": datetime.now(timezone.utc).isoformat(),
         "syncDirection": existing.get("syncDirection", "initial"),
         "figma": existing.get("figma", {
@@ -251,11 +264,16 @@ def build_manifest(colors: dict, radius: dict, existing: dict) -> dict:
             "fileUrl": "",
             "lastFigmaVersion": ""
         }),
+        # Primitives: raw color palette (managed by push/pull, not extracted from theme.ts)
+        **({"primitives": existing["primitives"]} if "primitives" in existing else {}),
         "tokens": {
             "colors": colors_out,
             "radius": radius_out,
-            "typography": typo_out
+            "typography": typo_final,
+            **preserved_token_sections,
         },
+        # Component tokens: Figma variable IDs for component-level aliases (managed by push/pull)
+        **({"componentTokens": existing["componentTokens"]} if "componentTokens" in existing else {}),
         "components": comps_out,
         "patterns": patterns_out
     }

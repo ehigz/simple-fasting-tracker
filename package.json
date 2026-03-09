@@ -13,7 +13,12 @@
     "lint": "eslint 'src/**/*.{ts,tsx}' --max-warnings 0",
     "lint:fix": "eslint 'src/**/*.{ts,tsx}' --fix",
     "audit:tokens": "python3 .claude/skills/design-system-architect/scripts/audit_codebase.py .",
-    "audit:tokens:errors": "python3 .claude/skills/design-system-architect/scripts/audit_codebase.py . --severity error"
+    "audit:tokens:errors": "python3 .claude/skills/design-system-architect/scripts/audit_codebase.py . --severity error",
+    "ds:extract": "python3 .claude/skills/design-system-architect/scripts/extract_tokens.py .",
+    "ds:extract:dry": "python3 .claude/skills/design-system-architect/scripts/extract_tokens.py . --dry-run",
+    "ds:drift": "python3 .claude/skills/design-system-architect/scripts/detect_drift.py .",
+    "ds:metadata": "python3 .claude/skills/design-system-architect/scripts/generate_metadata.py .",
+    "ds:styleguide": "cd styleguide && node server.js"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "1.23.1",
