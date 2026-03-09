@@ -23,7 +23,7 @@ const SRC_UI        = path.join(__dirname, '../src/ui');
 const MANIFEST_PATH = path.join(SRC_UI, 'design-system-manifest.json');
 const TOKENS_PATH   = path.join(SRC_UI, 'design-tokens.json');
 const THEME_PATH    = path.join(SRC_UI, 'theme.ts');
-const AUDIT_CACHE   = path.join(__dirname, '.audit-cache.json');
+const AUDIT_REPORT  = path.join(SRC_UI, 'audit-report.json');
 
 const MIME = {
   '.html': 'text/html; charset=utf-8',
@@ -57,9 +57,22 @@ function countDeep(obj) {
 }
 
 function computeStats() {
-  const manifest = safeRead(MANIFEST_PATH);
-  const tokens   = safeRead(TOKENS_PATH);
-  const audit    = safeRead(AUDIT_CACHE);
+  const manifest    = safeRead(MANIFEST_PATH);
+  const tokens      = safeRead(TOKENS_PATH);
+  const auditRaw    = safeRead(AUDIT_REPORT);
+
+  // Translate audit-report.json format → dashboard format
+  let audit = null;
+  if (auditRaw && auditRaw.findings) {
+    const hexFindings  = auditRaw.findings.filter(f => f.category === 'COLORS'  && f.severity !== 'info');
+    const bareFindings = auditRaw.findings.filter(f => f.category === 'ARBITRARY' && f.severity !== 'info');
+    audit = {
+      hardcodedHex:    hexFindings.length,
+      hexFiles:        [...new Set(hexFindings.map(f => f.file))],
+      bareComponents:  bareFindings.length,
+      bareFiles:       [...new Set(bareFindings.map(f => f.file))],
+    };
+  }
 
   if (!manifest || !tokens) {
     return { error: 'Could not read manifest or tokens — check src/ui/ path.' };
@@ -125,7 +138,8 @@ function computeStats() {
   try {
     const stat = fs.statSync(THEME_PATH);
     themeMtime  = stat.mtime.toISOString();
-    codeAhead   = stat.mtime > lastSync;
+    // 10-min grace period: ignore mtime differences caused by formatters/linters running post-extract
+    codeAhead   = (stat.mtime - lastSync) > 10 * 60 * 1000;
   } catch (_) {}
 
   // ── Drift notices (ordered by severity) ─────────────────────────────────────
@@ -230,16 +244,6 @@ function computeStats() {
     });
   }
 
-  // Webhook setup suggestion (always shown until resolved)
-  actionItems.push({
-    type:     'figma-webhook',
-    severity: 'info',
-    icon:     '🔔',
-    title:    'Figma→Code automation not yet set up',
-    desc:     'A Figma webhook requires a backend endpoint. Currently, use scheduled drift checks or manual pull.',
-    action:   'See docs/decisions/ for ADR on automation strategy',
-    isResearch: true,
-  });
 
   // ── Component map ─────────────────────────────────────────────────────────────
   const componentMap = Object.entries(components).map(([name, c]) => ({
