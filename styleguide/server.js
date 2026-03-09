@@ -233,7 +233,10 @@ function computeStats() {
       components: unchecked,
     });
   }
-  if (!manifest.figma.lastFigmaVersion) {
+  // Only flag missing Figma version if Desktop Bridge isn't actively tracking changes.
+  // lastCheckedAt > 0 means the drift cron has run and the Desktop Bridge is the sync mechanism.
+  const desktopBridgeActive = manifest.figma.lastCheckedAt > 0;
+  if (!manifest.figma.lastFigmaVersion && !desktopBridgeActive) {
     actionItems.push({
       type:     'no-figma-version',
       severity: 'info',
