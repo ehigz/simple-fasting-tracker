@@ -5,7 +5,7 @@ import { format, isToday, isYesterday } from "date-fns";
 import Animated, { FadeIn } from "react-native-reanimated";
 import { Clock } from "lucide-react-native";
 import { FastingSession, FASTING_ZONES } from "../utils/fasting";
-import { Card, CardTitle, BodyText, MutedText, StatValue, colors } from "../ui";
+import { Card, CardTitle, BodyText, MutedText, StatValue, colors, motion } from "../ui";
 
 const ZONE_COLOR: Record<string, string> = Object.fromEntries(
   FASTING_ZONES.map((z) => [z.name, z.color]),
@@ -36,7 +36,7 @@ function SessionCard({ session }: { session: FastingSession }) {
   const topZone = session.zonesReached[session.zonesReached.length - 1];
 
   return (
-    <Animated.View entering={FadeIn.duration(400)}>
+    <Animated.View entering={FadeIn.duration(motion.duration.slow)}>
       <Card variant="sm" className="gap-3">
         {/* Date + duration row */}
         <View className="flex-row items-center justify-between">

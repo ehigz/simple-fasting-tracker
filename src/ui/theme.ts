@@ -32,7 +32,33 @@ export const colors = {
 
 /** Border radius values matching Tailwind rounded-* classes */
 export const radius = {
-  sm: 12,  // rounded-xl  — small controls, stop button
-  md: 16,  // rounded-2xl — buttons, inputs, list cards
-  lg: 24,  // rounded-3xl — main cards
+  sm:   12,   // rounded-xl  — small controls, stop button
+  md:   16,   // rounded-2xl — buttons, inputs, list cards
+  lg:   24,   // rounded-3xl — main cards
+  full: 9999, // fully rounded pill — progress bars, badges
+} as const;
+
+/**
+ * Animation duration tokens (ms).
+ * Use in withTiming({ duration: motion.duration.base }) and .duration(motion.duration.fast).
+ */
+export const motion = {
+  duration: {
+    fast:     200,   // micro interactions — badge appear, FadeOut
+    base:     300,   // standard transitions — FadeIn, SlideIn, Layout
+    slow:     500,   // emphasis — hero enters, staggered reveals
+    progress: 1000,  // progress bar fill
+    ambient:  15000, // breathing / looping background animations
+  },
+} as const;
+
+/**
+ * Structural layout constants — not semantic spacing tokens.
+ * These compensate for system chrome (status bar, tab bar).
+ * Use in StyleSheet when NativeWind cannot reach a layout primitive.
+ */
+export const layout = {
+  screenPaddingH: 16,  // horizontal screen edge padding — px-4
+  headerOffset:   96,  // paddingTop to clear status bar + header
+  tabBarOffset:   32,  // paddingBottom to clear tab bar
 } as const;

@@ -11,7 +11,7 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import { FastingZoneData, formatCountdown, formatTargetTime } from "../utils/fasting";
-import { MutedText, colors } from "../ui";
+import { MutedText, colors, motion, radius } from "../ui";
 
 interface FastingZoneProps {
   zone: FastingZoneData;
@@ -31,7 +31,7 @@ export function FastingZone({ zone, startTime, currentTime }: FastingZoneProps) 
   );
 
   const progressWidth = useSharedValue(0);
-  progressWidth.value = withTiming(progress, { duration: 1000 });
+  progressWidth.value = withTiming(progress, { duration: motion.duration.progress });
 
   const progressStyle = useAnimatedStyle(() => ({
     width: `${progressWidth.value}%`,
@@ -39,7 +39,7 @@ export function FastingZone({ zone, startTime, currentTime }: FastingZoneProps) 
 
   return (
     <Animated.View
-      entering={FadeIn.duration(400)}
+      entering={FadeIn.duration(motion.duration.slow)}
       layout={Layout.springify()}
       className={`p-5 rounded-2xl border ${
         isCompleted
@@ -52,7 +52,7 @@ export function FastingZone({ zone, startTime, currentTime }: FastingZoneProps) 
         <View className="flex-1 mr-4">
           <View className="flex-row items-center gap-3 mb-2">
             {isCompleted ? (
-              <Animated.View entering={FadeIn.duration(500)}>
+              <Animated.View entering={FadeIn.duration(motion.duration.slow)}>
                 <CheckCircle2 size={22} color={colors.accentPurple} />
               </Animated.View>
             ) : (
@@ -68,7 +68,7 @@ export function FastingZone({ zone, startTime, currentTime }: FastingZoneProps) 
 
         <View className="items-end">
           {isCompleted ? (
-            <Animated.View entering={FadeIn.duration(300)}>
+            <Animated.View entering={FadeIn.duration(motion.duration.base)}>
               <Text className="text-accent-purple text-xs px-3 py-1.5 bg-surface rounded-full">
                 Completed
               </Text>
@@ -92,7 +92,7 @@ export function FastingZone({ zone, startTime, currentTime }: FastingZoneProps) 
           <Animated.View
             style={[
               progressStyle,
-              { backgroundColor: zone.color, borderRadius: 9999, height: "100%" },
+              { backgroundColor: zone.color, borderRadius: radius.full, height: "100%" },
             ]}
           />
         </View>
@@ -114,13 +114,13 @@ export function FastingZone({ zone, startTime, currentTime }: FastingZoneProps) 
 
         {showBreakingInfo && (
           <Animated.View
-            entering={FadeIn.duration(300)}
-            exiting={FadeOut.duration(200)}
+            entering={FadeIn.duration(motion.duration.base)}
+            exiting={FadeOut.duration(motion.duration.fast)}
             className="mt-4 gap-4"
           >
             {/* Notes */}
             <Animated.View
-              entering={SlideInDown.duration(300).delay(100)}
+              entering={SlideInDown.duration(motion.duration.base).delay(100)}
               className={`p-4 rounded-xl border ${
                 zone.hours >= 24
                   ? "bg-primary/[0.04] border-warn-border"

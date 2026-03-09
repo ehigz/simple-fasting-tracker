@@ -1,6 +1,6 @@
 {
-  "version": "2.0.0",
-  "lastSyncedAt": "2026-03-09T01:28:00.000000+00:00",
+  "version": "2.1.0",
+  "lastSyncedAt": "2026-03-09T02:10:00.000000+00:00",
   "syncDirection": "code→figma",
   "figma": {
     "fileKey": "zzMTJilulVXIVzr6X29CKH",
@@ -22,31 +22,45 @@
       "neutral/500":  { "value": "#6b6b7e", "figmaVariableId": "VariableID:6:139" },
       "white":        { "value": "#ffffff", "figmaVariableId": "VariableID:6:140" },
       "amber/50":     { "value": "#fff9f0", "figmaVariableId": "VariableID:6:141" },
-      "amber/600":    { "value": "#d97706", "figmaVariableId": "VariableID:6:142" }
+      "amber/600":    { "value": "#d97706", "figmaVariableId": "VariableID:6:142" },
+      "lime/600":     { "value": "#65a30d", "figmaVariableId": "VariableID:8:2" },
+      "emerald/600":  { "value": "#059669", "figmaVariableId": "VariableID:8:3" },
+      "teal/700":     { "value": "#0f766e", "figmaVariableId": "VariableID:8:4" },
+      "stone/600":    { "value": "#57534e", "figmaVariableId": "VariableID:8:5" },
+      "amber/700":    { "value": "#b45309", "figmaVariableId": "VariableID:8:6" },
+      "green/800":    { "value": "#166534", "figmaVariableId": "VariableID:8:7" }
     }
   },
   "tokens": {
     "colors": {
-      "primary":      { "value": "#340247", "figmaVariableId": "VariableID:6:3" },
-      "primaryHover": { "value": "#4a0360", "figmaVariableId": "VariableID:6:4" },
-      "secondary":    { "value": "#f4ecff", "figmaVariableId": "VariableID:6:5" },
-      "muted":        { "value": "#e6e3ed", "figmaVariableId": "VariableID:6:6" },
-      "mutedFg":      { "value": "#6b6b7e", "figmaVariableId": "VariableID:6:7" },
-      "accent":       { "value": "#d4cfe6", "figmaVariableId": "VariableID:6:8" },
-      "accentPurple": { "value": "#6e5fa7", "figmaVariableId": "VariableID:6:9" },
-      "accentLight":  { "value": "#a89fc9", "figmaVariableId": "VariableID:6:10" },
-      "accentHover":  { "value": "#8b7db8", "figmaVariableId": "VariableID:6:11" },
-      "surface":      { "value": "#eeebf4", "figmaVariableId": "VariableID:6:12" },
-      "warn":         { "value": "#fff9f0", "figmaVariableId": "VariableID:6:13" },
-      "warnIcon":     { "value": "#d97706", "figmaVariableId": "VariableID:6:14" },
-      "white":        { "value": "#ffffff", "figmaVariableId": "VariableID:6:15" },
-      "tabBarBg":     { "value": "rgba(255, 255, 255, 0.92)", "figmaVariableId": "" },
-      "tabBarBorder": { "value": "rgba(52, 2, 71, 0.12)", "figmaVariableId": "" }
+      "primary":           { "value": "#340247",                   "figmaVariableId": "VariableID:6:3" },
+      "primaryHover":      { "value": "#4a0360",                   "figmaVariableId": "VariableID:6:4" },
+      "secondary":         { "value": "#f4ecff",                   "figmaVariableId": "VariableID:6:5" },
+      "muted":             { "value": "#e6e3ed",                   "figmaVariableId": "VariableID:6:6" },
+      "mutedFg":           { "value": "#6b6b7e",                   "figmaVariableId": "VariableID:6:7" },
+      "accent":            { "value": "#d4cfe6",                   "figmaVariableId": "VariableID:6:8" },
+      "accentPurple":      { "value": "#6e5fa7",                   "figmaVariableId": "VariableID:6:9" },
+      "accentLight":       { "value": "#a89fc9",                   "figmaVariableId": "VariableID:6:10" },
+      "accentHover":       { "value": "#8b7db8",                   "figmaVariableId": "VariableID:6:11" },
+      "surface":           { "value": "#eeebf4",                   "figmaVariableId": "VariableID:6:12" },
+      "warn":              { "value": "#fff9f0",                   "figmaVariableId": "VariableID:6:13" },
+      "warnIcon":          { "value": "#d97706",                   "figmaVariableId": "VariableID:6:14" },
+      "white":             { "value": "#ffffff",                   "figmaVariableId": "VariableID:6:15" },
+      "tabBarBg":          { "value": "rgba(255, 255, 255, 0.92)", "figmaVariableId": "VariableID:8:8" },
+      "tabBarBorder":      { "value": "rgba(52, 2, 71, 0.12)",     "figmaVariableId": "VariableID:8:9" },
+      "zoneAnabolic":      { "value": "#d97706", "primitiveRef": "amber/600",    "figmaVariableId": "VariableID:8:10" },
+      "zoneCatabolic":     { "value": "#65a30d", "primitiveRef": "lime/600",     "figmaVariableId": "VariableID:8:11" },
+      "zoneFatBurning":    { "value": "#059669", "primitiveRef": "emerald/600",  "figmaVariableId": "VariableID:8:12" },
+      "zoneAutophagy":     { "value": "#0f766e", "primitiveRef": "teal/700",     "figmaVariableId": "VariableID:8:13" },
+      "zoneDeepAutophagy": { "value": "#57534e", "primitiveRef": "stone/600",    "figmaVariableId": "VariableID:8:14" },
+      "zoneImmuneReset":   { "value": "#b45309", "primitiveRef": "amber/700",    "figmaVariableId": "VariableID:8:15" },
+      "zoneStemCell":      { "value": "#166534", "primitiveRef": "green/800",    "figmaVariableId": "VariableID:8:16" }
     },
     "radius": {
-      "sm": { "value": 12, "figmaVariableId": "VariableID:6:17", "tailwindClass": "rounded-xl" },
-      "md": { "value": 16, "figmaVariableId": "VariableID:6:18", "tailwindClass": "rounded-2xl" },
-      "lg": { "value": 24, "figmaVariableId": "VariableID:6:19", "tailwindClass": "rounded-3xl" }
+      "sm":   { "value": 12,   "figmaVariableId": "VariableID:6:17", "tailwindClass": "rounded-xl" },
+      "md":   { "value": 16,   "figmaVariableId": "VariableID:6:18", "tailwindClass": "rounded-2xl" },
+      "lg":   { "value": 24,   "figmaVariableId": "VariableID:6:19", "tailwindClass": "rounded-3xl" },
+      "full": { "value": 9999, "figmaVariableId": "VariableID:8:17", "tailwindClass": "rounded-full" }
     },
     "typography": {
       "overline":   { "size": 12, "weight": "400", "figmaStyleId": "VariableID:6:21" },
@@ -55,6 +69,28 @@
       "bodyText":   { "size": 16, "weight": "400", "figmaStyleId": "VariableID:6:24" },
       "mutedText":  { "size": 14, "weight": "400", "figmaStyleId": "VariableID:6:25" },
       "statValue":  { "size": 18, "weight": "600", "figmaStyleId": "VariableID:6:26" }
+    },
+    "motion": {
+      "collectionId": "VariableCollectionId:8:18",
+      "duration": {
+        "fast":     { "value": 200,   "figmaVariableId": "VariableID:8:19", "note": "Micro interactions — badge appear, FadeOut" },
+        "base":     { "value": 300,   "figmaVariableId": "VariableID:8:20", "note": "Standard transitions — FadeIn, SlideIn, Layout" },
+        "slow":     { "value": 500,   "figmaVariableId": "VariableID:8:21", "note": "Emphasis animations — hero enters" },
+        "progress": { "value": 1000,  "figmaVariableId": "VariableID:8:22", "note": "Progress bar fill animation" },
+        "ambient":  { "value": 15000, "figmaVariableId": "VariableID:8:23", "note": "Breathing / looping background animations" }
+      }
+    },
+    "layout": {
+      "collectionId": "VariableCollectionId:8:24",
+      "screen": {
+        "paddingH": { "value": 16, "figmaVariableId": "VariableID:8:25", "note": "Horizontal screen edge padding (NativeWind: px-4)" }
+      },
+      "header": {
+        "offset": { "value": 96, "figmaVariableId": "VariableID:8:26", "note": "paddingTop to clear status bar + header" }
+      },
+      "tabBar": {
+        "offset": { "value": 32, "figmaVariableId": "VariableID:8:27", "note": "paddingBottom to clear tab bar" }
+      }
     }
   },
   "components": {
@@ -74,68 +110,17 @@
       "parityScore": null,
       "variants": ["default", "sm"]
     },
-    "Overline": {
-      "sourceFile": "src/ui/Typography.tsx",
-      "metadataFile": "src/ui/Typography.metadata.ts",
-      "figmaNodeId": "6:63",
-      "parityScore": null,
-      "variants": []
-    },
-    "FieldLabel": {
-      "sourceFile": "src/ui/Typography.tsx",
-      "metadataFile": "src/ui/Typography.metadata.ts",
-      "figmaNodeId": "6:66",
-      "parityScore": null,
-      "variants": []
-    },
-    "CardTitle": {
-      "sourceFile": "src/ui/Typography.tsx",
-      "metadataFile": "src/ui/Typography.metadata.ts",
-      "figmaNodeId": "6:69",
-      "parityScore": null,
-      "variants": []
-    },
-    "BodyText": {
-      "sourceFile": "src/ui/Typography.tsx",
-      "metadataFile": "src/ui/Typography.metadata.ts",
-      "figmaNodeId": "6:72",
-      "parityScore": null,
-      "variants": []
-    },
-    "MutedText": {
-      "sourceFile": "src/ui/Typography.tsx",
-      "metadataFile": "src/ui/Typography.metadata.ts",
-      "figmaNodeId": "6:75",
-      "parityScore": null,
-      "variants": []
-    },
-    "StatValue": {
-      "sourceFile": "src/ui/Typography.tsx",
-      "metadataFile": "src/ui/Typography.metadata.ts",
-      "figmaNodeId": "6:78",
-      "parityScore": null,
-      "variants": []
-    },
-    "Divider": {
-      "sourceFile": "src/ui/Divider.tsx",
-      "metadataFile": "src/ui/Divider.metadata.ts",
-      "figmaNodeId": "6:82",
-      "parityScore": null,
-      "variants": []
-    }
+    "Overline":   { "sourceFile": "src/ui/Typography.tsx", "metadataFile": "src/ui/Typography.metadata.ts", "figmaNodeId": "6:63", "parityScore": null, "variants": [] },
+    "FieldLabel": { "sourceFile": "src/ui/Typography.tsx", "metadataFile": "src/ui/Typography.metadata.ts", "figmaNodeId": "6:66", "parityScore": null, "variants": [] },
+    "CardTitle":  { "sourceFile": "src/ui/Typography.tsx", "metadataFile": "src/ui/Typography.metadata.ts", "figmaNodeId": "6:69", "parityScore": null, "variants": [] },
+    "BodyText":   { "sourceFile": "src/ui/Typography.tsx", "metadataFile": "src/ui/Typography.metadata.ts", "figmaNodeId": "6:72", "parityScore": null, "variants": [] },
+    "MutedText":  { "sourceFile": "src/ui/Typography.tsx", "metadataFile": "src/ui/Typography.metadata.ts", "figmaNodeId": "6:75", "parityScore": null, "variants": [] },
+    "StatValue":  { "sourceFile": "src/ui/Typography.tsx", "metadataFile": "src/ui/Typography.metadata.ts", "figmaNodeId": "6:78", "parityScore": null, "variants": [] },
+    "Divider":    { "sourceFile": "src/ui/Divider.tsx",    "metadataFile": "src/ui/Divider.metadata.ts",    "figmaNodeId": "6:82", "parityScore": null, "variants": [] }
   },
   "patterns": {
-    "iconContainer": {
-      "figmaNodeId": "6:87",
-      "spec": "w-16 h-16 bg-secondary rounded-2xl · icon size={32} color={colors.primary}"
-    },
-    "emptyState": {
-      "figmaNodeId": "6:94",
-      "spec": "Card > iconContainer + View(items-center gap-2) > CardTitle + BodyText"
-    },
-    "cardAnatomy": {
-      "figmaNodeId": "",
-      "spec": "Card > View(items-center gap-3) > Overline + CardTitle + BodyText · Divider · Button"
-    }
+    "iconContainer": { "figmaNodeId": "6:87", "spec": "w-16 h-16 bg-secondary rounded-2xl · icon size={32} color={colors.primary}" },
+    "emptyState":    { "figmaNodeId": "6:94", "spec": "Card > iconContainer + View(items-center gap-2) > CardTitle + BodyText" },
+    "cardAnatomy":   { "figmaNodeId": "",     "spec": "Card > View(items-center gap-3) > Overline + CardTitle + BodyText · Divider · Button" }
   }
 }

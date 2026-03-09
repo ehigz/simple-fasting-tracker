@@ -18,7 +18,23 @@
       "white": { "$type": "color", "$value": "#ffffff", "$description": "Pure white — card backgrounds, primary button text", "$extensions": { "interfast": { "status": "stable", "tier": "primitive" } } },
       "amber": {
         "50":  { "$type": "color", "$value": "#fff9f0", "$description": "Warm off-white — warning card background", "$extensions": { "interfast": { "status": "stable", "tier": "primitive" } } },
-        "600": { "$type": "color", "$value": "#d97706", "$description": "Amber — warning icon color",               "$extensions": { "interfast": { "status": "stable", "tier": "primitive" } } }
+        "600": { "$type": "color", "$value": "#d97706", "$description": "Amber — warning icon / anabolic zone",      "$extensions": { "interfast": { "status": "stable", "tier": "primitive" } } },
+        "700": { "$type": "color", "$value": "#b45309", "$description": "Dark amber — immune reset zone",            "$extensions": { "interfast": { "status": "stable", "tier": "primitive" } } }
+      },
+      "lime": {
+        "600": { "$type": "color", "$value": "#65a30d", "$description": "Lime — catabolic zone",  "$extensions": { "interfast": { "status": "stable", "tier": "primitive" } } }
+      },
+      "emerald": {
+        "600": { "$type": "color", "$value": "#059669", "$description": "Emerald — fat burning zone", "$extensions": { "interfast": { "status": "stable", "tier": "primitive" } } }
+      },
+      "teal": {
+        "700": { "$type": "color", "$value": "#0f766e", "$description": "Teal — autophagy zone", "$extensions": { "interfast": { "status": "stable", "tier": "primitive" } } }
+      },
+      "stone": {
+        "600": { "$type": "color", "$value": "#57534e", "$description": "Stone — deep autophagy zone", "$extensions": { "interfast": { "status": "stable", "tier": "primitive" } } }
+      },
+      "green": {
+        "800": { "$type": "color", "$value": "#166534", "$description": "Green — stem cell zone", "$extensions": { "interfast": { "status": "stable", "tier": "primitive" } } }
       }
     },
     "colors": {
@@ -35,13 +51,35 @@
       "warn":         { "$type": "color", "$value": "{InterFast.Primitives.amber.50}",   "$description": "Warning card background",                        "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "usageScope": ["warning-backgrounds"] } } },
       "warnIcon":     { "$type": "color", "$value": "{InterFast.Primitives.amber.600}",  "$description": "Warning icon color",                             "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "usageScope": ["warning-icons"] } } },
       "white":        { "$type": "color", "$value": "{InterFast.Primitives.white}",      "$description": "Pure white — card backgrounds, primary button text","$extensions": { "interfast": { "status": "stable", "tier": "semantic", "usageScope": ["card-backgrounds", "primary-button-text"] } } },
-      "tabBarBg":     { "$type": "color", "$value": "rgba(255, 255, 255, 0.92)",         "$description": "Tab bar frosted glass background",                "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "usageScope": ["tab-bar-only"], "note": "rgba — not yet in Figma variables; v2 work item" } } },
-      "tabBarBorder": { "$type": "color", "$value": "rgba(52, 2, 71, 0.12)",             "$description": "Tab bar top border",                             "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "usageScope": ["tab-bar-only"], "note": "rgba — not yet in Figma variables; v2 work item" } } }
+      "tabBarBg":          { "$type": "color", "$value": "rgba(255, 255, 255, 0.92)", "$description": "Tab bar frosted glass background",                "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaVariableId": "VariableID:8:8", "usageScope": ["tab-bar-only"] } } },
+      "tabBarBorder":      { "$type": "color", "$value": "rgba(52, 2, 71, 0.12)",   "$description": "Tab bar top border",                             "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaVariableId": "VariableID:8:9", "usageScope": ["tab-bar-only"] } } },
+      "zoneAnabolic":      { "$type": "color", "$value": "{InterFast.Primitives.amber.600}",   "$description": "Anabolic zone (4h) progress bar color",      "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaVariableId": "VariableID:8:10" } } },
+      "zoneCatabolic":     { "$type": "color", "$value": "{InterFast.Primitives.lime.600}",    "$description": "Catabolic zone (12h) progress bar color",    "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaVariableId": "VariableID:8:11" } } },
+      "zoneFatBurning":    { "$type": "color", "$value": "{InterFast.Primitives.emerald.600}", "$description": "Fat Burning zone (16h) progress bar color",  "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaVariableId": "VariableID:8:12" } } },
+      "zoneAutophagy":     { "$type": "color", "$value": "{InterFast.Primitives.teal.700}",    "$description": "Autophagy zone (18h) progress bar color",    "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaVariableId": "VariableID:8:13" } } },
+      "zoneDeepAutophagy": { "$type": "color", "$value": "{InterFast.Primitives.stone.600}",   "$description": "Deep Autophagy zone (24h) progress bar color","$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaVariableId": "VariableID:8:14" } } },
+      "zoneImmuneReset":   { "$type": "color", "$value": "{InterFast.Primitives.amber.700}",   "$description": "Immune Reset zone (48h) progress bar color", "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaVariableId": "VariableID:8:15" } } },
+      "zoneStemCell":      { "$type": "color", "$value": "{InterFast.Primitives.green.800}",   "$description": "Stem Cell zone (72h) progress bar color",    "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaVariableId": "VariableID:8:16" } } }
     },
     "radius": {
-      "sm": { "$type": "number", "$value": 12, "$description": "rounded-xl (12px) — small controls, stop button", "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "tailwindClass": "rounded-xl",  "usageScope": ["small-controls"] } } },
-      "md": { "$type": "number", "$value": 16, "$description": "rounded-2xl (16px) — buttons, inputs, list cards","$extensions": { "interfast": { "status": "stable", "tier": "semantic", "tailwindClass": "rounded-2xl", "usageScope": ["buttons", "inputs", "list-cards", "icon-containers"] } } },
-      "lg": { "$type": "number", "$value": 24, "$description": "rounded-3xl (24px) — main content cards",         "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "tailwindClass": "rounded-3xl", "usageScope": ["main-cards"] } } }
+      "sm":   { "$type": "number", "$value": 12,   "$description": "rounded-xl (12px) — small controls, stop button",  "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "tailwindClass": "rounded-xl",   "usageScope": ["small-controls"] } } },
+      "md":   { "$type": "number", "$value": 16,   "$description": "rounded-2xl (16px) — buttons, inputs, list cards", "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "tailwindClass": "rounded-2xl",  "usageScope": ["buttons", "inputs", "list-cards"] } } },
+      "lg":   { "$type": "number", "$value": 24,   "$description": "rounded-3xl (24px) — main content cards",          "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "tailwindClass": "rounded-3xl",  "usageScope": ["main-cards"] } } },
+      "full": { "$type": "number", "$value": 9999, "$description": "Fully rounded pill — progress bars, badges",       "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "tailwindClass": "rounded-full", "figmaVariableId": "VariableID:8:17" } } }
+    },
+    "motion": {
+      "duration": {
+        "fast":     { "$type": "number", "$value": 200,   "$description": "Micro interactions — badge appear, FadeOut",           "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaVariableId": "VariableID:8:19", "usageScope": ["micro-interactions"] } } },
+        "base":     { "$type": "number", "$value": 300,   "$description": "Standard transitions — FadeIn, SlideIn, Layout",      "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaVariableId": "VariableID:8:20", "usageScope": ["standard-transitions"] } } },
+        "slow":     { "$type": "number", "$value": 500,   "$description": "Emphasis animations — hero enters, staggered reveals", "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaVariableId": "VariableID:8:21", "usageScope": ["emphasis"] } } },
+        "progress": { "$type": "number", "$value": 1000,  "$description": "Progress bar fill animation",                         "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaVariableId": "VariableID:8:22", "usageScope": ["progress-bars"] } } },
+        "ambient":  { "$type": "number", "$value": 15000, "$description": "Breathing / looping background animations",           "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaVariableId": "VariableID:8:23", "usageScope": ["ambient-loops"] } } }
+      }
+    },
+    "layout": {
+      "screen":  { "paddingH": { "$type": "number", "$value": 16, "$description": "Horizontal screen edge padding (NativeWind: px-4)", "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaVariableId": "VariableID:8:25" } } } },
+      "header":  { "offset":   { "$type": "number", "$value": 96, "$description": "paddingTop to clear status bar + header",           "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaVariableId": "VariableID:8:26" } } } },
+      "tabBar":  { "offset":   { "$type": "number", "$value": 32, "$description": "paddingBottom to clear tab bar",                   "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaVariableId": "VariableID:8:27" } } } }
     },
     "typography": {
       "overline":   { "$type": "number", "$value": 12, "$description": "All-caps overline with ✦ star decorators. Section headers only.", "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "weight": "400", "transform": "uppercase", "letterSpacing": "widest", "opacity": 0.6 } } },

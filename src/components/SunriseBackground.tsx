@@ -9,6 +9,7 @@ import Animated, {
   Easing,
   interpolate,
 } from "react-native-reanimated";
+import { motion, layout } from "../ui";
 
 interface SunriseBackgroundProps {
   children: ReactNode;
@@ -21,7 +22,7 @@ export function SunriseBackground({ children }: SunriseBackgroundProps) {
 
   useEffect(() => {
     pulse.value = withRepeat(
-      withTiming(1, { duration: 15000, easing: Easing.inOut(Easing.ease) }),
+      withTiming(1, { duration: motion.duration.ambient, easing: Easing.inOut(Easing.ease) }),
       -1,
       true,
     );
@@ -87,8 +88,8 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    paddingHorizontal: 16,
-    paddingTop: 96,
-    paddingBottom: 32,
+    paddingHorizontal: layout.screenPaddingH,
+    paddingTop: layout.headerOffset,
+    paddingBottom: layout.tabBarOffset,
   },
 });
