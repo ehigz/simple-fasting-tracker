@@ -1,5 +1,25 @@
 # CLAUDE.md — InterFastApp
 
+## Product Vision & Decision Filter
+
+**What we're building:** A beautiful, private fasting tracker for Solana Seeker owners — crypto-native, health-conscious users who expect polished mobile UX. v1 must be something they'd use daily and recommend.
+
+**v1 mission:** Compliant, delightful, offline-capable tracker. Prove the UX. Build user trust. No network, no accounts, no complexity that risks compliance or App Store rejection.
+
+**v2 path** *(blocked until v1 ships):* Wallet → on-chain fasting records (hashed) → NFT milestones → social sharing → token rewards.
+
+**Before starting any task, ask:**
+
+1. Does this improve the experience for the user (UX, content, reliability)?
+2. Does it unblock v2?
+3. Does it make future feature delivery measurably faster/safer?
+
+If none — question whether it's the right use of the session before proceeding.
+
+**Design system, tooling, and infrastructure are means, not ends.** They are justified only when they directly serve #1 or #2 above.
+
+---
+
 ## Agent Commit & Push Policy
 
 **Auto-commit and push without asking** after completing any of the following:
