@@ -645,7 +645,7 @@ cd styleguide && node server.js
 
 **File watcher:** Watches `src/ui/theme.ts`, `design-tokens.json`, `design-system-manifest.json`. No external npm dependencies — pure Node.js built-ins.
 
-**Detects:** `theme.ts` mtime > `lastSyncedAt` (code ahead of Figma), missing Figma variable IDs, low parity scores, hardcoded hex from audit cache (`styleguide/.audit-cache.json`).
+**Detects:** `theme.ts` mtime > `lastSyncedAt` (code ahead of Figma), missing Figma variable IDs, low parity scores, hardcoded hex from audit cache (`src/ui/audit-report.json`).
 
 ---
 
