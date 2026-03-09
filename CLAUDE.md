@@ -1,5 +1,23 @@
 # CLAUDE.md — InterFastApp
 
+## Agent Commit & Push Policy
+
+**Auto-commit and push without asking** after completing any of the following:
+
+- Any feature, bug fix, or refactor requested by the user
+- Any `/design-system-architect` operation that modifies files (drift, push, pull, extract, metadata)
+- Any documentation or config update (CLAUDE.md, SKILL.md, package.json, etc.)
+
+**Commit message format:** `<type>: <what changed and why>` — always include `Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>`
+
+**Exceptions — never auto-push:**
+
+- Force push (`--force`) — always ask
+- Pushing to a branch other than `main` — ask if intent is unclear
+- Destructive operations (reset, rebase squash of published commits) — always ask
+
+---
+
 ## Project Overview
 
 **InterFastApp** is a native Android dApp for the Solana Seeker phone. It's a fasting tracker that connects to Solana wallets via Mobile Wallet Adapter.
