@@ -1,0 +1,168 @@
+{
+  "InterFast": {
+    "color": {
+      "primary": {
+        "value": "#340247",
+        "type": "color",
+        "description": "Main text, icons, borders"
+      },
+      "primaryHover": {
+        "value": "#4a0360",
+        "type": "color",
+        "description": "Pressed state of primary"
+      },
+      "secondary": {
+        "value": "#f4ecff",
+        "type": "color",
+        "description": "Light purple bg — icon containers, secondary button fill"
+      },
+      "muted": {
+        "value": "#e6e3ed",
+        "type": "color",
+        "description": "Disabled button background"
+      },
+      "mutedFg": {
+        "value": "#6b6b7e",
+        "type": "color",
+        "description": "Muted text, field labels, body copy"
+      },
+      "accent": {
+        "value": "#d4cfe6",
+        "type": "color",
+        "description": "Subtle accent surfaces"
+      },
+      "accentPurple": {
+        "value": "#6e5fa7",
+        "type": "color",
+        "description": "Secondary button text and icon tint"
+      },
+      "accentLight": {
+        "value": "#a89fc9",
+        "type": "color",
+        "description": "Inactive tab icons"
+      },
+      "accentHover": {
+        "value": "#8b7db8",
+        "type": "color",
+        "description": "Hover/pressed state for accent elements"
+      },
+      "surface": {
+        "value": "#eeebf4",
+        "type": "color",
+        "description": "Subtle surface background"
+      },
+      "warn": {
+        "value": "#fff9f0",
+        "type": "color",
+        "description": "Warning card background"
+      },
+      "warnIcon": {
+        "value": "#d97706",
+        "type": "color",
+        "description": "Warning icon color"
+      },
+      "white": {
+        "value": "#ffffff",
+        "type": "color",
+        "description": "Pure white — card backgrounds, primary button text"
+      },
+      "tabBarBg": {
+        "value": "rgba(255, 255, 255, 0.92)",
+        "type": "color",
+        "description": "Tab bar frosted glass background"
+      },
+      "tabBarBorder": {
+        "value": "rgba(52, 2, 71, 0.12)",
+        "type": "color",
+        "description": "Tab bar top border"
+      }
+    },
+    "radius": {
+      "sm": {
+        "value": "12",
+        "type": "borderRadius",
+        "description": "rounded-xl — small controls, stop button"
+      },
+      "md": {
+        "value": "16",
+        "type": "borderRadius",
+        "description": "rounded-2xl — buttons, inputs, list cards"
+      },
+      "lg": {
+        "value": "24",
+        "type": "borderRadius",
+        "description": "rounded-3xl — main content cards"
+      }
+    },
+    "typography": {
+      "overline": {
+        "value": {
+          "fontFamily": "Inter",
+          "fontWeight": "400",
+          "fontSize": "12",
+          "letterSpacing": "2%",
+          "textTransform": "uppercase",
+          "lineHeight": "AUTO"
+        },
+        "type": "typography",
+        "description": "All-caps overline with ✦ star decorators. Section headers only."
+      },
+      "fieldLabel": {
+        "value": {
+          "fontFamily": "Inter",
+          "fontWeight": "400",
+          "fontSize": "12",
+          "letterSpacing": "2%",
+          "textTransform": "uppercase",
+          "lineHeight": "AUTO"
+        },
+        "type": "typography",
+        "description": "All-caps label above inputs or stat pairs."
+      },
+      "cardTitle": {
+        "value": {
+          "fontFamily": "Playfair Display",
+          "fontWeight": "600",
+          "fontSize": "24",
+          "letterSpacing": "-1%",
+          "lineHeight": "AUTO"
+        },
+        "type": "typography",
+        "description": "Primary card heading. One per card."
+      },
+      "bodyText": {
+        "value": {
+          "fontFamily": "Inter",
+          "fontWeight": "400",
+          "fontSize": "16",
+          "letterSpacing": "0",
+          "lineHeight": "150%"
+        },
+        "type": "typography",
+        "description": "Body/description copy. Muted color."
+      },
+      "mutedText": {
+        "value": {
+          "fontFamily": "Inter",
+          "fontWeight": "400",
+          "fontSize": "14",
+          "letterSpacing": "0",
+          "lineHeight": "AUTO"
+        },
+        "type": "typography",
+        "description": "Timestamps, subtitles, helper text."
+      },
+      "statValue": {
+        "value": {
+          "fontFamily": "Inter",
+          "fontWeight": "600",
+          "fontSize": "18",
+          "letterSpacing": "0",
+          "lineHeight": "AUTO"
+        },
+        "type": "typography",
+        "description": "Numeric data values. Scale up with text-xl for hero metrics."
+      }
+    }
+  }
+}
