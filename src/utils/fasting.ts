@@ -1,3 +1,5 @@
+import { colors } from "../ui/theme";
+
 export interface FastingSession {
   id: string;
   startTime: string; // ISO string
@@ -29,7 +31,7 @@ export const FASTING_ZONES: FastingZoneData[] = [
     name: "Anabolic",
     hours: 4,
     benefits: "Blood sugar and insulin decrease",
-    color: "#d97706",
+    color: colors.zoneAnabolic,
     learnMoreUrl: "https://www.health.harvard.edu/heart-health/time-to-try-intermittent-fasting",
     breakingFast: {
       notes:
@@ -40,7 +42,7 @@ export const FASTING_ZONES: FastingZoneData[] = [
     name: "Catabolic",
     hours: 12,
     benefits: "Ketosis begins, fat burning starts",
-    color: "#65a30d",
+    color: colors.zoneCatabolic,
     learnMoreUrl: "https://my.clevelandclinic.org/health/articles/24003-ketosis",
     breakingFast: {
       notes:
@@ -51,7 +53,7 @@ export const FASTING_ZONES: FastingZoneData[] = [
     name: "Fat Burning",
     hours: 16,
     benefits: "Peak fat burning and ketone production",
-    color: "#059669",
+    color: colors.zoneFatBurning,
     learnMoreUrl: "https://www.health.harvard.edu/staying-healthy/can-intermittent-fasting-help-with-weight-loss",
     breakingFast: {
       notes:
@@ -62,7 +64,7 @@ export const FASTING_ZONES: FastingZoneData[] = [
     name: "Autophagy",
     hours: 18,
     benefits: "Cellular repair and autophagy increase",
-    color: "#0f766e",
+    color: colors.zoneAutophagy,
     learnMoreUrl: "https://my.clevelandclinic.org/health/articles/24058-autophagy",
     breakingFast: {
       notes:
@@ -73,7 +75,7 @@ export const FASTING_ZONES: FastingZoneData[] = [
     name: "Deep Autophagy",
     hours: 24,
     benefits: "Maximum autophagy and growth hormone",
-    color: "#57534e",
+    color: colors.zoneDeepAutophagy,
     learnMoreUrl: "https://my.clevelandclinic.org/health/articles/24058-autophagy",
     breakingFast: {
       notes:
@@ -84,7 +86,7 @@ export const FASTING_ZONES: FastingZoneData[] = [
     name: "Immune Reset",
     hours: 48,
     benefits: "Immune system regeneration begins",
-    color: "#b45309",
+    color: colors.zoneImmuneReset,
     learnMoreUrl: "https://www.medicalnewstoday.com/articles/277860",
     breakingFast: {
       notes:
@@ -95,7 +97,7 @@ export const FASTING_ZONES: FastingZoneData[] = [
     name: "Stem Cell",
     hours: 72,
     benefits: "Stem cell regeneration activated",
-    color: "#166534",
+    color: colors.zoneStemCell,
     learnMoreUrl: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4102383/",
     breakingFast: {
       notes:

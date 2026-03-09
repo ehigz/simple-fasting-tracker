@@ -20,6 +20,14 @@ export const colors = {
   // Structural (not in Tailwind)
   tabBarBg:     "rgba(255, 255, 255, 0.92)",
   tabBarBorder: "rgba(52, 2, 71, 0.12)",
+  // Fasting zone progress bar colors (semantic per zone type)
+  zoneAnabolic:     "#d97706",
+  zoneCatabolic:    "#65a30d",
+  zoneFatBurning:   "#059669",
+  zoneAutophagy:    "#0f766e",
+  zoneDeepAutophagy: "#57534e",
+  zoneImmuneReset:  "#b45309",
+  zoneStemCell:     "#166534",
 } as const;
 
 /** Border radius values matching Tailwind rounded-* classes */

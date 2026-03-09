@@ -1,5 +1,6 @@
 import { Pressable, Text, ActivityIndicator } from "react-native";
 import { ReactNode } from "react";
+import { colors } from "./theme";
 
 interface ButtonProps {
   onPress: () => void;
@@ -38,7 +39,7 @@ export function Button({
         } ${className}`}
       >
         {loading ? (
-          <ActivityIndicator color="#ffffff" />
+          <ActivityIndicator color={colors.white} />
         ) : (
           <Text className={`font-medium text-base ${isDisabled ? "text-muted-fg" : "text-white"}`}>
             {label}
