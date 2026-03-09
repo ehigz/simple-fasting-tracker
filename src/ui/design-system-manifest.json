@@ -503,49 +503,49 @@
       "sourceFile": "src/ui/Typography.tsx",
       "metadataFile": "src/ui/Typography.metadata.ts",
       "figmaNodeId": "6:63",
-      "parityScore": null,
+      "parityScore": 94,
       "variants": []
     },
     "FieldLabel": {
       "sourceFile": "src/ui/Typography.tsx",
       "metadataFile": "src/ui/Typography.metadata.ts",
       "figmaNodeId": "6:66",
-      "parityScore": null,
+      "parityScore": 94,
       "variants": []
     },
     "CardTitle": {
       "sourceFile": "src/ui/Typography.tsx",
       "metadataFile": "src/ui/Typography.metadata.ts",
       "figmaNodeId": "6:69",
-      "parityScore": null,
+      "parityScore": 94,
       "variants": []
     },
     "BodyText": {
       "sourceFile": "src/ui/Typography.tsx",
       "metadataFile": "src/ui/Typography.metadata.ts",
       "figmaNodeId": "6:72",
-      "parityScore": null,
+      "parityScore": 91,
       "variants": []
     },
     "MutedText": {
       "sourceFile": "src/ui/Typography.tsx",
       "metadataFile": "src/ui/Typography.metadata.ts",
       "figmaNodeId": "6:75",
-      "parityScore": null,
+      "parityScore": 94,
       "variants": []
     },
     "StatValue": {
       "sourceFile": "src/ui/Typography.tsx",
       "metadataFile": "src/ui/Typography.metadata.ts",
       "figmaNodeId": "6:78",
-      "parityScore": null,
+      "parityScore": 94,
       "variants": []
     },
     "Divider": {
       "sourceFile": "src/ui/Divider.tsx",
       "metadataFile": "src/ui/Divider.metadata.ts",
       "figmaNodeId": "6:82",
-      "parityScore": null,
+      "parityScore": 86,
       "variants": []
     }
   },
