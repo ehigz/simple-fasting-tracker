@@ -92,76 +92,341 @@
         "value": "24",
         "type": "borderRadius",
         "description": "rounded-3xl — main content cards"
+      },
+      "full": {
+        "value": "9999",
+        "type": "borderRadius",
+        "description": "Fully rounded pill — progress bars, badges"
+      }
+    },
+    "fontFamily": {
+      "body": {
+        "value": "Inter",
+        "type": "fontFamilies",
+        "description": "Primary typeface — all body copy, labels, data values"
+      },
+      "display": {
+        "value": "Playfair Display",
+        "type": "fontFamilies",
+        "description": "Display typeface — headings, cardTitles, hero text"
+      }
+    },
+    "fontWeight": {
+      "normal": {
+        "value": "400",
+        "type": "fontWeights",
+        "description": "font-normal — body copy, labels"
+      },
+      "medium": {
+        "value": "500",
+        "type": "fontWeights",
+        "description": "font-medium — button labels, label scale"
+      },
+      "semibold": {
+        "value": "600",
+        "type": "fontWeights",
+        "description": "font-semibold — headings, stat values"
+      },
+      "bold": {
+        "value": "700",
+        "type": "fontWeights",
+        "description": "font-bold — page-level titles, stat hero"
+      }
+    },
+    "fontSize": {
+      "xs": {
+        "value": "10",
+        "type": "fontSizes",
+        "description": "10px — caption"
+      },
+      "sm": {
+        "value": "12",
+        "type": "fontSizes",
+        "description": "12px — overline, fieldLabel"
+      },
+      "base": {
+        "value": "14",
+        "type": "fontSizes",
+        "description": "14px — body sm, muted text, label"
+      },
+      "md": {
+        "value": "16",
+        "type": "fontSizes",
+        "description": "16px — body"
+      },
+      "lg": {
+        "value": "18",
+        "type": "fontSizes",
+        "description": "18px — body lg, stat, h5"
+      },
+      "xl": {
+        "value": "20",
+        "type": "fontSizes",
+        "description": "20px — h4"
+      },
+      "2xl": {
+        "value": "24",
+        "type": "fontSizes",
+        "description": "24px — h3 / cardTitle, stat lg"
+      },
+      "3xl": {
+        "value": "28",
+        "type": "fontSizes",
+        "description": "28px — h2"
+      },
+      "4xl": {
+        "value": "32",
+        "type": "fontSizes",
+        "description": "32px — h1"
+      },
+      "5xl": {
+        "value": "40",
+        "type": "fontSizes",
+        "description": "40px — display, stat hero"
+      }
+    },
+    "letterSpacing": {
+      "tighter": {
+        "value": "-5%",
+        "type": "letterSpacing",
+        "description": "tracking-tighter: -0.05em — display text, stat hero"
+      },
+      "tight": {
+        "value": "-2.5%",
+        "type": "letterSpacing",
+        "description": "tracking-tight: -0.025em — h1–h3, modal headings"
+      },
+      "normal": {
+        "value": "0%",
+        "type": "letterSpacing",
+        "description": "tracking-normal: 0em — body copy (default)"
+      },
+      "wide": {
+        "value": "2.5%",
+        "type": "letterSpacing",
+        "description": "tracking-wide: 0.025em — captions"
+      },
+      "wider": {
+        "value": "5%",
+        "type": "letterSpacing",
+        "description": "tracking-wider: 0.05em — labels"
+      },
+      "widest": {
+        "value": "10%",
+        "type": "letterSpacing",
+        "description": "tracking-widest: 0.1em — overline, fieldLabel (all-caps)"
+      }
+    },
+    "lineHeight": {
+      "none": {
+        "value": "100%",
+        "type": "lineHeights",
+        "description": "leading-none: 1.0 — display numbers, stat hero"
+      },
+      "tight": {
+        "value": "120%",
+        "type": "lineHeights",
+        "description": "leading-tight: 1.2 — display headings"
+      },
+      "snug": {
+        "value": "137.5%",
+        "type": "lineHeights",
+        "description": "leading-snug: 1.375 — h1, h2"
+      },
+      "normal": {
+        "value": "150%",
+        "type": "lineHeights",
+        "description": "leading-normal: 1.5 — h3–h5, body default"
+      },
+      "relaxed": {
+        "value": "162.5%",
+        "type": "lineHeights",
+        "description": "leading-relaxed: 1.625 — body, body lg"
+      },
+      "loose": {
+        "value": "200%",
+        "type": "lineHeights",
+        "description": "leading-loose: 2.0 — spacious body copy"
       }
     },
     "typography": {
+      "display": {
+        "value": {
+          "fontFamily": "{InterFast.fontFamily.display}",
+          "fontWeight": "{InterFast.fontWeight.semibold}",
+          "fontSize": "{InterFast.fontSize.5xl}",
+          "letterSpacing": "{InterFast.letterSpacing.tight}",
+          "lineHeight": "{InterFast.lineHeight.tight}"
+        },
+        "type": "typography",
+        "description": "40px · Playfair Display SemiBold · tracking-tight · leading-tight. Page-level hero headings."
+      },
+      "h1": {
+        "value": {
+          "fontFamily": "{InterFast.fontFamily.display}",
+          "fontWeight": "{InterFast.fontWeight.semibold}",
+          "fontSize": "{InterFast.fontSize.4xl}",
+          "letterSpacing": "{InterFast.letterSpacing.tight}",
+          "lineHeight": "{InterFast.lineHeight.snug}"
+        },
+        "type": "typography",
+        "description": "32px · Playfair Display SemiBold · tracking-tight · leading-snug."
+      },
+      "h2": {
+        "value": {
+          "fontFamily": "{InterFast.fontFamily.display}",
+          "fontWeight": "{InterFast.fontWeight.semibold}",
+          "fontSize": "{InterFast.fontSize.3xl}",
+          "letterSpacing": "{InterFast.letterSpacing.tight}",
+          "lineHeight": "{InterFast.lineHeight.snug}"
+        },
+        "type": "typography",
+        "description": "28px · Playfair Display SemiBold · tracking-tight · leading-snug."
+      },
+      "h3": {
+        "value": {
+          "fontFamily": "{InterFast.fontFamily.display}",
+          "fontWeight": "{InterFast.fontWeight.semibold}",
+          "fontSize": "{InterFast.fontSize.2xl}",
+          "letterSpacing": "{InterFast.letterSpacing.tight}",
+          "lineHeight": "{InterFast.lineHeight.normal}"
+        },
+        "type": "typography",
+        "description": "24px · Playfair Display SemiBold · tracking-tight. Maps to CardTitle component."
+      },
+      "h4": {
+        "value": {
+          "fontFamily": "{InterFast.fontFamily.body}",
+          "fontWeight": "{InterFast.fontWeight.semibold}",
+          "fontSize": "{InterFast.fontSize.xl}",
+          "letterSpacing": "{InterFast.letterSpacing.normal}",
+          "lineHeight": "{InterFast.lineHeight.normal}"
+        },
+        "type": "typography",
+        "description": "20px · Inter SemiBold · leading-normal."
+      },
+      "h5": {
+        "value": {
+          "fontFamily": "{InterFast.fontFamily.body}",
+          "fontWeight": "{InterFast.fontWeight.semibold}",
+          "fontSize": "{InterFast.fontSize.lg}",
+          "letterSpacing": "{InterFast.letterSpacing.normal}",
+          "lineHeight": "{InterFast.lineHeight.normal}"
+        },
+        "type": "typography",
+        "description": "18px · Inter SemiBold · leading-normal."
+      },
+      "bodyLg": {
+        "value": {
+          "fontFamily": "{InterFast.fontFamily.body}",
+          "fontWeight": "{InterFast.fontWeight.normal}",
+          "fontSize": "{InterFast.fontSize.lg}",
+          "letterSpacing": "{InterFast.letterSpacing.normal}",
+          "lineHeight": "{InterFast.lineHeight.relaxed}"
+        },
+        "type": "typography",
+        "description": "18px · Inter Regular · leading-relaxed. Large body for intros or prominent descriptions."
+      },
+      "body": {
+        "value": {
+          "fontFamily": "{InterFast.fontFamily.body}",
+          "fontWeight": "{InterFast.fontWeight.normal}",
+          "fontSize": "{InterFast.fontSize.md}",
+          "letterSpacing": "{InterFast.letterSpacing.normal}",
+          "lineHeight": "{InterFast.lineHeight.relaxed}"
+        },
+        "type": "typography",
+        "description": "16px · Inter Regular · leading-relaxed. Maps to BodyText component."
+      },
+      "bodySm": {
+        "value": {
+          "fontFamily": "{InterFast.fontFamily.body}",
+          "fontWeight": "{InterFast.fontWeight.normal}",
+          "fontSize": "{InterFast.fontSize.base}",
+          "letterSpacing": "{InterFast.letterSpacing.normal}",
+          "lineHeight": "{InterFast.lineHeight.normal}"
+        },
+        "type": "typography",
+        "description": "14px · Inter Regular · leading-normal. Timestamps, subtitles. Maps to MutedText component."
+      },
       "overline": {
         "value": {
-          "fontFamily": "Inter",
-          "fontWeight": "400",
-          "fontSize": "12",
-          "letterSpacing": "2%",
+          "fontFamily": "{InterFast.fontFamily.body}",
+          "fontWeight": "{InterFast.fontWeight.normal}",
+          "fontSize": "{InterFast.fontSize.sm}",
+          "letterSpacing": "{InterFast.letterSpacing.widest}",
           "textTransform": "uppercase",
           "lineHeight": "AUTO"
         },
         "type": "typography",
-        "description": "All-caps overline with ✦ star decorators. Section headers only."
+        "description": "12px · Inter Regular · uppercase · tracking-widest · opacity-60. Section overlines with ✦ star decorators."
       },
       "fieldLabel": {
         "value": {
-          "fontFamily": "Inter",
-          "fontWeight": "400",
-          "fontSize": "12",
-          "letterSpacing": "2%",
+          "fontFamily": "{InterFast.fontFamily.body}",
+          "fontWeight": "{InterFast.fontWeight.normal}",
+          "fontSize": "{InterFast.fontSize.sm}",
+          "letterSpacing": "{InterFast.letterSpacing.widest}",
           "textTransform": "uppercase",
           "lineHeight": "AUTO"
         },
         "type": "typography",
-        "description": "All-caps label above inputs or stat pairs."
+        "description": "12px · Inter Regular · uppercase · tracking-widest. All-caps label above inputs or stat pairs."
       },
-      "cardTitle": {
+      "label": {
         "value": {
-          "fontFamily": "Playfair Display",
-          "fontWeight": "600",
-          "fontSize": "24",
-          "letterSpacing": "-1%",
+          "fontFamily": "{InterFast.fontFamily.body}",
+          "fontWeight": "{InterFast.fontWeight.medium}",
+          "fontSize": "{InterFast.fontSize.base}",
+          "letterSpacing": "{InterFast.letterSpacing.normal}",
+          "lineHeight": "{InterFast.lineHeight.normal}"
+        },
+        "type": "typography",
+        "description": "14px · Inter Medium. Interactive element labels — tab names, menu items."
+      },
+      "caption": {
+        "value": {
+          "fontFamily": "{InterFast.fontFamily.body}",
+          "fontWeight": "{InterFast.fontWeight.normal}",
+          "fontSize": "{InterFast.fontSize.xs}",
+          "letterSpacing": "{InterFast.letterSpacing.wide}",
+          "lineHeight": "{InterFast.lineHeight.normal}"
+        },
+        "type": "typography",
+        "description": "10px · Inter Regular · tracking-wide. Badges, footnotes, legal micro-copy."
+      },
+      "stat": {
+        "value": {
+          "fontFamily": "{InterFast.fontFamily.body}",
+          "fontWeight": "{InterFast.fontWeight.semibold}",
+          "fontSize": "{InterFast.fontSize.lg}",
+          "letterSpacing": "{InterFast.letterSpacing.normal}",
           "lineHeight": "AUTO"
         },
         "type": "typography",
-        "description": "Primary card heading. One per card."
+        "description": "18px · Inter SemiBold. Numeric data values beside a FieldLabel. Maps to StatValue component."
       },
-      "bodyText": {
+      "statLg": {
         "value": {
-          "fontFamily": "Inter",
-          "fontWeight": "400",
-          "fontSize": "16",
-          "letterSpacing": "0",
-          "lineHeight": "162.5%"
-        },
-        "type": "typography",
-        "description": "Body/description copy. Muted color."
-      },
-      "mutedText": {
-        "value": {
-          "fontFamily": "Inter",
-          "fontWeight": "400",
-          "fontSize": "14",
-          "letterSpacing": "0",
+          "fontFamily": "{InterFast.fontFamily.body}",
+          "fontWeight": "{InterFast.fontWeight.semibold}",
+          "fontSize": "{InterFast.fontSize.2xl}",
+          "letterSpacing": "{InterFast.letterSpacing.tight}",
           "lineHeight": "AUTO"
         },
         "type": "typography",
-        "description": "Timestamps, subtitles, helper text."
+        "description": "24px · Inter SemiBold · tracking-tight. Large numeric metric — hero KPIs."
       },
-      "statValue": {
+      "statHero": {
         "value": {
-          "fontFamily": "Inter",
-          "fontWeight": "600",
-          "fontSize": "18",
-          "letterSpacing": "0",
-          "lineHeight": "AUTO"
+          "fontFamily": "{InterFast.fontFamily.body}",
+          "fontWeight": "{InterFast.fontWeight.bold}",
+          "fontSize": "{InterFast.fontSize.5xl}",
+          "letterSpacing": "{InterFast.letterSpacing.tighter}",
+          "lineHeight": "{InterFast.lineHeight.none}"
         },
         "type": "typography",
-        "description": "Numeric data values. Scale up with text-xl for hero metrics."
+        "description": "40px · Inter Bold · tracking-tighter · leading-none. Giant fasting timer numbers."
       }
     }
   }

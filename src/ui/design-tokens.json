@@ -128,59 +128,139 @@
       }
     },
     "fontWeight": {
-      "normal":   { "$type": "number", "$value": 400, "$description": "font-normal — body copy, labels",                                "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "tailwindClass": "font-normal"   } } },
-      "medium":   { "$type": "number", "$value": 500, "$description": "font-medium — button labels (e.g. DisclaimerModal accept CTA)",  "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "tailwindClass": "font-medium"   } } },
-      "semibold": { "$type": "number", "$value": 600, "$description": "font-semibold — CardTitle, StatValue, section headings",         "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "tailwindClass": "font-semibold" } } },
-      "bold":     { "$type": "number", "$value": 700, "$description": "font-bold — page-level titles (Terms, Privacy)",                 "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "tailwindClass": "font-bold"     } } }
+      "normal":   { "$type": "number", "$value": 400, "$description": "font-normal — body copy, labels",                                "$extensions": { "interfast": { "status": "stable", "tier": "primitive", "tailwindClass": "font-normal"   } } },
+      "medium":   { "$type": "number", "$value": 500, "$description": "font-medium — button labels, label scale",                       "$extensions": { "interfast": { "status": "stable", "tier": "primitive", "tailwindClass": "font-medium"   } } },
+      "semibold": { "$type": "number", "$value": 600, "$description": "font-semibold — headings, stat values",                          "$extensions": { "interfast": { "status": "stable", "tier": "primitive", "tailwindClass": "font-semibold" } } },
+      "bold":     { "$type": "number", "$value": 700, "$description": "font-bold — page-level titles, stat hero",                       "$extensions": { "interfast": { "status": "stable", "tier": "primitive", "tailwindClass": "font-bold"     } } }
+    },
+    "fontSize": {
+      "xs":   { "$type": "number", "$value": 10, "$description": "10px — caption",                            "$extensions": { "interfast": { "status": "stable", "tier": "primitive", "tailwindClass": "text-[10px]" } } },
+      "sm":   { "$type": "number", "$value": 12, "$description": "12px — overline, fieldLabel",               "$extensions": { "interfast": { "status": "stable", "tier": "primitive", "tailwindClass": "text-xs"     } } },
+      "base": { "$type": "number", "$value": 14, "$description": "14px — body sm, muted text, label",         "$extensions": { "interfast": { "status": "stable", "tier": "primitive", "tailwindClass": "text-sm"     } } },
+      "md":   { "$type": "number", "$value": 16, "$description": "16px — body",                               "$extensions": { "interfast": { "status": "stable", "tier": "primitive", "tailwindClass": "text-base"   } } },
+      "lg":   { "$type": "number", "$value": 18, "$description": "18px — body lg, stat, h5",                  "$extensions": { "interfast": { "status": "stable", "tier": "primitive", "tailwindClass": "text-lg"     } } },
+      "xl":   { "$type": "number", "$value": 20, "$description": "20px — h4",                                 "$extensions": { "interfast": { "status": "stable", "tier": "primitive", "tailwindClass": "text-xl"     } } },
+      "2xl":  { "$type": "number", "$value": 24, "$description": "24px — h3 / cardTitle, stat lg",            "$extensions": { "interfast": { "status": "stable", "tier": "primitive", "tailwindClass": "text-2xl"    } } },
+      "3xl":  { "$type": "number", "$value": 28, "$description": "28px — h2",                                 "$extensions": { "interfast": { "status": "stable", "tier": "primitive", "tailwindClass": "text-[28px]" } } },
+      "4xl":  { "$type": "number", "$value": 32, "$description": "32px — h1",                                 "$extensions": { "interfast": { "status": "stable", "tier": "primitive", "tailwindClass": "text-[32px]" } } },
+      "5xl":  { "$type": "number", "$value": 40, "$description": "40px — display, stat hero",                 "$extensions": { "interfast": { "status": "stable", "tier": "primitive", "tailwindClass": "text-[40px]" } } }
     },
     "letterSpacing": {
-      "tight":  { "$type": "number", "$value": -0.025, "$description": "tracking-tight: -0.025em — CardTitle, modal headings",          "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "tailwindClass": "tracking-tight",   "figmaUnit": "PERCENT", "figmaValue": -2.5  } } },
-      "widest": { "$type": "number", "$value":  0.100, "$description": "tracking-widest: 0.1em — Overline and FieldLabel (all-caps)",   "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "tailwindClass": "tracking-widest",  "figmaUnit": "PERCENT", "figmaValue": 10    } } }
+      "tighter": { "$type": "number", "$value": -0.050, "$description": "tracking-tighter: -0.05em — display text, stat hero",          "$extensions": { "interfast": { "status": "stable", "tier": "primitive", "tailwindClass": "tracking-tighter", "figmaUnit": "PERCENT", "figmaValue": -5    } } },
+      "tight":   { "$type": "number", "$value": -0.025, "$description": "tracking-tight: -0.025em — h1–h3, modal headings",             "$extensions": { "interfast": { "status": "stable", "tier": "primitive", "tailwindClass": "tracking-tight",   "figmaUnit": "PERCENT", "figmaValue": -2.5  } } },
+      "normal":  { "$type": "number", "$value":  0.000, "$description": "tracking-normal: 0em — body copy (default)",                   "$extensions": { "interfast": { "status": "stable", "tier": "primitive", "tailwindClass": "tracking-normal",  "figmaUnit": "PERCENT", "figmaValue":  0    } } },
+      "wide":    { "$type": "number", "$value":  0.025, "$description": "tracking-wide: 0.025em — captions",                            "$extensions": { "interfast": { "status": "stable", "tier": "primitive", "tailwindClass": "tracking-wide",    "figmaUnit": "PERCENT", "figmaValue":  2.5  } } },
+      "wider":   { "$type": "number", "$value":  0.050, "$description": "tracking-wider: 0.05em — labels",                              "$extensions": { "interfast": { "status": "stable", "tier": "primitive", "tailwindClass": "tracking-wider",   "figmaUnit": "PERCENT", "figmaValue":  5    } } },
+      "widest":  { "$type": "number", "$value":  0.100, "$description": "tracking-widest: 0.1em — overline, fieldLabel (all-caps)",     "$extensions": { "interfast": { "status": "stable", "tier": "primitive", "tailwindClass": "tracking-widest",  "figmaUnit": "PERCENT", "figmaValue": 10    } } }
     },
     "lineHeight": {
-      "normal":  { "$type": "number", "$value": 1.500, "$description": "leading-normal: 1.5 — default",                                 "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "tailwindClass": "leading-normal",  "figmaUnit": "PERCENT", "figmaValue": 150   } } },
-      "relaxed": { "$type": "number", "$value": 1.625, "$description": "leading-relaxed: 1.625 — BodyText, body paragraphs",            "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "tailwindClass": "leading-relaxed", "figmaUnit": "PERCENT", "figmaValue": 162.5 } } }
+      "none":    { "$type": "number", "$value": 1.000, "$description": "leading-none: 1.0 — display numbers, stat hero",                "$extensions": { "interfast": { "status": "stable", "tier": "primitive", "tailwindClass": "leading-none",    "figmaUnit": "PERCENT", "figmaValue": 100   } } },
+      "tight":   { "$type": "number", "$value": 1.200, "$description": "leading-tight: 1.2 — display headings",                        "$extensions": { "interfast": { "status": "stable", "tier": "primitive", "tailwindClass": "leading-tight",   "figmaUnit": "PERCENT", "figmaValue": 120   } } },
+      "snug":    { "$type": "number", "$value": 1.375, "$description": "leading-snug: 1.375 — h1, h2",                                  "$extensions": { "interfast": { "status": "stable", "tier": "primitive", "tailwindClass": "leading-snug",    "figmaUnit": "PERCENT", "figmaValue": 137.5 } } },
+      "normal":  { "$type": "number", "$value": 1.500, "$description": "leading-normal: 1.5 — h3–h5, body default",                    "$extensions": { "interfast": { "status": "stable", "tier": "primitive", "tailwindClass": "leading-normal",  "figmaUnit": "PERCENT", "figmaValue": 150   } } },
+      "relaxed": { "$type": "number", "$value": 1.625, "$description": "leading-relaxed: 1.625 — body, body lg",                       "$extensions": { "interfast": { "status": "stable", "tier": "primitive", "tailwindClass": "leading-relaxed", "figmaUnit": "PERCENT", "figmaValue": 162.5 } } },
+      "loose":   { "$type": "number", "$value": 2.000, "$description": "leading-loose: 2.0 — spacious body copy",                      "$extensions": { "interfast": { "status": "stable", "tier": "primitive", "tailwindClass": "leading-loose",   "figmaUnit": "PERCENT", "figmaValue": 200   } } }
     },
     "fontFamily": {
-      "body":    { "$type": "fontFamily", "$value": "Inter",           "$description": "Primary typeface — all body copy, labels, data values", "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "tailwindClass": "font-body",    "rnName": "Inter"           } } },
-      "heading": { "$type": "fontFamily", "$value": "Playfair Display","$description": "Display typeface — CardTitle and hero headings",        "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "tailwindClass": "font-heading", "rnName": "PlayfairDisplay" } } }
+      "body":    { "$type": "fontFamily", "$value": "Inter",           "$description": "Primary typeface — all body copy, labels, data values", "$extensions": { "interfast": { "status": "stable", "tier": "primitive", "tailwindClass": "font-body",    "rnName": "Inter"            } } },
+      "display": { "$type": "fontFamily", "$value": "Playfair Display","$description": "Display typeface — headings, cardTitles, hero text",     "$extensions": { "interfast": { "status": "stable", "tier": "primitive", "tailwindClass": "font-display", "rnName": "PlayfairDisplay"  } } }
     },
     "typography": {
-      "overline":   {
+      "display": {
         "$type": "typography",
-        "$value": { "fontFamily": "{InterFast.fontFamily.body}", "fontWeight": "{InterFast.fontWeight.normal}", "fontSize": "12px", "letterSpacing": "0.1em",   "lineHeight": "AUTO", "textTransform": "uppercase" },
-        "$description": "12px · Inter Regular · uppercase · tracking-widest · opacity-60 at node level. Section overlines with ✦ star decorators.",
-        "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaStyleId": "S:762513b8085627fbf998e053e7bf2851490fa0e3,", "opacity": 0.6, "usageScope": ["overlines"] } }
+        "$value": { "fontFamily": "{InterFast.fontFamily.display}", "fontWeight": "{InterFast.fontWeight.semibold}", "fontSize": "40px", "letterSpacing": "-0.025em", "lineHeight": "120%" },
+        "$description": "40px · Playfair Display SemiBold · tracking-tight · leading-tight. Page-level hero headings.",
+        "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaStyleId": "S:6685bfc43d1099972dd06dc94d0597f35f1b29ab,", "usageScope": ["page-heroes", "hero-headings"] } }
+      },
+      "h1": {
+        "$type": "typography",
+        "$value": { "fontFamily": "{InterFast.fontFamily.display}", "fontWeight": "{InterFast.fontWeight.semibold}", "fontSize": "32px", "letterSpacing": "-0.025em", "lineHeight": "137.5%" },
+        "$description": "32px · Playfair Display SemiBold · tracking-tight · leading-snug.",
+        "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaStyleId": "S:e978004e070f74b370a33ae6c4697c1cd39009f9,", "usageScope": ["page-titles"] } }
+      },
+      "h2": {
+        "$type": "typography",
+        "$value": { "fontFamily": "{InterFast.fontFamily.display}", "fontWeight": "{InterFast.fontWeight.semibold}", "fontSize": "28px", "letterSpacing": "-0.025em", "lineHeight": "137.5%" },
+        "$description": "28px · Playfair Display SemiBold · tracking-tight · leading-snug.",
+        "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaStyleId": "S:20633d1c2861af60b370149db29b75b1b5c95b2c,", "usageScope": ["section-titles"] } }
+      },
+      "h3": {
+        "$type": "typography",
+        "$value": { "fontFamily": "{InterFast.fontFamily.display}", "fontWeight": "{InterFast.fontWeight.semibold}", "fontSize": "24px", "letterSpacing": "-0.025em", "lineHeight": "150%" },
+        "$description": "24px · Playfair Display SemiBold · tracking-tight · leading-normal. Primary card heading. Maps to CardTitle component.",
+        "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaStyleId": "S:fb5f4ac6ef4ad2320ef51c33aa1ce34a4b4b9654,", "componentAlias": "CardTitle", "usageScope": ["card-headings"] } }
+      },
+      "h4": {
+        "$type": "typography",
+        "$value": { "fontFamily": "{InterFast.fontFamily.body}", "fontWeight": "{InterFast.fontWeight.semibold}", "fontSize": "20px", "letterSpacing": "0", "lineHeight": "150%" },
+        "$description": "20px · Inter SemiBold · leading-normal.",
+        "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaStyleId": "S:2e5039c4a8a05fbb5112c79aab2d0d53164ff292,", "usageScope": ["sub-section-headings"] } }
+      },
+      "h5": {
+        "$type": "typography",
+        "$value": { "fontFamily": "{InterFast.fontFamily.body}", "fontWeight": "{InterFast.fontWeight.semibold}", "fontSize": "18px", "letterSpacing": "0", "lineHeight": "150%" },
+        "$description": "18px · Inter SemiBold · leading-normal.",
+        "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaStyleId": "S:b9f86dad44770f15a34a85d7231321dc517a6553,", "usageScope": ["minor-headings"] } }
+      },
+      "bodyLg": {
+        "$type": "typography",
+        "$value": { "fontFamily": "{InterFast.fontFamily.body}", "fontWeight": "{InterFast.fontWeight.normal}", "fontSize": "18px", "letterSpacing": "0", "lineHeight": "162.5%" },
+        "$description": "18px · Inter Regular · leading-relaxed. Large body for intros or prominent descriptions.",
+        "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaStyleId": "S:b7db42b63c4f2dd10d8ae354b5746f62adace6a8,", "usageScope": ["intro-copy", "prominent-descriptions"] } }
+      },
+      "body": {
+        "$type": "typography",
+        "$value": { "fontFamily": "{InterFast.fontFamily.body}", "fontWeight": "{InterFast.fontWeight.normal}", "fontSize": "16px", "letterSpacing": "0", "lineHeight": "162.5%" },
+        "$description": "16px · Inter Regular · leading-relaxed. Descriptive and supporting copy. Maps to BodyText component.",
+        "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaStyleId": "S:2f2e1cc0cab5c80243ff1814aebc00bae8c3a1af,", "componentAlias": "BodyText", "usageScope": ["body-copy"] } }
+      },
+      "bodySm": {
+        "$type": "typography",
+        "$value": { "fontFamily": "{InterFast.fontFamily.body}", "fontWeight": "{InterFast.fontWeight.normal}", "fontSize": "14px", "letterSpacing": "0", "lineHeight": "150%" },
+        "$description": "14px · Inter Regular · leading-normal. Timestamps, subtitles, helper text. Maps to MutedText component.",
+        "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaStyleId": "S:e8e9346930e8dea3cd74268e34390c76beb75be5,", "componentAlias": "MutedText", "usageScope": ["timestamps", "helpers", "subtitles"] } }
+      },
+      "overline": {
+        "$type": "typography",
+        "$value": { "fontFamily": "{InterFast.fontFamily.body}", "fontWeight": "{InterFast.fontWeight.normal}", "fontSize": "12px", "letterSpacing": "0.1em", "lineHeight": "AUTO", "textTransform": "uppercase" },
+        "$description": "12px · Inter Regular · uppercase · tracking-widest · opacity-60. Section overlines with ✦ star decorators. Maps to Overline component.",
+        "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaStyleId": "S:762513b8085627fbf998e053e7bf2851490fa0e3,", "opacity": 0.6, "componentAlias": "Overline", "usageScope": ["section-overlines"] } }
       },
       "fieldLabel": {
         "$type": "typography",
-        "$value": { "fontFamily": "{InterFast.fontFamily.body}", "fontWeight": "{InterFast.fontWeight.normal}", "fontSize": "12px", "letterSpacing": "0.1em",   "lineHeight": "AUTO", "textTransform": "uppercase" },
-        "$description": "12px · Inter Regular · uppercase · tracking-widest. All-caps label above inputs or stat pairs.",
-        "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaStyleId": "S:4018be21f6b90b3ac7c3460de3fe3a1a025daefd,", "usageScope": ["field-labels", "stat-labels"] } }
+        "$value": { "fontFamily": "{InterFast.fontFamily.body}", "fontWeight": "{InterFast.fontWeight.normal}", "fontSize": "12px", "letterSpacing": "0.1em", "lineHeight": "AUTO", "textTransform": "uppercase" },
+        "$description": "12px · Inter Regular · uppercase · tracking-widest. All-caps label above inputs or stat pairs. Maps to FieldLabel component.",
+        "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaStyleId": "S:514d3018bc3bb7906114ad0d25959c7f4196e511,", "componentAlias": "FieldLabel", "usageScope": ["field-labels", "stat-labels"] } }
       },
-      "cardTitle":  {
+      "label": {
         "$type": "typography",
-        "$value": { "fontFamily": "{InterFast.fontFamily.heading}", "fontWeight": "{InterFast.fontWeight.semibold}", "fontSize": "24px", "letterSpacing": "-0.025em", "lineHeight": "AUTO" },
-        "$description": "24px · Playfair Display SemiBold · tracking-tight. Primary heading within a card. One per card.",
-        "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaStyleId": "S:f8869f6f65465764dca988ea0ec5ac832112ded4,", "usageScope": ["card-headings"] } }
+        "$value": { "fontFamily": "{InterFast.fontFamily.body}", "fontWeight": "{InterFast.fontWeight.medium}", "fontSize": "14px", "letterSpacing": "0", "lineHeight": "150%" },
+        "$description": "14px · Inter Medium · leading-normal. Interactive element labels — tab names, menu items.",
+        "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaStyleId": "S:485b5e63585ef3612695dfcf8a7f7a6874e654a5,", "usageScope": ["tab-labels", "menu-items", "interactive-labels"] } }
       },
-      "bodyText":   {
+      "caption": {
         "$type": "typography",
-        "$value": { "fontFamily": "{InterFast.fontFamily.body}", "fontWeight": "{InterFast.fontWeight.normal}", "fontSize": "16px", "letterSpacing": "0",        "lineHeight": "162.5%" },
-        "$description": "16px · Inter Regular · leading-relaxed (162.5%). Descriptive and supporting copy. Muted color.",
-        "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaStyleId": "S:b5ef276b56fefd5dea9ad7c21792e873cbe17d66,", "usageScope": ["body-copy"] } }
+        "$value": { "fontFamily": "{InterFast.fontFamily.body}", "fontWeight": "{InterFast.fontWeight.normal}", "fontSize": "10px", "letterSpacing": "0.025em", "lineHeight": "150%" },
+        "$description": "10px · Inter Regular · tracking-wide. Smallest text — badges, footnotes, legal micro-copy.",
+        "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaStyleId": "S:fa7bc655f346df772c539d8bbe83523f44ad9e24,", "usageScope": ["badges", "footnotes", "micro-copy"] } }
       },
-      "mutedText":  {
+      "stat": {
         "$type": "typography",
-        "$value": { "fontFamily": "{InterFast.fontFamily.body}", "fontWeight": "{InterFast.fontWeight.normal}", "fontSize": "14px", "letterSpacing": "0",        "lineHeight": "AUTO" },
-        "$description": "14px · Inter Regular. Timestamps, subtitles, helper text. Muted color.",
-        "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaStyleId": "S:d8f1e2ed866bd1d024bb91c9bdc86a4d68ca5d26,", "usageScope": ["timestamps", "helpers", "subtitles"] } }
+        "$value": { "fontFamily": "{InterFast.fontFamily.body}", "fontWeight": "{InterFast.fontWeight.semibold}", "fontSize": "18px", "letterSpacing": "0", "lineHeight": "AUTO" },
+        "$description": "18px · Inter SemiBold. Numeric data values beside a FieldLabel. Maps to StatValue component.",
+        "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaStyleId": "S:3474104fa002d7752ac67e0c110eb4e64af959c6,", "componentAlias": "StatValue", "usageScope": ["data-values", "stats"] } }
       },
-      "statValue":  {
+      "statLg": {
         "$type": "typography",
-        "$value": { "fontFamily": "{InterFast.fontFamily.body}", "fontWeight": "{InterFast.fontWeight.semibold}", "fontSize": "18px", "letterSpacing": "0",        "lineHeight": "AUTO" },
-        "$description": "18px · Inter SemiBold. Numeric data values beside a FieldLabel. Scale up with className='text-xl' for hero metrics.",
-        "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaStyleId": "S:c603f33bdccd91361d8f9059c807b7037888d1b0,", "usageScope": ["data-values", "stats"] } }
+        "$value": { "fontFamily": "{InterFast.fontFamily.body}", "fontWeight": "{InterFast.fontWeight.semibold}", "fontSize": "24px", "letterSpacing": "-0.025em", "lineHeight": "AUTO" },
+        "$description": "24px · Inter SemiBold · tracking-tight. Large numeric metric — hero KPIs, milestone counts.",
+        "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaStyleId": "S:f6bb4c3ad93382cbb1272458d2ebeb52860b48ba,", "usageScope": ["hero-kpis", "milestone-counts"] } }
+      },
+      "statHero": {
+        "$type": "typography",
+        "$value": { "fontFamily": "{InterFast.fontFamily.body}", "fontWeight": "{InterFast.fontWeight.bold}", "fontSize": "40px", "letterSpacing": "-0.05em", "lineHeight": "100%" },
+        "$description": "40px · Inter Bold · tracking-tighter · leading-none. Giant timer / fasting elapsed numbers.",
+        "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaStyleId": "S:b6294e4df74715085bbfbb9e08972e5d0747b9fa,", "usageScope": ["fasting-timer", "giant-numbers"] } }
       }
     }
   }

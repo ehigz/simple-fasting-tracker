@@ -1,6 +1,6 @@
 {
-  "version": "2.3.0",
-  "lastSyncedAt": "2026-03-09T03:00:00.000000+00:00",
+  "version": "2.4.0",
+  "lastSyncedAt": "2026-03-09T04:00:00.000000+00:00",
   "syncDirection": "code→figma",
   "figma": {
     "fileKey": "zzMTJilulVXIVzr6X29CKH",
@@ -63,12 +63,29 @@
       "full": { "value": 9999, "figmaVariableId": "VariableID:8:17", "tailwindClass": "rounded-full" }
     },
     "typography": {
-      "overline":   { "size": 12, "weight": "400", "letterSpacing": "0.1em",   "lineHeight": "AUTO",   "textCase": "UPPER", "fontFamily": "Inter",           "figmaStyleId": "S:762513b8085627fbf998e053e7bf2851490fa0e3,", "note": "Apply opacity-60 at node level" },
-      "fieldLabel": { "size": 12, "weight": "400", "letterSpacing": "0.1em",   "lineHeight": "AUTO",   "textCase": "UPPER", "fontFamily": "Inter",           "figmaStyleId": "S:4018be21f6b90b3ac7c3460de3fe3a1a025daefd," },
-      "cardTitle":  { "size": 24, "weight": "600", "letterSpacing": "-0.025em","lineHeight": "AUTO",                        "fontFamily": "Playfair Display", "figmaStyleId": "S:f8869f6f65465764dca988ea0ec5ac832112ded4," },
-      "bodyText":   { "size": 16, "weight": "400", "letterSpacing": "0",       "lineHeight": "162.5%",                      "fontFamily": "Inter",           "figmaStyleId": "S:b5ef276b56fefd5dea9ad7c21792e873cbe17d66," },
-      "mutedText":  { "size": 14, "weight": "400", "letterSpacing": "0",       "lineHeight": "AUTO",                        "fontFamily": "Inter",           "figmaStyleId": "S:d8f1e2ed866bd1d024bb91c9bdc86a4d68ca5d26," },
-      "statValue":  { "size": 18, "weight": "600", "letterSpacing": "0",       "lineHeight": "AUTO",                        "fontFamily": "Inter",           "figmaStyleId": "S:c603f33bdccd91361d8f9059c807b7037888d1b0," }
+      "collectionId": "VariableCollectionId:6:20",
+      "fontFamily": {
+        "body":    { "value": "Inter",           "figmaVariableId": "VariableID:8:57" },
+        "display": { "value": "Playfair Display", "figmaVariableId": "VariableID:8:58" }
+      },
+      "scales": {
+        "display":    { "size": 40, "weight": "600", "fontFamily": "Playfair Display", "letterSpacing": "-0.025em", "lineHeight": "120%",   "figmaStyleId": "S:6685bfc43d1099972dd06dc94d0597f35f1b29ab," },
+        "h1":         { "size": 32, "weight": "600", "fontFamily": "Playfair Display", "letterSpacing": "-0.025em", "lineHeight": "137.5%", "figmaStyleId": "S:e978004e070f74b370a33ae6c4697c1cd39009f9," },
+        "h2":         { "size": 28, "weight": "600", "fontFamily": "Playfair Display", "letterSpacing": "-0.025em", "lineHeight": "137.5%", "figmaStyleId": "S:20633d1c2861af60b370149db29b75b1b5c95b2c," },
+        "h3":         { "size": 24, "weight": "600", "fontFamily": "Playfair Display", "letterSpacing": "-0.025em", "lineHeight": "150%",   "figmaStyleId": "S:fb5f4ac6ef4ad2320ef51c33aa1ce34a4b4b9654,", "componentAlias": "CardTitle" },
+        "h4":         { "size": 20, "weight": "600", "fontFamily": "Inter",           "letterSpacing": "0",        "lineHeight": "150%",   "figmaStyleId": "S:2e5039c4a8a05fbb5112c79aab2d0d53164ff292," },
+        "h5":         { "size": 18, "weight": "600", "fontFamily": "Inter",           "letterSpacing": "0",        "lineHeight": "150%",   "figmaStyleId": "S:b9f86dad44770f15a34a85d7231321dc517a6553," },
+        "bodyLg":     { "size": 18, "weight": "400", "fontFamily": "Inter",           "letterSpacing": "0",        "lineHeight": "162.5%", "figmaStyleId": "S:b7db42b63c4f2dd10d8ae354b5746f62adace6a8," },
+        "body":       { "size": 16, "weight": "400", "fontFamily": "Inter",           "letterSpacing": "0",        "lineHeight": "162.5%", "figmaStyleId": "S:2f2e1cc0cab5c80243ff1814aebc00bae8c3a1af,", "componentAlias": "BodyText" },
+        "bodySm":     { "size": 14, "weight": "400", "fontFamily": "Inter",           "letterSpacing": "0",        "lineHeight": "150%",   "figmaStyleId": "S:e8e9346930e8dea3cd74268e34390c76beb75be5,", "componentAlias": "MutedText" },
+        "overline":   { "size": 12, "weight": "400", "fontFamily": "Inter",           "letterSpacing": "0.1em",    "lineHeight": "AUTO",   "textCase": "UPPER", "figmaStyleId": "S:762513b8085627fbf998e053e7bf2851490fa0e3,", "componentAlias": "Overline", "note": "Apply opacity-60 at node level" },
+        "fieldLabel": { "size": 12, "weight": "400", "fontFamily": "Inter",           "letterSpacing": "0.1em",    "lineHeight": "AUTO",   "textCase": "UPPER", "figmaStyleId": "S:514d3018bc3bb7906114ad0d25959c7f4196e511,", "componentAlias": "FieldLabel" },
+        "label":      { "size": 14, "weight": "500", "fontFamily": "Inter",           "letterSpacing": "0",        "lineHeight": "150%",   "figmaStyleId": "S:485b5e63585ef3612695dfcf8a7f7a6874e654a5," },
+        "caption":    { "size": 10, "weight": "400", "fontFamily": "Inter",           "letterSpacing": "0.025em",  "lineHeight": "150%",   "figmaStyleId": "S:fa7bc655f346df772c539d8bbe83523f44ad9e24," },
+        "stat":       { "size": 18, "weight": "600", "fontFamily": "Inter",           "letterSpacing": "0",        "lineHeight": "AUTO",   "figmaStyleId": "S:3474104fa002d7752ac67e0c110eb4e64af959c6,", "componentAlias": "StatValue" },
+        "statLg":     { "size": 24, "weight": "600", "fontFamily": "Inter",           "letterSpacing": "-0.025em", "lineHeight": "AUTO",   "figmaStyleId": "S:f6bb4c3ad93382cbb1272458d2ebeb52860b48ba," },
+        "statHero":   { "size": 40, "weight": "700", "fontFamily": "Inter",           "letterSpacing": "-0.05em",  "lineHeight": "100%",   "figmaStyleId": "S:b6294e4df74715085bbfbb9e08972e5d0747b9fa," }
+      }
     },
     "motion": {
       "collectionId": "VariableCollectionId:8:18",
