@@ -1,6 +1,6 @@
 {
-  "version": "2.2.0",
-  "lastSyncedAt": "2026-03-09T02:20:00.000000+00:00",
+  "version": "2.3.0",
+  "lastSyncedAt": "2026-03-09T03:00:00.000000+00:00",
   "syncDirection": "code→figma",
   "figma": {
     "fileKey": "zzMTJilulVXIVzr6X29CKH",
@@ -63,12 +63,12 @@
       "full": { "value": 9999, "figmaVariableId": "VariableID:8:17", "tailwindClass": "rounded-full" }
     },
     "typography": {
-      "overline":   { "size": 12, "weight": "400", "figmaStyleId": "VariableID:6:21" },
-      "fieldLabel": { "size": 12, "weight": "400", "figmaStyleId": "VariableID:6:22" },
-      "cardTitle":  { "size": 24, "weight": "600", "figmaStyleId": "VariableID:6:23" },
-      "bodyText":   { "size": 16, "weight": "400", "figmaStyleId": "VariableID:6:24" },
-      "mutedText":  { "size": 14, "weight": "400", "figmaStyleId": "VariableID:6:25" },
-      "statValue":  { "size": 18, "weight": "600", "figmaStyleId": "VariableID:6:26" }
+      "overline":   { "size": 12, "weight": "400", "letterSpacing": "0.1em",   "lineHeight": "AUTO",   "textCase": "UPPER", "fontFamily": "Inter",           "figmaStyleId": "S:762513b8085627fbf998e053e7bf2851490fa0e3,", "note": "Apply opacity-60 at node level" },
+      "fieldLabel": { "size": 12, "weight": "400", "letterSpacing": "0.1em",   "lineHeight": "AUTO",   "textCase": "UPPER", "fontFamily": "Inter",           "figmaStyleId": "S:4018be21f6b90b3ac7c3460de3fe3a1a025daefd," },
+      "cardTitle":  { "size": 24, "weight": "600", "letterSpacing": "-0.025em","lineHeight": "AUTO",                        "fontFamily": "Playfair Display", "figmaStyleId": "S:f8869f6f65465764dca988ea0ec5ac832112ded4," },
+      "bodyText":   { "size": 16, "weight": "400", "letterSpacing": "0",       "lineHeight": "162.5%",                      "fontFamily": "Inter",           "figmaStyleId": "S:b5ef276b56fefd5dea9ad7c21792e873cbe17d66," },
+      "mutedText":  { "size": 14, "weight": "400", "letterSpacing": "0",       "lineHeight": "AUTO",                        "fontFamily": "Inter",           "figmaStyleId": "S:d8f1e2ed866bd1d024bb91c9bdc86a4d68ca5d26," },
+      "statValue":  { "size": 18, "weight": "600", "letterSpacing": "0",       "lineHeight": "AUTO",                        "fontFamily": "Inter",           "figmaStyleId": "S:c603f33bdccd91361d8f9059c807b7037888d1b0," }
     },
     "motion": {
       "collectionId": "VariableCollectionId:8:18",

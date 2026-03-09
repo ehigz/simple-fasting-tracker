@@ -127,13 +127,61 @@
         }
       }
     },
+    "fontWeight": {
+      "normal":   { "$type": "number", "$value": 400, "$description": "font-normal — body copy, labels",                                "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "tailwindClass": "font-normal"   } } },
+      "medium":   { "$type": "number", "$value": 500, "$description": "font-medium — button labels (e.g. DisclaimerModal accept CTA)",  "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "tailwindClass": "font-medium"   } } },
+      "semibold": { "$type": "number", "$value": 600, "$description": "font-semibold — CardTitle, StatValue, section headings",         "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "tailwindClass": "font-semibold" } } },
+      "bold":     { "$type": "number", "$value": 700, "$description": "font-bold — page-level titles (Terms, Privacy)",                 "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "tailwindClass": "font-bold"     } } }
+    },
+    "letterSpacing": {
+      "tight":  { "$type": "number", "$value": -0.025, "$description": "tracking-tight: -0.025em — CardTitle, modal headings",          "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "tailwindClass": "tracking-tight",   "figmaUnit": "PERCENT", "figmaValue": -2.5  } } },
+      "widest": { "$type": "number", "$value":  0.100, "$description": "tracking-widest: 0.1em — Overline and FieldLabel (all-caps)",   "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "tailwindClass": "tracking-widest",  "figmaUnit": "PERCENT", "figmaValue": 10    } } }
+    },
+    "lineHeight": {
+      "normal":  { "$type": "number", "$value": 1.500, "$description": "leading-normal: 1.5 — default",                                 "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "tailwindClass": "leading-normal",  "figmaUnit": "PERCENT", "figmaValue": 150   } } },
+      "relaxed": { "$type": "number", "$value": 1.625, "$description": "leading-relaxed: 1.625 — BodyText, body paragraphs",            "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "tailwindClass": "leading-relaxed", "figmaUnit": "PERCENT", "figmaValue": 162.5 } } }
+    },
+    "fontFamily": {
+      "body":    { "$type": "fontFamily", "$value": "Inter",           "$description": "Primary typeface — all body copy, labels, data values", "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "tailwindClass": "font-body",    "rnName": "Inter"           } } },
+      "heading": { "$type": "fontFamily", "$value": "Playfair Display","$description": "Display typeface — CardTitle and hero headings",        "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "tailwindClass": "font-heading", "rnName": "PlayfairDisplay" } } }
+    },
     "typography": {
-      "overline":   { "$type": "number", "$value": 12, "$description": "All-caps overline with ✦ star decorators. Section headers only.", "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "weight": "400", "transform": "uppercase", "letterSpacing": "widest", "opacity": 0.6 } } },
-      "fieldLabel": { "$type": "number", "$value": 12, "$description": "All-caps label above inputs or stat pairs.",                      "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "weight": "400", "transform": "uppercase", "letterSpacing": "widest" } } },
-      "cardTitle":  { "$type": "number", "$value": 24, "$description": "Primary card heading. One per card.",                             "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "weight": "600", "tracking": "tight" } } },
-      "bodyText":   { "$type": "number", "$value": 16, "$description": "Body/description copy. Muted color.",                            "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "weight": "400", "lineHeight": "relaxed" } } },
-      "mutedText":  { "$type": "number", "$value": 14, "$description": "Timestamps, subtitles, helper text.",                            "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "weight": "400" } } },
-      "statValue":  { "$type": "number", "$value": 18, "$description": "Numeric data values. Use className='text-xl' for hero metrics.", "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "weight": "600" } } }
+      "overline":   {
+        "$type": "typography",
+        "$value": { "fontFamily": "{InterFast.fontFamily.body}", "fontWeight": "{InterFast.fontWeight.normal}", "fontSize": "12px", "letterSpacing": "0.1em",   "lineHeight": "AUTO", "textTransform": "uppercase" },
+        "$description": "12px · Inter Regular · uppercase · tracking-widest · opacity-60 at node level. Section overlines with ✦ star decorators.",
+        "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaStyleId": "S:762513b8085627fbf998e053e7bf2851490fa0e3,", "opacity": 0.6, "usageScope": ["overlines"] } }
+      },
+      "fieldLabel": {
+        "$type": "typography",
+        "$value": { "fontFamily": "{InterFast.fontFamily.body}", "fontWeight": "{InterFast.fontWeight.normal}", "fontSize": "12px", "letterSpacing": "0.1em",   "lineHeight": "AUTO", "textTransform": "uppercase" },
+        "$description": "12px · Inter Regular · uppercase · tracking-widest. All-caps label above inputs or stat pairs.",
+        "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaStyleId": "S:4018be21f6b90b3ac7c3460de3fe3a1a025daefd,", "usageScope": ["field-labels", "stat-labels"] } }
+      },
+      "cardTitle":  {
+        "$type": "typography",
+        "$value": { "fontFamily": "{InterFast.fontFamily.heading}", "fontWeight": "{InterFast.fontWeight.semibold}", "fontSize": "24px", "letterSpacing": "-0.025em", "lineHeight": "AUTO" },
+        "$description": "24px · Playfair Display SemiBold · tracking-tight. Primary heading within a card. One per card.",
+        "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaStyleId": "S:f8869f6f65465764dca988ea0ec5ac832112ded4,", "usageScope": ["card-headings"] } }
+      },
+      "bodyText":   {
+        "$type": "typography",
+        "$value": { "fontFamily": "{InterFast.fontFamily.body}", "fontWeight": "{InterFast.fontWeight.normal}", "fontSize": "16px", "letterSpacing": "0",        "lineHeight": "162.5%" },
+        "$description": "16px · Inter Regular · leading-relaxed (162.5%). Descriptive and supporting copy. Muted color.",
+        "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaStyleId": "S:b5ef276b56fefd5dea9ad7c21792e873cbe17d66,", "usageScope": ["body-copy"] } }
+      },
+      "mutedText":  {
+        "$type": "typography",
+        "$value": { "fontFamily": "{InterFast.fontFamily.body}", "fontWeight": "{InterFast.fontWeight.normal}", "fontSize": "14px", "letterSpacing": "0",        "lineHeight": "AUTO" },
+        "$description": "14px · Inter Regular. Timestamps, subtitles, helper text. Muted color.",
+        "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaStyleId": "S:d8f1e2ed866bd1d024bb91c9bdc86a4d68ca5d26,", "usageScope": ["timestamps", "helpers", "subtitles"] } }
+      },
+      "statValue":  {
+        "$type": "typography",
+        "$value": { "fontFamily": "{InterFast.fontFamily.body}", "fontWeight": "{InterFast.fontWeight.semibold}", "fontSize": "18px", "letterSpacing": "0",        "lineHeight": "AUTO" },
+        "$description": "18px · Inter SemiBold. Numeric data values beside a FieldLabel. Scale up with className='text-xl' for hero metrics.",
+        "$extensions": { "interfast": { "status": "stable", "tier": "semantic", "figmaStyleId": "S:c603f33bdccd91361d8f9059c807b7037888d1b0,", "usageScope": ["data-values", "stats"] } }
+      }
     }
   }
 }

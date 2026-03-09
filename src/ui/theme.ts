@@ -53,6 +53,36 @@ export const motion = {
 } as const;
 
 /**
+ * Typography property tokens.
+ *
+ * weight        — use as fontWeight in StyleSheet, or font-{weight} in NativeWind.
+ * letterSpacing — em multiplier. Compute: value × fontSize for StyleSheet letterSpacing.
+ * lineHeight    — em multiplier. Compute: value × fontSize for StyleSheet lineHeight.
+ * family        — load via expo-font; use font-body / font-heading in NativeWind.
+ *                 Note: React Native requires fonts without spaces — "PlayfairDisplay".
+ */
+export const typography = {
+  weight: {
+    normal:   "400" as const,   // font-normal — body copy, labels
+    medium:   "500" as const,   // font-medium — button labels (e.g. DisclaimerModal CTA)
+    semibold: "600" as const,   // font-semibold — CardTitle, StatValue, section headings
+    bold:     "700" as const,   // font-bold — page titles (Terms, Privacy)
+  },
+  letterSpacing: {
+    tight:   -0.025,  // tracking-tight:   -0.025em — CardTitle, modal headings
+    widest:   0.100,  // tracking-widest:   0.100em — Overline, FieldLabel (all-caps)
+  },
+  lineHeight: {
+    normal:   1.500,  // leading-normal:   1.5
+    relaxed:  1.625,  // leading-relaxed: 1.625 — BodyText, body paragraphs
+  },
+  family: {
+    body:    "Inter",           // font-body   — all body copy, labels, data values
+    heading: "PlayfairDisplay", // font-heading — CardTitle and hero headings
+  },
+} as const;
+
+/**
  * Structural layout constants — not semantic spacing tokens.
  * These compensate for system chrome (status bar, tab bar).
  * Use in StyleSheet when NativeWind cannot reach a layout primitive.
