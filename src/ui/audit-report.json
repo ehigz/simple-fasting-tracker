@@ -1,9 +1,145 @@
 {
-  "generated_at": "2026-03-09T03:20:48.370429+00:00",
+  "generated_at": "2026-03-09T13:36:32.381914+00:00",
   "project_root": "/Users/erikhigbee/Desktop/_apps/InterFastApp",
   "files_scanned": 14,
-  "total_findings": 0,
-  "by_severity": {},
-  "by_category": {},
-  "findings": []
+  "total_findings": 13,
+  "by_severity": {
+    "info": 13
+  },
+  "by_category": {
+    "MOTION": 1,
+    "COLORS": 12
+  },
+  "findings": [
+    {
+      "file": "src/components/FastingZone.tsx",
+      "line": 123,
+      "category": "MOTION",
+      "severity": "info",
+      "value": ".delay(100)",
+      "context": "entering={SlideInDown.duration(motion.duration.base).delay(100)}",
+      "message": "Raw animation delay 100ms",
+      "suggestion": "Consider defining motion.delay.* if this value recurs"
+    },
+    {
+      "file": "src/components/SunriseBackground.tsx",
+      "line": 40,
+      "category": "COLORS",
+      "severity": "info",
+      "value": "#bcc9f2",
+      "context": "\"#bcc9f2\",",
+      "message": "Hardcoded hex color #bcc9f2 (gradient \u2014 intentional)",
+      "suggestion": "Document as gradient art-direction token"
+    },
+    {
+      "file": "src/components/SunriseBackground.tsx",
+      "line": 41,
+      "category": "COLORS",
+      "severity": "info",
+      "value": "#c8bee8",
+      "context": "\"#c8bee8\",",
+      "message": "Hardcoded hex color #c8bee8 (gradient \u2014 intentional)",
+      "suggestion": "Document as gradient art-direction token"
+    },
+    {
+      "file": "src/components/SunriseBackground.tsx",
+      "line": 42,
+      "category": "COLORS",
+      "severity": "info",
+      "value": "#d4b3e8",
+      "context": "\"#d4b3e8\",",
+      "message": "Hardcoded hex color #d4b3e8 (gradient \u2014 intentional)",
+      "suggestion": "Document as gradient art-direction token"
+    },
+    {
+      "file": "src/components/SunriseBackground.tsx",
+      "line": 43,
+      "category": "COLORS",
+      "severity": "info",
+      "value": "#e8a8d4",
+      "context": "\"#e8a8d4\",",
+      "message": "Hardcoded hex color #e8a8d4 (gradient \u2014 intentional)",
+      "suggestion": "Document as gradient art-direction token"
+    },
+    {
+      "file": "src/components/SunriseBackground.tsx",
+      "line": 44,
+      "category": "COLORS",
+      "severity": "info",
+      "value": "#ff9d7a",
+      "context": "\"#ff9d7a\",",
+      "message": "Hardcoded hex color #ff9d7a (gradient \u2014 intentional)",
+      "suggestion": "Document as gradient art-direction token"
+    },
+    {
+      "file": "src/components/SunriseBackground.tsx",
+      "line": 45,
+      "category": "COLORS",
+      "severity": "info",
+      "value": "#ffb088",
+      "context": "\"#ffb088\",",
+      "message": "Hardcoded hex color #ffb088 (gradient \u2014 intentional)",
+      "suggestion": "Document as gradient art-direction token"
+    },
+    {
+      "file": "src/components/SunriseBackground.tsx",
+      "line": 46,
+      "category": "COLORS",
+      "severity": "info",
+      "value": "#ffc299",
+      "context": "\"#ffc299\",",
+      "message": "Hardcoded hex color #ffc299 (gradient \u2014 intentional)",
+      "suggestion": "Document as gradient art-direction token"
+    },
+    {
+      "file": "src/components/SunriseBackground.tsx",
+      "line": 47,
+      "category": "COLORS",
+      "severity": "info",
+      "value": "#ffd4b3",
+      "context": "\"#ffd4b3\",",
+      "message": "Hardcoded hex color #ffd4b3 (gradient \u2014 intentional)",
+      "suggestion": "Document as gradient art-direction token"
+    },
+    {
+      "file": "src/components/SunriseBackground.tsx",
+      "line": 48,
+      "category": "COLORS",
+      "severity": "info",
+      "value": "#ffe8cc",
+      "context": "\"#ffe8cc\",",
+      "message": "Hardcoded hex color #ffe8cc (gradient \u2014 intentional)",
+      "suggestion": "Document as gradient art-direction token"
+    },
+    {
+      "file": "src/components/SunriseBackground.tsx",
+      "line": 49,
+      "category": "COLORS",
+      "severity": "info",
+      "value": "#fff9e6",
+      "context": "\"#fff9e6\",",
+      "message": "Hardcoded hex color #fff9e6 (gradient \u2014 intentional)",
+      "suggestion": "Document as gradient art-direction token"
+    },
+    {
+      "file": "src/components/SunriseBackground.tsx",
+      "line": 50,
+      "category": "COLORS",
+      "severity": "info",
+      "value": "#fffdf7",
+      "context": "\"#fffdf7\",",
+      "message": "Hardcoded hex color #fffdf7 (gradient \u2014 intentional)",
+      "suggestion": "Document as gradient art-direction token"
+    },
+    {
+      "file": "src/components/SunriseBackground.tsx",
+      "line": 51,
+      "category": "COLORS",
+      "severity": "info",
+      "value": "#ffffff",
+      "context": "\"#ffffff\",",
+      "message": "Hardcoded hex color #ffffff (gradient \u2014 intentional)",
+      "suggestion": "Document as gradient art-direction token"
+    }
+  ]
 }

@@ -1,0 +1,10 @@
+{
+  "name": "interfast-styleguide",
+  "version": "2.4.0",
+  "description": "InterFast Design System Styleguide",
+  "scripts": {
+    "dev": "npx serve . -p 4000 --no-clipboard",
+    "start": "npx serve . -p 4000"
+  },
+  "private": true
+}

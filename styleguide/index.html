@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InterFast Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+<style>
+/* ── Reset ────────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── Tokens ───────────────────────────────────────────────────────────────── */
+:root {
+  --primary:      #340247;
+  --primaryHover: #4a0360;
+  --secondary:    #f4ecff;
+  --muted:        #e6e3ed;
+  --mutedFg:      #6b6b7e;
+  --accent:       #d4cfe6;
+  --accentPurple: #6e5fa7;
+  --accentLight:  #a89fc9;
+  --surface:      #eeebf4;
+  --warn:         #fff9f0;
+  --warnIcon:     #d97706;
+  --white:        #ffffff;
+  --r-sm: 12px; --r-md: 16px; --r-lg: 24px; --r-full: 9999px;
+  --fast: 200ms; --base: 300ms; --slow: 500ms;
+}
+
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--primary);
+  background: linear-gradient(160deg, #340247 0%, #6e5fa7 55%, #a89fc9 100%) fixed;
+  min-height: 100vh;
+}
+a { color: inherit; }
+
+/* ── Nav ──────────────────────────────────────────────────────────────────── */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(52,2,71,0.95);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.nav-inner {
+  max-width: 1280px; margin: 0 auto;
+  display: flex; align-items: center; gap: 4px;
+  height: 52px; padding: 0 20px;
+  overflow-x: auto; scrollbar-width: none;
+}
+.nav-inner::-webkit-scrollbar { display: none; }
+.nav-logo { font-family: 'Playfair Display',serif; font-size: 17px; color: #fff; margin-right: 16px; white-space: nowrap; text-decoration: none; }
+.nav-logo em { color: var(--accent); font-style: normal; }
+.nav-link { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.6); text-decoration: none; padding: 5px 11px; border-radius: 8px; white-space: nowrap; transition: all var(--fast) ease; }
+.nav-link:hover, .nav-link.active { color: #fff; background: rgba(255,255,255,0.1); }
+.nav-spacer { flex: 1; }
+.live-dot { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; flex-shrink: 0; animation: pulse 2s infinite; }
+.live-dot.offline { background: #ef4444; animation: none; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+.nav-version { font-size: 11px; font-weight: 600; color: var(--accent); background: rgba(212,207,230,0.12); border: 1px solid rgba(212,207,230,0.25); padding: 3px 10px; border-radius: 99px; white-space: nowrap; }
+
+/* ── Page ─────────────────────────────────────────────────────────────────── */
+.page { max-width: 1280px; margin: 0 auto; padding: 40px 20px 96px; }
+
+/* ── Section header ───────────────────────────────────────────────────────── */
+.sh { margin-bottom: 20px; scroll-margin-top: 68px; }
+.sh-over { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.55); margin-bottom: 5px; }
+.sh-over::before { content: '✦ '; } .sh-over::after { content: ' ✦'; }
+.sh-title { font-family:'Playfair Display',serif; font-size: 30px; color: #fff; line-height: 1.15; }
+.sh-desc { font-size: 15px; color: rgba(255,255,255,.65); margin-top: 6px; line-height: 1.6; }
+
+/* ── Card ─────────────────────────────────────────────────────────────────── */
+.card { background: rgba(255,255,255,.96); border: 1px solid rgba(52,2,71,.07); border-radius: var(--r-lg); padding: 28px; }
+.card.sm { border-radius: var(--r-md); padding: 20px; }
+.card.glass { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.15); }
+.card.glass:hover { background: rgba(255,255,255,.12); }
+
+/* ── Grid ─────────────────────────────────────────────────────────────────── */
+.g2 { display: grid; grid-template-columns: repeat(auto-fill,minmax(260px,1fr)); gap: 16px; }
+.g3 { display: grid; grid-template-columns: repeat(auto-fill,minmax(200px,1fr)); gap: 14px; }
+.g4 { display: grid; grid-template-columns: repeat(auto-fill,minmax(160px,1fr)); gap: 12px; }
+.row { display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-start; }
+.col { display: flex; flex-direction: column; gap: 10px; }
+.gap4 { display: flex; flex-direction: column; gap: 48px; }
+
+/* ── Dashboard ────────────────────────────────────────────────────────────── */
+.db-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(220px,1fr)); gap: 14px; margin-bottom: 20px; }
+.db-card { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); border-radius: var(--r-md); padding: 20px; transition: all var(--fast); }
+.db-card:hover { background: rgba(255,255,255,.11); }
+.db-label { font-size: 11px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 8px; }
+.db-value { font-size: 36px; font-weight: 700; color: #fff; line-height: 1; margin-bottom: 4px; }
+.db-sub { font-size: 13px; color: rgba(255,255,255,.55); }
+.db-bar-track { height: 6px; background: rgba(255,255,255,.1); border-radius: 99px; margin-top: 10px; overflow: hidden; }
+.db-bar { height: 100%; border-radius: 99px; transition: width 1s ease; }
+.db-bar.green  { background: #22c55e; }
+.db-bar.yellow { background: #eab308; }
+.db-bar.red    { background: #ef4444; }
+.db-bar.purple { background: var(--accentPurple); }
+
+/* Score ring */
+.score-ring { position: relative; display: inline-flex; align-items: center; justify-content: center; }
+.score-ring svg { transform: rotate(-90deg); }
+.score-ring .score-num { position: absolute; font-size: 22px; font-weight: 700; color: #fff; }
+
+/* ── Notice / Action feeds ────────────────────────────────────────────────── */
+.notice { display: flex; gap: 12px; padding: 12px 14px; border-radius: var(--r-sm); margin-bottom: 8px; border: 1px solid transparent; }
+.notice:last-child { margin-bottom: 0; }
+.notice.warn  { background: rgba(234,179,8,.08); border-color: rgba(234,179,8,.25); }
+.notice.error { background: rgba(239,68,68,.08); border-color: rgba(239,68,68,.25); }
+.notice.info  { background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.1); }
+.notice-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.notice-body { flex: 1; }
+.notice-title { font-size: 13px; font-weight: 600; color: #fff; }
+.notice.warn  .notice-title { color: #fde68a; }
+.notice.error .notice-title { color: #fca5a5; }
+.notice-msg { font-size: 12px; color: rgba(255,255,255,.55); margin-top: 3px; line-height: 1.5; }
+.notice-action { font-size: 11px; font-family: monospace; background: rgba(255,255,255,.08); padding: 2px 8px; border-radius: 4px; color: var(--accent); margin-top: 5px; display: inline-block; }
+.notice-badge { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 99px; background: rgba(255,255,255,.15); color: rgba(255,255,255,.7); flex-shrink: 0; align-self: flex-start; }
+
+/* Action item */
+.action { display: flex; gap: 14px; padding: 14px 16px; background: rgba(255,255,255,.95); border-radius: var(--r-sm); margin-bottom: 8px; border-left: 3px solid var(--muted); }
+.action:last-child { margin-bottom: 0; }
+.action.sev-error { border-color: #ef4444; }
+.action.sev-warn  { border-color: #eab308; }
+.action.sev-info  { border-color: var(--accentPurple); }
+.action.research  { border-style: dashed; opacity: .8; }
+.action-icon { font-size: 18px; flex-shrink: 0; }
+.action-body { flex: 1; min-width: 0; }
+.action-title { font-size: 14px; font-weight: 600; color: var(--primary); }
+.action-desc { font-size: 13px; color: var(--mutedFg); margin-top: 3px; line-height: 1.5; }
+.action-cmd { font-size: 11px; font-family: monospace; background: var(--surface); padding: 3px 9px; border-radius: 5px; color: var(--accentPurple); margin-top: 6px; display: inline-block; }
+.tag-list { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
+.tag { font-size: 10px; font-weight: 500; padding: 2px 8px; border-radius: 99px; background: var(--surface); color: var(--accentPurple); }
+
+/* Component parity table */
+.parity-row { display: flex; align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--surface); }
+.parity-row:last-child { border-bottom: none; }
+.parity-name { font-weight: 600; font-size: 13px; min-width: 120px; color: var(--primary); }
+.parity-bar-track { flex: 1; height: 6px; background: var(--muted); border-radius: 99px; overflow: hidden; }
+.parity-bar { height: 100%; border-radius: 99px; transition: width 1s ease; }
+.parity-score { font-size: 12px; font-weight: 600; width: 40px; text-align: right; }
+.parity-chips { display: flex; gap: 4px; }
+.chip { font-size: 10px; padding: 1px 6px; border-radius: 99px; background: var(--surface); color: var(--mutedFg); }
+.chip.linked { background: #dcfce7; color: #15803d; }
+.chip.unlinked { background: #fef2f2; color: #b91c1c; }
+
+/* Sync status banner */
+.sync-banner { display: flex; align-items: center; gap: 14px; padding: 14px 18px; border-radius: var(--r-md); margin-bottom: 14px; }
+.sync-banner.ok   { background: rgba(34,197,94,.08); border: 1px solid rgba(34,197,94,.2); }
+.sync-banner.warn { background: rgba(234,179,8,.08); border: 1px solid rgba(234,179,8,.2); }
+.sync-banner.err  { background: rgba(239,68,68,.08); border: 1px solid rgba(239,68,68,.2); }
+.sync-banner-icon { font-size: 20px; flex-shrink: 0; }
+.sync-banner-title { font-size: 13px; font-weight: 600; color: #fff; }
+.sync-banner-detail { font-size: 12px; color: rgba(255,255,255,.6); margin-top: 2px; }
+.sync-banner-action { margin-left: auto; font-size: 12px; font-family: monospace; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15); padding: 4px 12px; border-radius: 8px; color: rgba(255,255,255,.8); text-decoration: none; white-space: nowrap; cursor: pointer; }
+
+/* ── DS token sections ────────────────────────────────────────────────────── */
+.swatch { border-radius: var(--r-md); overflow: hidden; border: 1px solid rgba(52,2,71,.07); }
+.swatch-color { height: 72px; }
+.swatch-info { padding: 10px 12px; background: #fff; }
+.swatch-name { font-size: 12px; font-weight: 600; }
+.swatch-hex  { font-size: 11px; font-family: monospace; color: var(--mutedFg); margin-top: 2px; }
+.swatch-use  { font-size: 11px; color: var(--mutedFg); margin-top: 3px; line-height: 1.35; }
+
+.type-row { display: flex; align-items: baseline; gap: 20px; padding: 14px 0; border-bottom: 1px solid var(--muted); }
+.type-row:last-child { border-bottom: none; }
+.type-meta { width: 136px; flex-shrink: 0; }
+.type-scale { font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--accentPurple); }
+.type-spec  { font-size: 10px; color: var(--mutedFg); font-family: monospace; margin-top: 3px; line-height: 1.5; }
+.type-alias { font-size: 10px; color: var(--accentPurple); font-style: italic; margin-top: 3px; }
+.type-sample { flex: 1; color: var(--primary); }
+
+.radius-box { background: var(--secondary); border: 2px solid var(--accentPurple); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; color: var(--accentPurple); }
+.radius-lbl { font-size: 12px; color: var(--mutedFg); margin-top: 6px; }
+.radius-val { font-size: 11px; color: var(--accentPurple); font-family: monospace; }
+
+.motion-row { display: flex; align-items: center; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--muted); }
+.motion-row:last-child { border-bottom: none; }
+.motion-name  { width: 90px; font-weight: 600; font-size: 14px; }
+.motion-val   { width: 72px; font-size: 13px; font-family: monospace; color: var(--mutedFg); }
+.motion-track { flex: 1; height: 7px; background: var(--muted); border-radius: 99px; overflow: hidden; }
+.motion-fill  { height: 100%; background: var(--accentPurple); border-radius: 99px; transition: none; }
+.motion-note  { font-size: 12px; color: var(--mutedFg); min-width: 180px; }
+
+/* Buttons (web equiv) */
+.btn { display: inline-flex; align-items: center; gap: 8px; font-family:'Inter',sans-serif; font-size: 15px; font-weight: 500; border-radius: var(--r-md); padding: 11px 22px; cursor: pointer; border: 2px solid transparent; transition: all var(--fast); text-decoration: none; }
+.btn-pri  { background: var(--primary);   color: #fff; border-color: var(--primary); }
+.btn-pri:hover  { background: var(--primaryHover); border-color: var(--primaryHover); }
+.btn-sec  { background: var(--secondary); color: var(--accentPurple); border-color: rgba(52,2,71,.1); }
+.btn-sec:hover  { background: var(--accent); }
+.btn-gho  { background: transparent; color: var(--primary); border-color: rgba(52,2,71,.12); }
+.btn-gho:hover  { background: var(--secondary); }
+.btn:disabled { background: var(--muted); color: var(--mutedFg); border-color: var(--muted); cursor: not-allowed; }
+
+/* Typography components */
+.overline    { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--mutedFg); opacity: .75; }
+.overline::before { content: '✦ '; } .overline::after { content: ' ✦'; }
+.field-label { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--mutedFg); }
+.card-title  { font-family:'Playfair Display',serif; font-size: 24px; font-weight: 600; letter-spacing: -.025em; color: var(--primary); }
+.body-text   { font-size: 16px; color: var(--mutedFg); line-height: 1.625; }
+.muted-text  { font-size: 14px; color: var(--mutedFg); }
+.stat-value  { font-size: 18px; font-weight: 600; }
+.divider     { height: 1px; background: var(--muted); }
+
+/* Icon container */
+.icon-cont { width: 64px; height: 64px; background: var(--secondary); border-radius: var(--r-md); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
+/* Zone pills */
+.zone-pill { display: flex; align-items: center; gap: 10px; padding: 9px 13px; border-radius: var(--r-sm); background: rgba(255,255,255,.6); border: 1px solid rgba(52,2,71,.06); }
+.zone-dot  { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.zone-name { font-size: 13px; font-weight: 600; }
+.zone-tag  { font-size: 11px; color: var(--mutedFg); margin-left: auto; font-family: monospace; }
+
+/* Token table */
+.ttbl { width: 100%; border-collapse: collapse; }
+.ttbl th { font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--mutedFg); padding: 7px 10px; text-align: left; border-bottom: 2px solid var(--muted); }
+.ttbl td { font-size: 13px; padding: 8px 10px; border-bottom: 1px solid var(--surface); }
+.ttbl tr:last-child td { border-bottom: none; }
+.ttbl td:first-child { font-weight: 600; font-family: monospace; }
+.ttbl td.mono { font-family: monospace; color: var(--mutedFg); }
+.ttbl tr:hover td { background: var(--surface); }
+
+/* Code block */
+.code { background: #150820; color: #ddd4f4; border-radius: var(--r-md); padding: 18px 20px; font-family: 'Courier New',monospace; font-size: 12.5px; line-height: 1.65; overflow-x: auto; border: 1px solid rgba(212,207,230,.08); }
+.kw  { color: #c084fc; } .str { color: #86efac; } .num { color: #fb923c; } .com { color: #6b7280; font-style: italic; } .id  { color: #93c5fd; }
+
+/* Anti / Do patterns */
+.anti { padding: 9px 13px; border-radius: var(--r-sm); border-left: 3px solid #ef4444; background: #fef2f2; font-size: 12px; color: #7f1d1d; }
+.good { padding: 9px 13px; border-radius: var(--r-sm); border-left: 3px solid #22c55e; background: #f0fdf4; font-size: 12px; color: #14532d; }
+.anti strong,.good strong { display: block; font-size: 10px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; margin-bottom: 2px; }
+
+/* Step list */
+.step { display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--muted); }
+.step:last-child { border-bottom: none; }
+.step-n { width: 28px; height: 28px; border-radius: 50%; background: var(--primary); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+.step-t { font-size: 14px; font-weight: 600; margin-bottom: 3px; }
+.step-d { font-size: 13px; color: var(--mutedFg); line-height: 1.6; }
+.step-cmd { font-size: 11px; font-family: monospace; background: var(--surface); padding: 4px 10px; border-radius: 6px; color: var(--accentPurple); margin-top: 6px; display: inline-block; }
+
+/* Automation explainer */
+.auto-tier { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--muted); align-items: flex-start; }
+.auto-tier:last-child { border-bottom: none; }
+.auto-badge { font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 99px; flex-shrink: 0; margin-top: 1px; }
+.ab-live   { background: #dcfce7; color: #15803d; }
+.ab-sched  { background: #fef3c7; color: #b45309; }
+.ab-manual { background: #f3e8ff; color: #7e22ce; }
+.ab-future { background: #f1f5f9; color: #64748b; }
+.auto-title { font-size: 13px; font-weight: 600; margin-bottom: 3px; color: var(--primary); }
+.auto-desc  { font-size: 12px; color: var(--mutedFg); line-height: 1.5; }
+
+/* Loader */
+.loading { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,.5); font-size: 13px; padding: 20px 0; }
+.spinner { width: 16px; height: 16px; border: 2px solid rgba(255,255,255,.2); border-top-color: #fff; border-radius: 50%; animation: spin .8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Util */
+.sb4  { margin-bottom: 16px; }
+.sec  { scroll-margin-top: 68px; }
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-thumb { background: rgba(52,2,71,.25); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<!-- ── Nav ────────────────────────────────────────────────────────────────── -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">InterFast <em>DS</em></a>
+    <a href="#dashboard"  class="nav-link">Dashboard</a>
+    <a href="#colors"     class="nav-link">Colors</a>
+    <a href="#typography" class="nav-link">Typography</a>
+    <a href="#radius"     class="nav-link">Radius</a>
+    <a href="#motion"     class="nav-link">Motion</a>
+    <a href="#components" class="nav-link">Components</a>
+    <a href="#patterns"   class="nav-link">Patterns</a>
+    <a href="#usage"      class="nav-link">Usage</a>
+    <a href="#agents"     class="nav-link">Agents & Tools</a>
+    <a href="#automation" class="nav-link">Automation</a>
+    <div class="nav-spacer"></div>
+    <div class="live-dot" id="liveDot" title="Live connection"></div>
+    <div class="nav-version" id="navVersion">v2.4.0</div>
+  </div>
+</nav>
+
+<!-- ── Page ───────────────────────────────────────────────────────────────── -->
+<div class="page gap4">
+
+  <!-- ── Hero ── -->
+  <div style="text-align:center;padding:40px 0 0;">
+    <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">✦ Simple Fasting Design System ✦</div>
+    <h1 style="font-family:'Playfair Display',serif;font-size:52px;font-weight:600;color:#fff;line-height:1.1;letter-spacing:-.025em;">InterFast Design System</h1>
+    <p style="font-size:18px;color:rgba(255,255,255,.65);margin-top:12px;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.6;">Three-tier token model. Bi-directional Figma sync. 16-scale typography. AI-powered component composition.</p>
+    <div style="display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:20px;">
+      <span style="font-size:12px;padding:4px 13px;border-radius:99px;background:rgba(212,207,230,.15);border:1px solid rgba(212,207,230,.3);color:#fff;">v2.4.0</span>
+      <span style="font-size:12px;padding:4px 13px;border-radius:99px;background:rgba(212,207,230,.15);border:1px solid rgba(212,207,230,.3);color:rgba(255,255,255,.8);">Primitives → Semantics → Components</span>
+      <span style="font-size:12px;padding:4px 13px;border-radius:99px;background:rgba(212,207,230,.15);border:1px solid rgba(212,207,230,.3);color:rgba(255,255,255,.8);">16 Typography Scales</span>
+      <span style="font-size:12px;padding:4px 13px;border-radius:99px;background:rgba(212,207,230,.15);border:1px solid rgba(212,207,230,.3);color:rgba(255,255,255,.8);">Figma Synced</span>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       DASHBOARD
+  ═══════════════════════════════════════════════════════════════════════ -->
+  <section id="dashboard" class="sec">
+    <div class="sh">
+      <div class="sh-over">Live Health</div>
+      <h2 class="sh-title">Dashboard</h2>
+      <div class="sh-desc" id="lastSyncText">Loading design system stats…</div>
+    </div>
+
+    <!-- Sync status banner -->
+    <div id="syncBanner" class="sync-banner ok sb4">
+      <div class="sync-banner-icon">⟳</div>
+      <div>
+        <div class="sync-banner-title" id="syncBannerTitle">Checking sync status…</div>
+        <div class="sync-banner-detail" id="syncBannerDetail"></div>
+      </div>
+      <div class="sync-banner-action" id="syncBannerAction"></div>
+    </div>
+
+    <!-- Stat cards -->
+    <div class="db-grid sb4">
+      <div class="db-card">
+        <div class="db-label">Implementation Score</div>
+        <div id="implScore" class="db-value">—</div>
+        <div class="db-sub">Figma coverage · parity · metadata</div>
+        <div class="db-bar-track"><div class="db-bar purple" id="implBar" style="width:0%"></div></div>
+      </div>
+      <div class="db-card">
+        <div class="db-label">Figma Coverage</div>
+        <div id="figmaPct" class="db-value">—</div>
+        <div class="db-sub" id="figmaWired">tokens wired to Figma</div>
+        <div class="db-bar-track"><div class="db-bar green" id="figmaBar" style="width:0%"></div></div>
+      </div>
+      <div class="db-card">
+        <div class="db-label">Token Inventory</div>
+        <div id="tokenTotal" class="db-value">—</div>
+        <div class="db-sub" id="tokenBreakdown">across all tiers</div>
+      </div>
+      <div class="db-card">
+        <div class="db-label">Hours Since Sync</div>
+        <div id="syncHours" class="db-value">—</div>
+        <div class="db-sub" id="syncDirText">last direction</div>
+        <div class="db-bar-track"><div class="db-bar" id="syncAgeBar" style="width:0%"></div></div>
+      </div>
+    </div>
+
+    <!-- Two-column: notices + action items -->
+    <div class="g2 sb4" style="gap:16px;">
+      <!-- Drift Notices -->
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+          <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:600;">Drift Notices</div>
+          <span id="noticeBadge" style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:99px;background:var(--surface);color:var(--mutedFg);">0</span>
+        </div>
+        <div id="noticeList">
+          <div class="loading"><div class="spinner"></div>Loading…</div>
+        </div>
+      </div>
+
+      <!-- Action Items -->
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+          <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:600;">Action Items</div>
+          <span id="actionBadge" style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:99px;background:var(--surface);color:var(--mutedFg);">0</span>
+        </div>
+        <div id="actionList">
+          <div class="loading"><div class="spinner"></div>Loading…</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Component parity + Token breakdown -->
+    <div class="g2 sb4" style="gap:16px;">
+      <!-- Component parity -->
+      <div class="card">
+        <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:600;margin-bottom:14px;">Component Parity</div>
+        <div id="parityList">
+          <div class="loading"><div class="spinner"></div>Loading…</div>
+        </div>
+      </div>
+
+      <!-- Token breakdown -->
+      <div class="card">
+        <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:600;margin-bottom:14px;">Token Breakdown</div>
+        <div id="tokenBreakdownList">
+          <div class="loading"><div class="spinner"></div>Loading…</div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       COLORS
+  ═══════════════════════════════════════════════════════════════════════ -->
+  <section id="colors" class="sec">
+    <div class="sh"><div class="sh-over">Design Tokens</div><h2 class="sh-title">Colors</h2><p class="sh-desc">Three tiers: purple primitives → semantic purpose tokens → zone data colors.</p></div>
+
+    <div class="card sb4">
+      <div class="card-title" style="margin-bottom:4px;">Semantic Tokens</div>
+      <div class="body-text" style="margin-bottom:18px;">Use <code style="font-size:11px;background:var(--surface);padding:1px 5px;border-radius:4px;">colors.*</code> in StyleSheet. Use <code style="font-size:11px;background:var(--surface);padding:1px 5px;border-radius:4px;">bg-*</code> / <code style="font-size:11px;background:var(--surface);padding:1px 5px;border-radius:4px;">text-*</code> in NativeWind.</div>
+      <div class="g4">
+        <div class="swatch"><div class="swatch-color" style="background:#340247;"></div><div class="swatch-info"><div class="swatch-name">primary</div><div class="swatch-hex">#340247</div><div class="swatch-use">Main text, icons, borders</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#4a0360;"></div><div class="swatch-info"><div class="swatch-name">primaryHover</div><div class="swatch-hex">#4a0360</div><div class="swatch-use">Pressed state</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#f4ecff;border-bottom:1px solid #e0d5f5;"></div><div class="swatch-info"><div class="swatch-name">secondary</div><div class="swatch-hex">#f4ecff</div><div class="swatch-use">Icon containers, secondary btn</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#e6e3ed;"></div><div class="swatch-info"><div class="swatch-name">muted</div><div class="swatch-hex">#e6e3ed</div><div class="swatch-use">Disabled bg</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#6b6b7e;"></div><div class="swatch-info"><div class="swatch-name">mutedFg</div><div class="swatch-hex">#6b6b7e</div><div class="swatch-use">Muted text, labels</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#d4cfe6;"></div><div class="swatch-info"><div class="swatch-name">accent</div><div class="swatch-hex">#d4cfe6</div><div class="swatch-use">Subtle accent surfaces</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#6e5fa7;"></div><div class="swatch-info"><div class="swatch-name">accentPurple</div><div class="swatch-hex">#6e5fa7</div><div class="swatch-use">Secondary btn, icon tint</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#a89fc9;"></div><div class="swatch-info"><div class="swatch-name">accentLight</div><div class="swatch-hex">#a89fc9</div><div class="swatch-use">Inactive tab icons</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#eeebf4;"></div><div class="swatch-info"><div class="swatch-name">surface</div><div class="swatch-hex">#eeebf4</div><div class="swatch-use">Subtle surface bg</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#fff9f0;border-bottom:1px solid #f0e0c8;"></div><div class="swatch-info"><div class="swatch-name">warn</div><div class="swatch-hex">#fff9f0</div><div class="swatch-use">Warning card bg</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#d97706;"></div><div class="swatch-info"><div class="swatch-name">warnIcon</div><div class="swatch-hex">#d97706</div><div class="swatch-use">Warning icon</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#fff;border-bottom:1px solid #e5e7eb;"></div><div class="swatch-info"><div class="swatch-name">white</div><div class="swatch-hex">#ffffff</div><div class="swatch-use">Cards, primary btn text</div></div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title" style="margin-bottom:4px;">Fasting Zone Colors</div>
+      <div class="body-text" style="margin-bottom:18px;">Semantic progress bar colors — one per fasting milestone.</div>
+      <div class="g2">
+        <div class="zone-pill"><div class="zone-dot" style="background:#d97706;"></div><span class="zone-name">Anabolic</span><span class="zone-tag">0–4h · zoneAnabolic</span></div>
+        <div class="zone-pill"><div class="zone-dot" style="background:#65a30d;"></div><span class="zone-name">Catabolic</span><span class="zone-tag">4–12h · zoneCatabolic</span></div>
+        <div class="zone-pill"><div class="zone-dot" style="background:#059669;"></div><span class="zone-name">Fat Burning</span><span class="zone-tag">12–16h · zoneFatBurning</span></div>
+        <div class="zone-pill"><div class="zone-dot" style="background:#0f766e;"></div><span class="zone-name">Autophagy</span><span class="zone-tag">16–18h · zoneAutophagy</span></div>
+        <div class="zone-pill"><div class="zone-dot" style="background:#57534e;"></div><span class="zone-name">Deep Autophagy</span><span class="zone-tag">18–24h · zoneDeepAutophagy</span></div>
+        <div class="zone-pill"><div class="zone-dot" style="background:#b45309;"></div><span class="zone-name">Immune Reset</span><span class="zone-tag">24–48h · zoneImmuneReset</span></div>
+        <div class="zone-pill"><div class="zone-dot" style="background:#166534;"></div><span class="zone-name">Stem Cell</span><span class="zone-tag">48–72h · zoneStemCell</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       TYPOGRAPHY
+  ═══════════════════════════════════════════════════════════════════════ -->
+  <section id="typography" class="sec">
+    <div class="sh"><div class="sh-over">Design Tokens</div><h2 class="sh-title">Typography</h2><p class="sh-desc">16-scale system across two typefaces. Display → H1–H5 → Body → Labels → Stats.</p></div>
+
+    <div class="card sb4">
+      <div class="card-title" style="margin-bottom:18px;">Type Scale Specimens</div>
+      <div class="type-row"><div class="type-meta"><div class="type-scale">Display</div><div class="type-spec">40px · SemiBold · Playfair<br>-0.025em / 120%</div></div><div class="type-sample" style="font-family:'Playfair Display',serif;font-size:40px;font-weight:600;letter-spacing:-.025em;line-height:1.2;">Fasting Journey</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-scale">H1</div><div class="type-spec">32px · SemiBold · Playfair<br>-0.025em / 137.5%</div></div><div class="type-sample" style="font-family:'Playfair Display',serif;font-size:32px;font-weight:600;letter-spacing:-.025em;line-height:1.375;">Your Fasting Progress</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-scale">H2</div><div class="type-spec">28px · SemiBold · Playfair<br>-0.025em / 137.5%</div></div><div class="type-sample" style="font-family:'Playfair Display',serif;font-size:28px;font-weight:600;letter-spacing:-.025em;line-height:1.375;">Current Window</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-scale">H3</div><div class="type-spec">24px · SemiBold · Playfair<br>-0.025em / 150%</div><div class="type-alias">→ CardTitle</div></div><div class="type-sample" style="font-family:'Playfair Display',serif;font-size:24px;font-weight:600;letter-spacing:-.025em;line-height:1.5;">Track Your Journey</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-scale">H4</div><div class="type-spec">20px · SemiBold · Inter<br>0em / 150%</div></div><div class="type-sample" style="font-size:20px;font-weight:600;line-height:1.5;">Fasting Milestones</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-scale">H5</div><div class="type-spec">18px · SemiBold · Inter<br>0em / 150%</div></div><div class="type-sample" style="font-size:18px;font-weight:600;line-height:1.5;">Autophagy Zone Active</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-scale">Body LG</div><div class="type-spec">18px · Regular · Inter<br>0em / 162.5%</div></div><div class="type-sample" style="font-size:18px;line-height:1.625;color:var(--mutedFg);">Fasting activates cellular repair and metabolic optimization.</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-scale">Body</div><div class="type-spec">16px · Regular · Inter<br>0em / 162.5%</div><div class="type-alias">→ BodyText</div></div><div class="type-sample" style="font-size:16px;line-height:1.625;color:var(--mutedFg);">During fat-burning, your body shifts from glucose to fat as its primary fuel source. This typically begins around 12–16 hours of fasting.</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-scale">Body SM</div><div class="type-spec">14px · Regular · Inter<br>0em / 150%</div><div class="type-alias">→ MutedText</div></div><div class="type-sample" style="font-size:14px;line-height:1.5;color:var(--mutedFg);">Started 14 hours ago · Updated just now</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-scale">Overline</div><div class="type-spec">12px · Regular · Inter<br>0.1em · UPPER · opacity-60</div><div class="type-alias">→ Overline</div></div><div class="type-sample" style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;opacity:.6;">✦ Track Your Journey ✦</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-scale">Field Label</div><div class="type-spec">12px · Regular · Inter<br>0.1em · UPPER</div><div class="type-alias">→ FieldLabel</div></div><div class="type-sample" style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mutedFg);">Fasting Since</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-scale">Label</div><div class="type-spec">14px · Medium · Inter<br>0em / 150%</div></div><div class="type-sample" style="font-size:14px;font-weight:500;">Home · History · Learn</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-scale">Caption</div><div class="type-spec">10px · Regular · Inter<br>0.025em / 150%</div></div><div class="type-sample" style="font-size:10px;letter-spacing:.025em;color:var(--mutedFg);">* Informational only. Not medical advice.</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-scale">Stat</div><div class="type-spec">18px · SemiBold · Inter<br>0em</div><div class="type-alias">→ StatValue</div></div><div class="type-sample" style="font-size:18px;font-weight:600;">14h 32m</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-scale">Stat LG</div><div class="type-spec">24px · SemiBold · Inter<br>-0.025em</div></div><div class="type-sample" style="font-size:24px;font-weight:600;letter-spacing:-.025em;">48h 00m</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-scale">Stat Hero</div><div class="type-spec">40px · Bold · Inter<br>-0.05em / 100%</div></div><div class="type-sample" style="font-size:40px;font-weight:700;letter-spacing:-.05em;line-height:1;">72:00:00</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title" style="margin-bottom:16px;">Primitive Sub-tokens</div>
+      <div class="g2" style="gap:20px;">
+        <div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accentPurple);margin-bottom:8px;">Font Size (typography.size.*)</div>
+          <table class="ttbl"><thead><tr><th>Name</th><th>px</th><th>Tailwind</th></tr></thead><tbody>
+            <tr><td>xs</td><td class="mono">10</td><td class="mono">text-[10px]</td></tr>
+            <tr><td>sm</td><td class="mono">12</td><td class="mono">text-xs</td></tr>
+            <tr><td>base</td><td class="mono">14</td><td class="mono">text-sm</td></tr>
+            <tr><td>md</td><td class="mono">16</td><td class="mono">text-base</td></tr>
+            <tr><td>lg</td><td class="mono">18</td><td class="mono">text-lg</td></tr>
+            <tr><td>xl</td><td class="mono">20</td><td class="mono">text-xl</td></tr>
+            <tr><td>2xl</td><td class="mono">24</td><td class="mono">text-2xl</td></tr>
+            <tr><td>3xl</td><td class="mono">28</td><td class="mono">text-[28px]</td></tr>
+            <tr><td>4xl</td><td class="mono">32</td><td class="mono">text-[32px]</td></tr>
+            <tr><td>5xl</td><td class="mono">40</td><td class="mono">text-[40px]</td></tr>
+          </tbody></table>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accentPurple);margin-bottom:8px;">Letter Spacing</div>
+          <table class="ttbl"><thead><tr><th>Name</th><th>em</th><th>Figma %</th></tr></thead><tbody>
+            <tr><td>tighter</td><td class="mono">-0.05</td><td class="mono">-5%</td></tr>
+            <tr><td>tight</td><td class="mono">-0.025</td><td class="mono">-2.5%</td></tr>
+            <tr><td>normal</td><td class="mono">0</td><td class="mono">0%</td></tr>
+            <tr><td>wide</td><td class="mono">0.025</td><td class="mono">2.5%</td></tr>
+            <tr><td>wider</td><td class="mono">0.05</td><td class="mono">5%</td></tr>
+            <tr><td>widest</td><td class="mono">0.1</td><td class="mono">10%</td></tr>
+          </tbody></table>
+          <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accentPurple);margin:16px 0 8px;">Line Height</div>
+          <table class="ttbl"><thead><tr><th>Name</th><th>em</th><th>Figma %</th></tr></thead><tbody>
+            <tr><td>none</td><td class="mono">1.0</td><td class="mono">100%</td></tr>
+            <tr><td>tight</td><td class="mono">1.2</td><td class="mono">120%</td></tr>
+            <tr><td>snug</td><td class="mono">1.375</td><td class="mono">137.5%</td></tr>
+            <tr><td>normal</td><td class="mono">1.5</td><td class="mono">150%</td></tr>
+            <tr><td>relaxed</td><td class="mono">1.625</td><td class="mono">162.5%</td></tr>
+            <tr><td>loose</td><td class="mono">2.0</td><td class="mono">200%</td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       RADIUS + MOTION
+  ═══════════════════════════════════════════════════════════════════════ -->
+  <section id="radius" class="sec">
+    <div class="sh"><div class="sh-over">Design Tokens</div><h2 class="sh-title">Radius & Motion</h2></div>
+    <div class="g2" style="gap:16px;">
+      <div class="card">
+        <div class="card-title" style="margin-bottom:16px;">Border Radius</div>
+        <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;">
+          <div style="text-align:center;"><div class="radius-box" style="width:64px;height:64px;border-radius:12px;">sm</div><div class="radius-lbl">radius.sm</div><div class="radius-val">12px · rounded-xl</div></div>
+          <div style="text-align:center;"><div class="radius-box" style="width:80px;height:80px;border-radius:16px;">md</div><div class="radius-lbl">radius.md</div><div class="radius-val">16px · rounded-2xl</div></div>
+          <div style="text-align:center;"><div class="radius-box" style="width:96px;height:96px;border-radius:24px;">lg</div><div class="radius-lbl">radius.lg</div><div class="radius-val">24px · rounded-3xl</div></div>
+          <div style="text-align:center;"><div class="radius-box" style="width:72px;height:34px;border-radius:9999px;">full</div><div class="radius-lbl">radius.full</div><div class="radius-val">9999px · pill</div></div>
+        </div>
+      </div>
+      <div class="card" id="motionSection">
+        <div class="card-title" style="margin-bottom:4px;">Motion Durations</div>
+        <div class="body-text" style="margin-bottom:16px;">Use in <code style="font-size:11px;background:var(--surface);padding:1px 5px;border-radius:4px;">withTiming({ duration: motion.duration.base })</code></div>
+        <div class="motion-row"><div class="motion-name">fast</div><div class="motion-val">200ms</div><div class="motion-track"><div class="motion-fill" id="mf0" style="width:0%"></div></div><div class="motion-note">Micro interactions</div></div>
+        <div class="motion-row"><div class="motion-name">base</div><div class="motion-val">300ms</div><div class="motion-track"><div class="motion-fill" id="mf1" style="width:0%"></div></div><div class="motion-note">Standard transitions</div></div>
+        <div class="motion-row"><div class="motion-name">slow</div><div class="motion-val">500ms</div><div class="motion-track"><div class="motion-fill" id="mf2" style="width:0%"></div></div><div class="motion-note">Emphasis animations</div></div>
+        <div class="motion-row"><div class="motion-name">progress</div><div class="motion-val">1000ms</div><div class="motion-track"><div class="motion-fill" id="mf3" style="width:0%"></div></div><div class="motion-note">Progress bar fill</div></div>
+        <div class="motion-row"><div class="motion-name">ambient</div><div class="motion-val">15000ms</div><div class="motion-track"><div class="motion-fill" id="mf4" style="width:0%"></div></div><div class="motion-note">Breathing loops</div></div>
+        <button class="btn btn-sec" style="margin-top:14px;font-size:13px;padding:8px 16px;" onclick="playMotion()">▶ Play Demo</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       COMPONENTS
+  ═══════════════════════════════════════════════════════════════════════ -->
+  <section id="components" class="sec">
+    <div class="sh"><div class="sh-over">UI Primitives</div><h2 class="sh-title">Components</h2><p class="sh-desc">All live in <code style="color:var(--accent);font-size:13px;">src/ui/</code>. Import from <code style="color:var(--accent);font-size:13px;">../ui</code>.</p></div>
+
+    <!-- Button -->
+    <div class="card sb4">
+      <div class="overline" style="margin-bottom:10px;">Button</div>
+      <div class="card-title" style="margin-bottom:6px;">Button</div>
+      <div class="body-text" style="margin-bottom:18px;">Three variants for three levels of emphasis. One primary per screen.</div>
+      <div class="row" style="margin-bottom:18px;">
+        <button class="btn btn-pri">Start Fasting</button>
+        <button class="btn btn-sec">Copy Address</button>
+        <button class="btn btn-gho">Disconnect</button>
+        <button class="btn btn-pri" disabled>Disabled</button>
+      </div>
+      <div class="code"><span class="kw">import</span> { <span class="id">Button</span> } <span class="kw">from</span> <span class="str">"../ui"</span>;
+&lt;<span class="id">Button</span> variant=<span class="str">"primary"</span>   label=<span class="str">"Start Fasting"</span> onPress={handleStart} /&gt;
+&lt;<span class="id">Button</span> variant=<span class="str">"secondary"</span> label=<span class="str">"Copy Address"</span>  onPress={handleCopy} /&gt;
+&lt;<span class="id">Button</span> variant=<span class="str">"ghost"</span>     label=<span class="str">"Disconnect"</span>    onPress={handleDisc} /&gt;
+&lt;<span class="id">Button</span> variant=<span class="str">"primary"</span>   label=<span class="str">"Loading..."</span>    loading /&gt;</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;">
+        <div class="anti"><strong>Never</strong>Stack two primary buttons</div>
+        <div class="anti"><strong>Never</strong>Ghost for the main CTA</div>
+        <div class="good"><strong>Correct</strong>One primary + one secondary or ghost</div>
+      </div>
+    </div>
+
+    <!-- Card + Typography -->
+    <div class="g2 sb4" style="gap:16px;">
+      <div class="card">
+        <div class="overline" style="margin-bottom:10px;">Card</div>
+        <div class="card-title" style="margin-bottom:6px;">Card</div>
+        <div class="body-text" style="margin-bottom:16px;">Always use Card for grouping content. Never bare View.</div>
+        <div class="card sm" style="margin-bottom:10px;">
+          <div class="card-title" style="font-size:18px;">Default Card</div>
+          <div class="body-text" style="margin-top:4px;font-size:14px;">rounded-3xl p-6 bg-white/95</div>
+        </div>
+        <div class="code"><span class="kw">import</span> { <span class="id">Card</span> } <span class="kw">from</span> <span class="str">"../ui"</span>;
+&lt;<span class="id">Card</span> className=<span class="str">"gap-6"</span>&gt; ... &lt;/<span class="id">Card</span>&gt;
+&lt;<span class="id">Card</span> variant=<span class="str">"sm"</span> className=<span class="str">"gap-4"</span>&gt; ... &lt;/<span class="id">Card</span>&gt;</div>
+      </div>
+      <div class="card">
+        <div class="overline" style="margin-bottom:10px;">Typography</div>
+        <div class="card-title" style="margin-bottom:12px;">Typography</div>
+        <div class="col" style="gap:10px;">
+          <div><div class="muted-text" style="font-size:11px;margin-bottom:3px;">Overline</div><div class="overline">✦ Track Your Journey ✦</div></div>
+          <div><div class="muted-text" style="font-size:11px;margin-bottom:3px;">FieldLabel</div><div class="field-label">Fasting Since</div></div>
+          <div><div class="muted-text" style="font-size:11px;margin-bottom:3px;">CardTitle → h3</div><div class="card-title">Track Your Journey</div></div>
+          <div><div class="muted-text" style="font-size:11px;margin-bottom:3px;">BodyText → body</div><div class="body-text" style="font-size:14px;">Descriptive copy with relaxed leading.</div></div>
+          <div><div class="muted-text" style="font-size:11px;margin-bottom:3px;">MutedText → bodySm</div><div class="muted-text">14h ago · updated now</div></div>
+          <div><div class="muted-text" style="font-size:11px;margin-bottom:3px;">StatValue → stat</div><div class="stat-value">14h 32m</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       PATTERNS
+  ═══════════════════════════════════════════════════════════════════════ -->
+  <section id="patterns" class="sec">
+    <div class="sh"><div class="sh-over">Composition</div><h2 class="sh-title">Design Patterns</h2></div>
+    <div class="g2" style="gap:16px;">
+      <div class="card">
+        <div class="overline" style="margin-bottom:10px;">Pattern</div>
+        <div class="card-title" style="margin-bottom:14px;">Icon Container</div>
+        <div class="icon-cont" style="margin-bottom:14px;">
+          <svg width="32" height="32" fill="none" stroke="#340247" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="code" style="font-size:11px;"><span class="kw">&lt;</span><span class="id">View</span> className=<span class="str">"w-16 h-16 bg-secondary rounded-2xl items-center justify-center"</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;</span><span class="id">Clock</span> size={<span class="num">32</span>} color={colors.primary} <span class="kw">/&gt;</span>
+<span class="kw">&lt;/</span><span class="id">View</span><span class="kw">&gt;</span></div>
+      </div>
+      <div class="card">
+        <div class="overline" style="margin-bottom:10px;">Pattern</div>
+        <div class="card-title" style="margin-bottom:14px;">Card Anatomy</div>
+        <div class="card sm" style="display:flex;flex-direction:column;gap:14px;margin-bottom:14px;">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;">
+            <div class="overline">✦ Track Your Journey ✦</div>
+            <div class="card-title">Start Fasting</div>
+            <div class="body-text" style="font-size:14px;">Begin your fasting window to unlock cellular repair.</div>
+          </div>
+          <div class="divider"></div>
+          <button class="btn btn-pri" style="width:100%;">Start Fast</button>
+        </div>
+        <div class="code" style="font-size:11px;"><span class="kw">&lt;</span><span class="id">Card</span> className=<span class="str">"gap-6"</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;</span><span class="id">View</span> className=<span class="str">"items-center gap-3"</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;</span><span class="id">Overline</span><span class="kw">&gt;</span>✦ Section ✦<span class="kw">&lt;/</span><span class="id">Overline</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;</span><span class="id">CardTitle</span><span class="kw">&gt;</span>Title<span class="kw">&lt;/</span><span class="id">CardTitle</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;</span><span class="id">BodyText</span><span class="kw">&gt;</span>Description<span class="kw">&lt;/</span><span class="id">BodyText</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;/</span><span class="id">View</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;</span><span class="id">Divider</span> <span class="kw">/&gt;</span>
+  <span class="kw">&lt;</span><span class="id">Button</span> variant=<span class="str">"primary"</span> label=<span class="str">"Action"</span> <span class="kw">/&gt;</span>
+<span class="kw">&lt;/</span><span class="id">Card</span><span class="kw">&gt;</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       USAGE
+  ═══════════════════════════════════════════════════════════════════════ -->
+  <section id="usage" class="sec">
+    <div class="sh"><div class="sh-over">Guide</div><h2 class="sh-title">How to Use It</h2></div>
+    <div class="card sb4">
+      <div class="card-title" style="margin-bottom:16px;">Building a Screen</div>
+      <div class="step"><div class="step-n">1</div><div><div class="step-t">Import from src/ui — never from primitives</div><div class="step-d">All components, tokens, and scales export from the design system index.</div><div class="step-cmd">import { Card, Button, CardTitle, BodyText, colors, typography } from "../ui";</div></div></div>
+      <div class="step"><div class="step-n">2</div><div><div class="step-t">Read the metadata files before creating anything new</div><div class="step-d"><code>src/ui/design-system.metadata.ts</code> documents selectionCriteria and antiPatterns for every component.</div></div></div>
+      <div class="step"><div class="step-n">3</div><div><div class="step-t">NativeWind className for layout · StyleSheet for icon colors</div><div class="step-cmd">className="gap-4 items-center" · color={`${colors.primary}`}</div></div></div>
+      <div class="step"><div class="step-n">4</div><div><div class="step-t">Use typography.scale.* for text outside the standard component set</div><div class="step-cmd">const styles = StyleSheet.create({"{"}  timer: {"{"}  ...typography.scale.statHero  {"}"} {"}"});</div></div></div>
+      <div class="step"><div class="step-n">5</div><div><div class="step-t">Run the audit before committing</div><div class="step-d">The ESLint no-hardcoded-hex rule catches violations. The pre-commit hook runs it automatically.</div><div class="step-cmd">npm run audit:tokens</div></div></div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="margin-bottom:14px;">Anti-patterns</div>
+      <div class="col">
+        <div class="anti"><strong>Never</strong>Hardcode hex — use colors.* from theme.ts</div>
+        <div class="anti"><strong>Never</strong>Bare Pressable/TouchableOpacity — use Button</div>
+        <div class="anti"><strong>Never</strong>Bare Text — use a typography primitive</div>
+        <div class="anti"><strong>Never</strong>Emoji as icons — use Lucide with colors.*</div>
+        <div class="anti"><strong>Never</strong>Bare View as card — use Card</div>
+        <div class="anti"><strong>Never</strong>Two primary buttons on one screen</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       AGENTS & TOOLS
+  ═══════════════════════════════════════════════════════════════════════ -->
+  <section id="agents" class="sec">
+    <div class="sh"><div class="sh-over">AI Infrastructure</div><h2 class="sh-title">Agents & Tools</h2><p class="sh-desc">Built-in agents, MCP tools, and Python scripts that manage the design system lifecycle.</p></div>
+    <div class="g2 sb4" style="gap:12px;">
+      <div class="card glass"><div style="font-size:24px;margin-bottom:10px;">🏗️</div><div style="font-size:15px;font-weight:600;color:#fff;margin-bottom:5px;">Design System Architect</div><div style="font-size:13px;color:rgba(255,255,255,.6);line-height:1.6;">Full lifecycle management — token extraction, Figma sync, component scaffolding, parity checking, metadata generation.</div><div style="margin-top:10px;font-size:11px;font-family:monospace;background:rgba(255,255,255,.08);padding:4px 10px;border-radius:6px;color:var(--accent);display:inline-block;">/design-system-architect</div></div>
+      <div class="card glass"><div style="font-size:24px;margin-bottom:10px;">🤖</div><div style="font-size:15px;font-weight:600;color:#fff;margin-bottom:5px;">AI DS Composer (Pattern)</div><div style="font-size:13px;color:rgba(255,255,255,.6);line-height:1.6;">Claude reads *.metadata.ts files before composing UI — intelligent component selection via selectionCriteria and antiPatterns instead of generating new code.</div><div style="margin-top:10px;" id="agentTags"><span style="font-size:11px;padding:2px 8px;border-radius:99px;background:rgba(212,207,230,.12);color:var(--accent);">selectionCriteria</span> <span style="font-size:11px;padding:2px 8px;border-radius:99px;background:rgba(212,207,230,.12);color:var(--accent);">aiHints</span></div></div>
+      <div class="card glass"><div style="font-size:24px;margin-bottom:10px;">🔍</div><div style="font-size:15px;font-weight:600;color:#fff;margin-bottom:5px;">Codebase Indexer</div><div style="font-size:13px;color:rgba(255,255,255,.6);line-height:1.6;">Maps component relationships and dependency graphs. TOON format for 30–60% token savings in AI context.</div><div style="margin-top:10px;font-size:11px;font-family:monospace;background:rgba(255,255,255,.08);padding:4px 10px;border-radius:6px;color:var(--accent);display:inline-block;">/codebase-index</div></div>
+      <div class="card glass"><div style="font-size:24px;margin-bottom:10px;">🔧</div><div style="font-size:15px;font-weight:600;color:#fff;margin-bottom:5px;">Troubleshooting Framework</div><div style="font-size:13px;color:rgba(255,255,255,.6);line-height:1.6;">Systematic diagnosis for build failures, dependency conflicts. Decision trees for fix-in-place vs start-fresh.</div><div style="margin-top:10px;font-size:11px;font-family:monospace;background:rgba(255,255,255,.08);padding:4px 10px;border-radius:6px;color:var(--accent);display:inline-block;">/troubleshooting-framework</div></div>
+    </div>
+    <div class="card sb4">
+      <div class="card-title" style="margin-bottom:14px;">figma-console-mcp Tools</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        <span class="tag">figma_setup_design_tokens</span><span class="tag">figma_batch_create_variables</span><span class="tag">figma_batch_update_variables</span><span class="tag">figma_execute</span><span class="tag">figma_get_design_system_kit</span><span class="tag">figma_get_variables</span><span class="tag">figma_get_styles</span><span class="tag">figma_check_design_parity</span><span class="tag">figma_generate_component_doc</span><span class="tag">figma_audit_design_system</span><span class="tag">figma_take_screenshot</span><span class="tag">figma_set_description</span><span class="tag">figma_arrange_component_set</span><span class="tag">figma_create_variable_collection</span><span class="tag">figma_get_component</span><span class="tag">figma_browse_tokens</span><span class="tag">figma_navigate</span><span class="tag">figma_post_comment</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="margin-bottom:14px;">/design-system-architect Commands</div>
+      <div style="display:flex;flex-direction:column;">
+        <div style="display:flex;gap:16px;padding:9px 0;border-bottom:1px solid var(--surface);align-items:baseline;"><div style="font-family:monospace;font-size:12px;font-weight:600;color:var(--accentPurple);min-width:280px;">/design-system-architect setup</div><div style="font-size:13px;color:var(--mutedFg);">Configure figma-console-mcp MCP server</div></div>
+        <div style="display:flex;gap:16px;padding:9px 0;border-bottom:1px solid var(--surface);align-items:baseline;"><div style="font-family:monospace;font-size:12px;font-weight:600;color:var(--accentPurple);min-width:280px;">/design-system-architect generate</div><div style="font-size:13px;color:var(--mutedFg);">First-time generation — tokens + Figma frames + metadata</div></div>
+        <div style="display:flex;gap:16px;padding:9px 0;border-bottom:1px solid var(--surface);align-items:baseline;"><div style="font-family:monospace;font-size:12px;font-weight:600;color:var(--accentPurple);min-width:280px;">/design-system-architect push</div><div style="font-size:13px;color:var(--mutedFg);">Push code changes → Figma (re-extract → batch-update variables)</div></div>
+        <div style="display:flex;gap:16px;padding:9px 0;border-bottom:1px solid var(--surface);align-items:baseline;"><div style="font-family:monospace;font-size:12px;font-weight:600;color:var(--accentPurple);min-width:280px;">/design-system-architect pull</div><div style="font-size:13px;color:var(--mutedFg);">Pull Figma changes → code (get-kit → diff → patch theme.ts)</div></div>
+        <div style="display:flex;gap:16px;padding:9px 0;border-bottom:1px solid var(--surface);align-items:baseline;"><div style="font-family:monospace;font-size:12px;font-weight:600;color:var(--accentPurple);min-width:280px;">/design-system-architect drift</div><div style="font-size:13px;color:var(--mutedFg);">Three-layer drift check: manifest ↔ code ↔ Figma</div></div>
+        <div style="display:flex;gap:16px;padding:9px 0;border-bottom:1px solid var(--surface);align-items:baseline;"><div style="font-family:monospace;font-size:12px;font-weight:600;color:var(--accentPurple);min-width:280px;">/design-system-architect parity Button</div><div style="font-size:13px;color:var(--mutedFg);">Scored Figma ↔ code diff for a component (0–100)</div></div>
+        <div style="display:flex;gap:16px;padding:9px 0;align-items:baseline;"><div style="font-family:monospace;font-size:12px;font-weight:600;color:var(--accentPurple);min-width:280px;">/design-system-architect metadata</div><div style="font-size:13px;color:var(--mutedFg);">Regenerate all *.metadata.ts files for AI composition</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       AUTOMATION
+  ═══════════════════════════════════════════════════════════════════════ -->
+  <section id="automation" class="sec">
+    <div class="sh"><div class="sh-over">Sync & Automation</div><h2 class="sh-title">How Automation Works</h2><p class="sh-desc">Claude Code is not a persistent daemon — it responds when invoked. The figma-console-mcp Desktop Bridge fills the Figma→Code gap by buffering changes in real-time. Here's how the five layers of automation keep things in sync.</p></div>
+
+    <div class="card sb4">
+      <div class="card-title" style="margin-bottom:16px;">Automation Layers</div>
+      <div class="auto-tier">
+        <span class="auto-badge ab-live">LIVE</span>
+        <div>
+          <div class="auto-title">🖥️ Styleguide File Watcher — always on while server runs</div>
+          <div class="auto-desc">This dev server watches <code>src/ui/theme.ts</code>, <code>design-tokens.json</code>, and <code>design-system-manifest.json</code>. When any file changes, the dashboard updates in real-time via SSE — no refresh needed. Detects when <code>theme.ts</code> is newer than the last Figma sync and shows a warning banner.</div>
+          <div class="step-cmd">cd styleguide && node server.js</div>
+        </div>
+      </div>
+      <div class="auto-tier">
+        <span class="auto-badge ab-sched">SCHEDULED</span>
+        <div>
+          <div class="auto-title">⏱️ Claude Code Cron — drift check every 30 min while Claude is running</div>
+          <div class="auto-desc">A Claude Code cron job runs <code>/design-system-architect drift</code> on a 30-minute interval. Results appear in the dashboard Action Items feed when the server detects an audit cache update. Note: this only runs while Claude Code is active in a session.</div>
+          <div class="step-cmd">CronCreate: /design-system-architect drift (every 30m)</div>
+        </div>
+      </div>
+      <div class="auto-tier">
+        <span class="auto-badge ab-manual">GIT HOOK</span>
+        <div>
+          <div class="auto-title">🪝 Pre-commit Hook — audit on every commit</div>
+          <div class="auto-desc">A git pre-commit hook runs <code>npm run audit:tokens</code> (via <code>audit_codebase.py</code>) before every commit. Blocks commits with hardcoded hex values or bare View/Text/Pressable usage. Results cached to <code>styleguide/.audit-cache.json</code> for the dashboard.</div>
+          <div class="step-cmd">.git/hooks/pre-commit → npm run audit:tokens</div>
+        </div>
+      </div>
+      <div class="auto-tier">
+        <span class="auto-badge ab-manual">MANUAL</span>
+        <div>
+          <div class="auto-title">🔄 Code → Figma — run push after editing theme.ts</div>
+          <div class="auto-desc">When you edit token values in <code>theme.ts</code>, the dashboard detects the drift and shows a warning. Run the push command to re-extract tokens and batch-update Figma variables. Takes ~5 seconds.</div>
+          <div class="step-cmd">/design-system-architect push</div>
+        </div>
+      </div>
+      <div class="auto-tier">
+        <span class="auto-badge ab-manual">MANUAL</span>
+        <div>
+          <div class="auto-title">⬇️ Figma → Code — run pull after designer updates Figma</div>
+          <div class="auto-desc">When a designer updates variables or text styles in Figma, run pull. It fetches the full design system kit, generates a reviewed diff, and patches <code>theme.ts</code> and <code>tailwind.config.js</code> after your approval.</div>
+          <div class="step-cmd">/design-system-architect pull</div>
+        </div>
+      </div>
+      <div class="auto-tier">
+        <span class="auto-badge ab-live">LIVE</span>
+        <div>
+          <div class="auto-title">🔌 Figma Desktop Bridge — MCP plugin buffers design changes in real-time</div>
+          <div class="auto-desc">The figma-console-mcp Desktop Bridge plugin runs inside Figma Desktop and buffers every <code>documentchange</code> event over a WebSocket to Claude Code. The 30-min drift cron calls <code>figma_get_design_changes { since, clear: true }</code> — if token-relevant nodes (variables/styles) changed, it automatically triggers a Phase 3 pull. No webhook or external infrastructure needed. <strong>Requirement:</strong> Figma Desktop must be open with the plugin running.</div>
+          <div class="step-cmd">figma_get_design_changes { since: lastCheckedAt, clear: true } → auto-pull if token changes</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title" style="margin-bottom:14px;">Sync Triggers Quick Reference</div>
+      <table class="ttbl">
+        <thead><tr><th>Event</th><th>Trigger</th><th>Action</th><th>Time</th></tr></thead>
+        <tbody>
+          <tr><td>Edit theme.ts</td><td class="mono">File watcher → dashboard warning</td><td class="mono">/design-system-architect push</td><td class="mono">~5s</td></tr>
+          <tr><td>Add a new component</td><td class="mono">Manual</td><td class="mono">/design-system-architect generate</td><td class="mono">~30s</td></tr>
+          <tr><td>Designer updates Figma</td><td class="mono">Manual or future webhook</td><td class="mono">/design-system-architect pull</td><td class="mono">~15s</td></tr>
+          <tr><td>Check for drift</td><td class="mono">Cron (30m) or manual</td><td class="mono">/design-system-architect drift</td><td class="mono">~10s</td></tr>
+          <tr><td>git commit</td><td class="mono">Pre-commit hook (automatic)</td><td class="mono">npm run audit:tokens</td><td class="mono">~3s</td></tr>
+          <tr><td>Suspicious mismatch</td><td class="mono">Manual</td><td class="mono">/design-system-architect parity Button</td><td class="mono">~20s</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</div>
+
+<div style="text-align:center;padding:32px;color:rgba(255,255,255,.35);font-size:12px;">
+  InterFast Design System · <span id="footerVersion">v2.4.0</span> · Powered by figma-console-mcp
+</div>
+
+<script>
+// ── Motion demo ──────────────────────────────────────────────────────────────
+function playMotion() {
+  const fills = ['mf0','mf1','mf2','mf3','mf4'];
+  const ms    = [200, 300, 500, 1000, 3000]; // cap ambient to 3s for demo
+  fills.forEach(id => { const el = document.getElementById(id); el.style.transition='none'; el.style.width='0%'; });
+  setTimeout(() => {
+    fills.forEach((id,i) => {
+      const el = document.getElementById(id);
+      el.style.transition = `width ${ms[i]}ms ease-out`;
+      el.style.width = '100%';
+    });
+    setTimeout(() => {
+      fills.forEach(id => {
+        const el = document.getElementById(id);
+        el.style.transition = 'width 400ms ease-in';
+        el.style.width = '0%';
+      });
+    }, 3500);
+  }, 60);
+}
+
+// ── SSE + Dashboard ──────────────────────────────────────────────────────────
+let stats = null;
+
+function timeAgo(iso) {
+  if (!iso) return 'never';
+  const s = Math.round((Date.now() - new Date(iso)) / 1000);
+  if (s < 60)    return `${s}s ago`;
+  if (s < 3600)  return `${Math.round(s/60)}m ago`;
+  if (s < 86400) return `${Math.round(s/3600)}h ago`;
+  return `${Math.round(s/86400)}d ago`;
+}
+
+function barColor(pct) {
+  if (pct >= 80) return 'green';
+  if (pct >= 50) return 'yellow';
+  return 'red';
+}
+
+function parityColor(score) {
+  if (score === null) return '#e5e7eb';
+  if (score >= 80) return '#22c55e';
+  if (score >= 60) return '#eab308';
+  return '#ef4444';
+}
+
+function renderDashboard(s) {
+  stats = s;
+  if (s.error) { console.error('Stats error:', s.error); return; }
+
+  // Version
+  const ver = s.version || 'v?';
+  document.getElementById('navVersion').textContent = ver;
+  document.getElementById('footerVersion').textContent = ver;
+
+  // Last sync text
+  document.getElementById('lastSyncText').textContent =
+    `Last synced ${timeAgo(s.lastSyncedAt)} · ${s.syncDirection || 'unknown direction'} · Figma ${s.figmaFileKey}`;
+
+  // Sync banner
+  const banner = document.getElementById('syncBanner');
+  const bannerTitle  = document.getElementById('syncBannerTitle');
+  const bannerDetail = document.getElementById('syncBannerDetail');
+  const bannerAction = document.getElementById('syncBannerAction');
+  if (s.codeAhead) {
+    banner.className = 'sync-banner warn sb4';
+    bannerTitle.textContent = '⚠️  theme.ts modified after last Figma sync';
+    bannerDetail.textContent = `theme.ts changed ${timeAgo(s.themeMtime)} — Figma is behind.`;
+    bannerAction.textContent = '/design-system-architect push';
+  } else if (s.hoursSinceSync > 72) {
+    banner.className = 'sync-banner err sb4';
+    bannerTitle.textContent = '🔴  Sync overdue — ' + Math.round(s.hoursSinceSync/24) + 'd since last sync';
+    bannerDetail.textContent = 'Figma and code may have drifted significantly.';
+    bannerAction.textContent = '/design-system-architect drift';
+  } else {
+    banner.className = 'sync-banner ok sb4';
+    bannerTitle.textContent = '✅  In sync — last push ' + timeAgo(s.lastSyncedAt);
+    bannerDetail.textContent = s.syncDirection;
+    bannerAction.textContent = '';
+  }
+
+  // Stat cards
+  const impl = s.implementationScore ?? 0;
+  document.getElementById('implScore').textContent = impl + '%';
+  const implBar = document.getElementById('implBar');
+  implBar.className = 'db-bar ' + barColor(impl);
+  implBar.style.width = impl + '%';
+
+  const fp = s.figmaCoverage?.pct ?? 0;
+  document.getElementById('figmaPct').textContent = fp + '%';
+  document.getElementById('figmaWired').textContent =
+    `${s.figmaCoverage?.wired ?? 0} of ${s.figmaCoverage?.total ?? 0} tokens wired`;
+  const figmaBar = document.getElementById('figmaBar');
+  figmaBar.className = 'db-bar ' + barColor(fp);
+  figmaBar.style.width = fp + '%';
+
+  document.getElementById('tokenTotal').textContent = s.tokenInventory?.total ?? '—';
+  document.getElementById('tokenBreakdown').textContent =
+    `${s.tokenInventory?.primitiveColors ?? 0} prim · ${s.tokenInventory?.semanticColors ?? 0} sem · ${s.tokenInventory?.componentTokens ?? 0} comp`;
+
+  document.getElementById('syncHours').textContent = s.hoursSinceSync ?? '—';
+  document.getElementById('syncDirText').textContent = s.syncDirection ?? '';
+  const ageBar = document.getElementById('syncAgeBar');
+  const agePct = Math.min(100, Math.round((s.hoursSinceSync ?? 0) / 72 * 100));
+  ageBar.className = 'db-bar ' + (agePct > 66 ? 'red' : agePct > 33 ? 'yellow' : 'green');
+  ageBar.style.width = agePct + '%';
+
+  // Drift notices
+  const notices = s.driftNotices ?? [];
+  document.getElementById('noticeBadge').textContent = notices.length;
+  document.getElementById('noticeList').innerHTML = notices.length === 0
+    ? '<div style="font-size:13px;color:var(--mutedFg);padding:12px 0;">✅ No drift detected</div>'
+    : notices.map(n => `
+      <div class="notice ${n.level}">
+        <div class="notice-icon">${n.icon}</div>
+        <div class="notice-body">
+          <div class="notice-title">${n.title}</div>
+          <div class="notice-msg">${n.msg}</div>
+          ${n.action ? `<div class="notice-action">${n.action}</div>` : ''}
+        </div>
+      </div>`).join('');
+
+  // Action items
+  const actions = s.actionItems ?? [];
+  document.getElementById('actionBadge').textContent = actions.length;
+  document.getElementById('actionList').innerHTML = actions.length === 0
+    ? '<div style="font-size:13px;color:var(--mutedFg);padding:12px 0;">✅ No action items</div>'
+    : actions.map(a => `
+      <div class="action sev-${a.severity}${a.isResearch ? ' research' : ''}">
+        <div class="action-icon">${a.icon}</div>
+        <div class="action-body">
+          <div class="action-title">${a.title}</div>
+          <div class="action-desc">${a.desc}</div>
+          ${a.action ? `<div class="action-cmd">${a.action}</div>` : ''}
+          ${(a.components || []).slice(0,4).map ? `<div class="tag-list">${(a.components||[]).slice(0,4).map(c =>
+            `<span class="tag">${typeof c === 'object' ? c.name+' '+c.score+'%' : c}</span>`).join('')}</div>` : ''}
+        </div>
+      </div>`).join('');
+
+  // Component parity
+  const comps = s.componentMap ?? [];
+  document.getElementById('parityList').innerHTML = comps.length === 0
+    ? '<div style="font-size:13px;color:var(--mutedFg);">No component data</div>'
+    : comps.map(c => {
+        const score = c.parityScore;
+        const pct   = score ?? 0;
+        const col   = parityColor(score);
+        return `<div class="parity-row">
+          <div class="parity-name">${c.name}</div>
+          <div class="parity-bar-track"><div class="parity-bar" style="width:${pct}%;background:${col}"></div></div>
+          <div class="parity-score" style="color:${col}">${score !== null ? score+'%' : '—'}</div>
+          <div class="parity-chips">
+            <span class="chip ${c.figmaLinked ? 'linked' : 'unlinked'}">${c.figmaLinked ? '🔗' : '⚠️'}</span>
+            <span class="chip ${c.metadataFile ? 'linked' : 'unlinked'}">${c.metadataFile ? '📄' : '📄?'}</span>
+          </div>
+        </div>`;
+      }).join('');
+
+  // Token breakdown bars
+  const inv = s.tokenInventory ?? {};
+  const total = inv.total || 1;
+  const rows = [
+    { label: 'Primitive Colors',    val: inv.primitiveColors ?? 0 },
+    { label: 'Semantic Colors',     val: inv.semanticColors  ?? 0 },
+    { label: 'Component Tokens',    val: inv.componentTokens ?? 0 },
+    { label: 'Typography Scales',   val: inv.typographyScales ?? 0 },
+    { label: 'Type Primitives',     val: inv.typographyPrimitives ?? 0 },
+    { label: 'Radius',              val: inv.radius  ?? 0 },
+    { label: 'Motion',              val: inv.motion  ?? 0 },
+    { label: 'Layout',              val: inv.layout  ?? 0 },
+  ];
+  document.getElementById('tokenBreakdownList').innerHTML = rows.map(r => `
+    <div style="display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--surface);">
+      <div style="font-size:12px;min-width:140px;color:var(--mutedFg);">${r.label}</div>
+      <div style="flex:1;height:5px;background:var(--muted);border-radius:99px;overflow:hidden;">
+        <div style="height:100%;background:var(--accentPurple);border-radius:99px;width:${Math.round(r.val/total*100)}%"></div>
+      </div>
+      <div style="font-size:12px;font-weight:600;color:var(--primary);width:24px;text-align:right;">${r.val}</div>
+    </div>`).join('');
+}
+
+// ── Connect to SSE or fallback to polling ────────────────────────────────────
+const liveDot = document.getElementById('liveDot');
+
+function connectSSE() {
+  try {
+    const es = new EventSource('/api/events');
+    es.addEventListener('stats', e => {
+      try { renderDashboard(JSON.parse(e.data)); } catch (_) {}
+    });
+    es.onopen  = () => { liveDot.className = 'live-dot'; liveDot.title = 'Live — auto-updates on file change'; };
+    es.onerror = () => { liveDot.className = 'live-dot offline'; liveDot.title = 'Disconnected'; };
+  } catch (_) {
+    // Fallback: fetch once
+    fetch('/api/stats').then(r => r.json()).then(renderDashboard).catch(() => {});
+    liveDot.className = 'live-dot offline';
+  }
+}
+
+// ── Nav active state ─────────────────────────────────────────────────────────
+const sections = document.querySelectorAll('.sec');
+const navLinks = document.querySelectorAll('.nav-link');
+new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const a = document.querySelector(`.nav-link[href="#${e.target.id}"]`);
+      if (a) a.classList.add('active');
+    }
+  });
+}, { rootMargin: '-10% 0px -80% 0px' }).observe && sections.forEach(s => {
+  new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        const a = document.querySelector(`.nav-link[href="#${e.target.id}"]`);
+        if (a) a.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-10% 0px -80% 0px' }).observe(s);
+});
+
+// ── Boot ─────────────────────────────────────────────────────────────────────
+connectSSE();
+</script>
+</body>
+</html>
