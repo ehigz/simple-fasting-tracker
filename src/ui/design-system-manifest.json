@@ -1,135 +1,466 @@
 {
   "version": "2.4.0",
   "lastSyncedAt": "2026-03-09T04:00:00.000000+00:00",
-  "syncDirection": "code→figma",
+  "syncDirection": "code\u2192figma",
   "figma": {
     "fileKey": "zzMTJilulVXIVzr6X29CKH",
     "fileUrl": "https://www.figma.com/design/zzMTJilulVXIVzr6X29CKH/Simple%20Fasting%20Design%20System",
     "lastFigmaVersion": "",
-    "lastCheckedAt": 1773029151624
+    "lastCheckedAt": 1773067236663
   },
   "primitives": {
     "collectionId": "VariableCollectionId:6:129",
     "colors": {
-      "purple/950":   { "value": "#340247", "figmaVariableId": "VariableID:6:130" },
-      "purple/900":   { "value": "#4a0360", "figmaVariableId": "VariableID:6:131" },
-      "purple/600":   { "value": "#6e5fa7", "figmaVariableId": "VariableID:6:132" },
-      "purple/500":   { "value": "#8b7db8", "figmaVariableId": "VariableID:6:133" },
-      "purple/400":   { "value": "#a89fc9", "figmaVariableId": "VariableID:6:134" },
-      "purple/200":   { "value": "#d4cfe6", "figmaVariableId": "VariableID:6:135" },
-      "purple/100":   { "value": "#e6e3ed", "figmaVariableId": "VariableID:6:136" },
-      "purple/75":    { "value": "#eeebf4", "figmaVariableId": "VariableID:6:137" },
-      "purple/50":    { "value": "#f4ecff", "figmaVariableId": "VariableID:6:138" },
-      "neutral/500":  { "value": "#6b6b7e", "figmaVariableId": "VariableID:6:139" },
-      "white":        { "value": "#ffffff", "figmaVariableId": "VariableID:6:140" },
-      "amber/50":     { "value": "#fff9f0", "figmaVariableId": "VariableID:6:141" },
-      "amber/600":    { "value": "#d97706", "figmaVariableId": "VariableID:6:142" },
-      "lime/600":     { "value": "#65a30d", "figmaVariableId": "VariableID:8:2" },
-      "emerald/600":  { "value": "#059669", "figmaVariableId": "VariableID:8:3" },
-      "teal/700":     { "value": "#0f766e", "figmaVariableId": "VariableID:8:4" },
-      "stone/600":    { "value": "#57534e", "figmaVariableId": "VariableID:8:5" },
-      "amber/700":    { "value": "#b45309", "figmaVariableId": "VariableID:8:6" },
-      "green/800":    { "value": "#166534", "figmaVariableId": "VariableID:8:7" }
+      "purple/950": {
+        "value": "#340247",
+        "figmaVariableId": "VariableID:6:130"
+      },
+      "purple/900": {
+        "value": "#4a0360",
+        "figmaVariableId": "VariableID:6:131"
+      },
+      "purple/600": {
+        "value": "#6e5fa7",
+        "figmaVariableId": "VariableID:6:132"
+      },
+      "purple/500": {
+        "value": "#8b7db8",
+        "figmaVariableId": "VariableID:6:133"
+      },
+      "purple/400": {
+        "value": "#a89fc9",
+        "figmaVariableId": "VariableID:6:134"
+      },
+      "purple/200": {
+        "value": "#d4cfe6",
+        "figmaVariableId": "VariableID:6:135"
+      },
+      "purple/100": {
+        "value": "#e6e3ed",
+        "figmaVariableId": "VariableID:6:136"
+      },
+      "purple/75": {
+        "value": "#eeebf4",
+        "figmaVariableId": "VariableID:6:137"
+      },
+      "purple/50": {
+        "value": "#f4ecff",
+        "figmaVariableId": "VariableID:6:138"
+      },
+      "neutral/500": {
+        "value": "#6b6b7e",
+        "figmaVariableId": "VariableID:6:139"
+      },
+      "white": {
+        "value": "#ffffff",
+        "figmaVariableId": "VariableID:6:140"
+      },
+      "amber/50": {
+        "value": "#fff9f0",
+        "figmaVariableId": "VariableID:6:141"
+      },
+      "amber/600": {
+        "value": "#d97706",
+        "figmaVariableId": "VariableID:6:142"
+      },
+      "lime/600": {
+        "value": "#65a30d",
+        "figmaVariableId": "VariableID:8:2"
+      },
+      "emerald/600": {
+        "value": "#059669",
+        "figmaVariableId": "VariableID:8:3"
+      },
+      "teal/700": {
+        "value": "#0f766e",
+        "figmaVariableId": "VariableID:8:4"
+      },
+      "stone/600": {
+        "value": "#57534e",
+        "figmaVariableId": "VariableID:8:5"
+      },
+      "amber/700": {
+        "value": "#b45309",
+        "figmaVariableId": "VariableID:8:6"
+      },
+      "green/800": {
+        "value": "#166534",
+        "figmaVariableId": "VariableID:8:7"
+      }
     }
   },
   "tokens": {
     "colors": {
-      "primary":           { "value": "#340247",                   "figmaVariableId": "VariableID:6:3" },
-      "primaryHover":      { "value": "#4a0360",                   "figmaVariableId": "VariableID:6:4" },
-      "secondary":         { "value": "#f4ecff",                   "figmaVariableId": "VariableID:6:5" },
-      "muted":             { "value": "#e6e3ed",                   "figmaVariableId": "VariableID:6:6" },
-      "mutedFg":           { "value": "#6b6b7e",                   "figmaVariableId": "VariableID:6:7" },
-      "accent":            { "value": "#d4cfe6",                   "figmaVariableId": "VariableID:6:8" },
-      "accentPurple":      { "value": "#6e5fa7",                   "figmaVariableId": "VariableID:6:9" },
-      "accentLight":       { "value": "#a89fc9",                   "figmaVariableId": "VariableID:6:10" },
-      "accentHover":       { "value": "#8b7db8",                   "figmaVariableId": "VariableID:6:11" },
-      "surface":           { "value": "#eeebf4",                   "figmaVariableId": "VariableID:6:12" },
-      "warn":              { "value": "#fff9f0",                   "figmaVariableId": "VariableID:6:13" },
-      "warnIcon":          { "value": "#d97706",                   "figmaVariableId": "VariableID:6:14" },
-      "white":             { "value": "#ffffff",                   "figmaVariableId": "VariableID:6:15" },
-      "tabBarBg":          { "value": "rgba(255, 255, 255, 0.92)", "figmaVariableId": "VariableID:8:8" },
-      "tabBarBorder":      { "value": "rgba(52, 2, 71, 0.12)",     "figmaVariableId": "VariableID:8:9" },
-      "zoneAnabolic":      { "value": "#d97706", "primitiveRef": "amber/600",    "figmaVariableId": "VariableID:8:10" },
-      "zoneCatabolic":     { "value": "#65a30d", "primitiveRef": "lime/600",     "figmaVariableId": "VariableID:8:11" },
-      "zoneFatBurning":    { "value": "#059669", "primitiveRef": "emerald/600",  "figmaVariableId": "VariableID:8:12" },
-      "zoneAutophagy":     { "value": "#0f766e", "primitiveRef": "teal/700",     "figmaVariableId": "VariableID:8:13" },
-      "zoneDeepAutophagy": { "value": "#57534e", "primitiveRef": "stone/600",    "figmaVariableId": "VariableID:8:14" },
-      "zoneImmuneReset":   { "value": "#b45309", "primitiveRef": "amber/700",    "figmaVariableId": "VariableID:8:15" },
-      "zoneStemCell":      { "value": "#166534", "primitiveRef": "green/800",    "figmaVariableId": "VariableID:8:16" }
+      "primary": {
+        "value": "#340247",
+        "figmaVariableId": "VariableID:6:3"
+      },
+      "primaryHover": {
+        "value": "#4a0360",
+        "figmaVariableId": "VariableID:6:4"
+      },
+      "secondary": {
+        "value": "#f4ecff",
+        "figmaVariableId": "VariableID:6:5"
+      },
+      "muted": {
+        "value": "#e6e3ed",
+        "figmaVariableId": "VariableID:6:6"
+      },
+      "mutedFg": {
+        "value": "#6b6b7e",
+        "figmaVariableId": "VariableID:6:7"
+      },
+      "accent": {
+        "value": "#d4cfe6",
+        "figmaVariableId": "VariableID:6:8"
+      },
+      "accentPurple": {
+        "value": "#6e5fa7",
+        "figmaVariableId": "VariableID:6:9"
+      },
+      "accentLight": {
+        "value": "#a89fc9",
+        "figmaVariableId": "VariableID:6:10"
+      },
+      "accentHover": {
+        "value": "#8b7db8",
+        "figmaVariableId": "VariableID:6:11"
+      },
+      "surface": {
+        "value": "#eeebf4",
+        "figmaVariableId": "VariableID:6:12"
+      },
+      "warn": {
+        "value": "#fff9f0",
+        "figmaVariableId": "VariableID:6:13"
+      },
+      "warnIcon": {
+        "value": "#d97706",
+        "figmaVariableId": "VariableID:6:14"
+      },
+      "white": {
+        "value": "#ffffff",
+        "figmaVariableId": "VariableID:6:15"
+      },
+      "tabBarBg": {
+        "value": "rgba(255, 255, 255, 0.92)",
+        "figmaVariableId": "VariableID:8:8"
+      },
+      "tabBarBorder": {
+        "value": "rgba(52, 2, 71, 0.12)",
+        "figmaVariableId": "VariableID:8:9"
+      },
+      "zoneAnabolic": {
+        "value": "#d97706",
+        "primitiveRef": "amber/600",
+        "figmaVariableId": "VariableID:8:10"
+      },
+      "zoneCatabolic": {
+        "value": "#65a30d",
+        "primitiveRef": "lime/600",
+        "figmaVariableId": "VariableID:8:11"
+      },
+      "zoneFatBurning": {
+        "value": "#059669",
+        "primitiveRef": "emerald/600",
+        "figmaVariableId": "VariableID:8:12"
+      },
+      "zoneAutophagy": {
+        "value": "#0f766e",
+        "primitiveRef": "teal/700",
+        "figmaVariableId": "VariableID:8:13"
+      },
+      "zoneDeepAutophagy": {
+        "value": "#57534e",
+        "primitiveRef": "stone/600",
+        "figmaVariableId": "VariableID:8:14"
+      },
+      "zoneImmuneReset": {
+        "value": "#b45309",
+        "primitiveRef": "amber/700",
+        "figmaVariableId": "VariableID:8:15"
+      },
+      "zoneStemCell": {
+        "value": "#166534",
+        "primitiveRef": "green/800",
+        "figmaVariableId": "VariableID:8:16"
+      }
     },
     "radius": {
-      "sm":   { "value": 12,   "figmaVariableId": "VariableID:6:17", "tailwindClass": "rounded-xl" },
-      "md":   { "value": 16,   "figmaVariableId": "VariableID:6:18", "tailwindClass": "rounded-2xl" },
-      "lg":   { "value": 24,   "figmaVariableId": "VariableID:6:19", "tailwindClass": "rounded-3xl" },
-      "full": { "value": 9999, "figmaVariableId": "VariableID:8:17", "tailwindClass": "rounded-full" }
+      "sm": {
+        "value": 12,
+        "figmaVariableId": "VariableID:6:17",
+        "tailwindClass": "rounded-xl"
+      },
+      "md": {
+        "value": 16,
+        "figmaVariableId": "VariableID:6:18",
+        "tailwindClass": "rounded-2xl"
+      },
+      "lg": {
+        "value": 24,
+        "figmaVariableId": "VariableID:6:19",
+        "tailwindClass": "rounded-3xl"
+      },
+      "full": {
+        "value": 9999,
+        "figmaVariableId": "VariableID:8:17",
+        "tailwindClass": "rounded-full"
+      }
     },
     "typography": {
       "collectionId": "VariableCollectionId:6:20",
       "fontFamily": {
-        "body":    { "value": "Inter",           "figmaVariableId": "VariableID:8:57" },
-        "display": { "value": "Playfair Display", "figmaVariableId": "VariableID:8:58" }
+        "body": {
+          "value": "Inter",
+          "figmaVariableId": "VariableID:8:57"
+        },
+        "display": {
+          "value": "Playfair Display",
+          "figmaVariableId": "VariableID:8:58"
+        }
       },
       "scales": {
-        "display":    { "size": 40, "weight": "600", "fontFamily": "Playfair Display", "letterSpacing": "-0.025em", "lineHeight": "120%",   "figmaStyleId": "S:6685bfc43d1099972dd06dc94d0597f35f1b29ab," },
-        "h1":         { "size": 32, "weight": "600", "fontFamily": "Playfair Display", "letterSpacing": "-0.025em", "lineHeight": "137.5%", "figmaStyleId": "S:e978004e070f74b370a33ae6c4697c1cd39009f9," },
-        "h2":         { "size": 28, "weight": "600", "fontFamily": "Playfair Display", "letterSpacing": "-0.025em", "lineHeight": "137.5%", "figmaStyleId": "S:20633d1c2861af60b370149db29b75b1b5c95b2c," },
-        "h3":         { "size": 24, "weight": "600", "fontFamily": "Playfair Display", "letterSpacing": "-0.025em", "lineHeight": "150%",   "figmaStyleId": "S:fb5f4ac6ef4ad2320ef51c33aa1ce34a4b4b9654,", "componentAlias": "CardTitle" },
-        "h4":         { "size": 20, "weight": "600", "fontFamily": "Inter",           "letterSpacing": "0",        "lineHeight": "150%",   "figmaStyleId": "S:2e5039c4a8a05fbb5112c79aab2d0d53164ff292," },
-        "h5":         { "size": 18, "weight": "600", "fontFamily": "Inter",           "letterSpacing": "0",        "lineHeight": "150%",   "figmaStyleId": "S:b9f86dad44770f15a34a85d7231321dc517a6553," },
-        "bodyLg":     { "size": 18, "weight": "400", "fontFamily": "Inter",           "letterSpacing": "0",        "lineHeight": "162.5%", "figmaStyleId": "S:b7db42b63c4f2dd10d8ae354b5746f62adace6a8," },
-        "body":       { "size": 16, "weight": "400", "fontFamily": "Inter",           "letterSpacing": "0",        "lineHeight": "162.5%", "figmaStyleId": "S:2f2e1cc0cab5c80243ff1814aebc00bae8c3a1af,", "componentAlias": "BodyText" },
-        "bodySm":     { "size": 14, "weight": "400", "fontFamily": "Inter",           "letterSpacing": "0",        "lineHeight": "150%",   "figmaStyleId": "S:e8e9346930e8dea3cd74268e34390c76beb75be5,", "componentAlias": "MutedText" },
-        "overline":   { "size": 12, "weight": "400", "fontFamily": "Inter",           "letterSpacing": "0.1em",    "lineHeight": "AUTO",   "textCase": "UPPER", "figmaStyleId": "S:762513b8085627fbf998e053e7bf2851490fa0e3,", "componentAlias": "Overline", "note": "Apply opacity-60 at node level" },
-        "fieldLabel": { "size": 12, "weight": "400", "fontFamily": "Inter",           "letterSpacing": "0.1em",    "lineHeight": "AUTO",   "textCase": "UPPER", "figmaStyleId": "S:514d3018bc3bb7906114ad0d25959c7f4196e511,", "componentAlias": "FieldLabel" },
-        "label":      { "size": 14, "weight": "500", "fontFamily": "Inter",           "letterSpacing": "0",        "lineHeight": "150%",   "figmaStyleId": "S:485b5e63585ef3612695dfcf8a7f7a6874e654a5," },
-        "caption":    { "size": 10, "weight": "400", "fontFamily": "Inter",           "letterSpacing": "0.025em",  "lineHeight": "150%",   "figmaStyleId": "S:fa7bc655f346df772c539d8bbe83523f44ad9e24," },
-        "stat":       { "size": 18, "weight": "600", "fontFamily": "Inter",           "letterSpacing": "0",        "lineHeight": "AUTO",   "figmaStyleId": "S:3474104fa002d7752ac67e0c110eb4e64af959c6,", "componentAlias": "StatValue" },
-        "statLg":     { "size": 24, "weight": "600", "fontFamily": "Inter",           "letterSpacing": "-0.025em", "lineHeight": "AUTO",   "figmaStyleId": "S:f6bb4c3ad93382cbb1272458d2ebeb52860b48ba," },
-        "statHero":   { "size": 40, "weight": "700", "fontFamily": "Inter",           "letterSpacing": "-0.05em",  "lineHeight": "100%",   "figmaStyleId": "S:b6294e4df74715085bbfbb9e08972e5d0747b9fa," }
+        "display": {
+          "size": 40,
+          "weight": "600",
+          "fontFamily": "Playfair Display",
+          "letterSpacing": "-0.025em",
+          "lineHeight": "120%",
+          "figmaStyleId": "S:6685bfc43d1099972dd06dc94d0597f35f1b29ab,"
+        },
+        "h1": {
+          "size": 32,
+          "weight": "600",
+          "fontFamily": "Playfair Display",
+          "letterSpacing": "-0.025em",
+          "lineHeight": "137.5%",
+          "figmaStyleId": "S:e978004e070f74b370a33ae6c4697c1cd39009f9,"
+        },
+        "h2": {
+          "size": 28,
+          "weight": "600",
+          "fontFamily": "Playfair Display",
+          "letterSpacing": "-0.025em",
+          "lineHeight": "137.5%",
+          "figmaStyleId": "S:20633d1c2861af60b370149db29b75b1b5c95b2c,"
+        },
+        "h3": {
+          "size": 24,
+          "weight": "600",
+          "fontFamily": "Playfair Display",
+          "letterSpacing": "-0.025em",
+          "lineHeight": "150%",
+          "figmaStyleId": "S:fb5f4ac6ef4ad2320ef51c33aa1ce34a4b4b9654,",
+          "componentAlias": "CardTitle"
+        },
+        "h4": {
+          "size": 20,
+          "weight": "600",
+          "fontFamily": "Inter",
+          "letterSpacing": "0",
+          "lineHeight": "150%",
+          "figmaStyleId": "S:2e5039c4a8a05fbb5112c79aab2d0d53164ff292,"
+        },
+        "h5": {
+          "size": 18,
+          "weight": "600",
+          "fontFamily": "Inter",
+          "letterSpacing": "0",
+          "lineHeight": "150%",
+          "figmaStyleId": "S:b9f86dad44770f15a34a85d7231321dc517a6553,"
+        },
+        "bodyLg": {
+          "size": 18,
+          "weight": "400",
+          "fontFamily": "Inter",
+          "letterSpacing": "0",
+          "lineHeight": "162.5%",
+          "figmaStyleId": "S:b7db42b63c4f2dd10d8ae354b5746f62adace6a8,"
+        },
+        "body": {
+          "size": 16,
+          "weight": "400",
+          "fontFamily": "Inter",
+          "letterSpacing": "0",
+          "lineHeight": "162.5%",
+          "figmaStyleId": "S:2f2e1cc0cab5c80243ff1814aebc00bae8c3a1af,",
+          "componentAlias": "BodyText"
+        },
+        "bodySm": {
+          "size": 14,
+          "weight": "400",
+          "fontFamily": "Inter",
+          "letterSpacing": "0",
+          "lineHeight": "150%",
+          "figmaStyleId": "S:e8e9346930e8dea3cd74268e34390c76beb75be5,",
+          "componentAlias": "MutedText"
+        },
+        "overline": {
+          "size": 12,
+          "weight": "400",
+          "fontFamily": "Inter",
+          "letterSpacing": "0.1em",
+          "lineHeight": "AUTO",
+          "textCase": "UPPER",
+          "figmaStyleId": "S:762513b8085627fbf998e053e7bf2851490fa0e3,",
+          "componentAlias": "Overline",
+          "note": "Apply opacity-60 at node level"
+        },
+        "fieldLabel": {
+          "size": 12,
+          "weight": "400",
+          "fontFamily": "Inter",
+          "letterSpacing": "0.1em",
+          "lineHeight": "AUTO",
+          "textCase": "UPPER",
+          "figmaStyleId": "S:514d3018bc3bb7906114ad0d25959c7f4196e511,",
+          "componentAlias": "FieldLabel"
+        },
+        "label": {
+          "size": 14,
+          "weight": "500",
+          "fontFamily": "Inter",
+          "letterSpacing": "0",
+          "lineHeight": "150%",
+          "figmaStyleId": "S:485b5e63585ef3612695dfcf8a7f7a6874e654a5,"
+        },
+        "caption": {
+          "size": 10,
+          "weight": "400",
+          "fontFamily": "Inter",
+          "letterSpacing": "0.025em",
+          "lineHeight": "150%",
+          "figmaStyleId": "S:fa7bc655f346df772c539d8bbe83523f44ad9e24,"
+        },
+        "stat": {
+          "size": 18,
+          "weight": "600",
+          "fontFamily": "Inter",
+          "letterSpacing": "0",
+          "lineHeight": "AUTO",
+          "figmaStyleId": "S:3474104fa002d7752ac67e0c110eb4e64af959c6,",
+          "componentAlias": "StatValue"
+        },
+        "statLg": {
+          "size": 24,
+          "weight": "600",
+          "fontFamily": "Inter",
+          "letterSpacing": "-0.025em",
+          "lineHeight": "AUTO",
+          "figmaStyleId": "S:f6bb4c3ad93382cbb1272458d2ebeb52860b48ba,"
+        },
+        "statHero": {
+          "size": 40,
+          "weight": "700",
+          "fontFamily": "Inter",
+          "letterSpacing": "-0.05em",
+          "lineHeight": "100%",
+          "figmaStyleId": "S:b6294e4df74715085bbfbb9e08972e5d0747b9fa,"
+        }
       }
     },
     "motion": {
       "collectionId": "VariableCollectionId:8:18",
       "duration": {
-        "fast":     { "value": 200,   "figmaVariableId": "VariableID:8:19", "note": "Micro interactions — badge appear, FadeOut" },
-        "base":     { "value": 300,   "figmaVariableId": "VariableID:8:20", "note": "Standard transitions — FadeIn, SlideIn, Layout" },
-        "slow":     { "value": 500,   "figmaVariableId": "VariableID:8:21", "note": "Emphasis animations — hero enters" },
-        "progress": { "value": 1000,  "figmaVariableId": "VariableID:8:22", "note": "Progress bar fill animation" },
-        "ambient":  { "value": 15000, "figmaVariableId": "VariableID:8:23", "note": "Breathing / looping background animations" }
+        "fast": {
+          "value": 200,
+          "figmaVariableId": "VariableID:8:19",
+          "note": "Micro interactions \u2014 badge appear, FadeOut"
+        },
+        "base": {
+          "value": 300,
+          "figmaVariableId": "VariableID:8:20",
+          "note": "Standard transitions \u2014 FadeIn, SlideIn, Layout"
+        },
+        "slow": {
+          "value": 500,
+          "figmaVariableId": "VariableID:8:21",
+          "note": "Emphasis animations \u2014 hero enters"
+        },
+        "progress": {
+          "value": 1000,
+          "figmaVariableId": "VariableID:8:22",
+          "note": "Progress bar fill animation"
+        },
+        "ambient": {
+          "value": 15000,
+          "figmaVariableId": "VariableID:8:23",
+          "note": "Breathing / looping background animations"
+        }
       }
     },
     "layout": {
       "collectionId": "VariableCollectionId:8:24",
       "screen": {
-        "paddingH": { "value": 16, "figmaVariableId": "VariableID:8:25", "note": "Horizontal screen edge padding (NativeWind: px-4)" }
+        "paddingH": {
+          "value": 16,
+          "figmaVariableId": "VariableID:8:25",
+          "note": "Horizontal screen edge padding (NativeWind: px-4)"
+        }
       },
       "header": {
-        "offset": { "value": 96, "figmaVariableId": "VariableID:8:26", "note": "paddingTop to clear status bar + header" }
+        "offset": {
+          "value": 96,
+          "figmaVariableId": "VariableID:8:26",
+          "note": "paddingTop to clear status bar + header"
+        }
       },
       "tabBar": {
-        "offset": { "value": 32, "figmaVariableId": "VariableID:8:27", "note": "paddingBottom to clear tab bar" }
+        "offset": {
+          "value": 32,
+          "figmaVariableId": "VariableID:8:27",
+          "note": "paddingBottom to clear tab bar"
+        }
       }
     }
   },
   "componentTokens": {
     "collectionId": "VariableCollectionId:8:28",
     "button": {
-      "primary":   { "fill": "VariableID:8:29", "fillPressed": "VariableID:8:30", "label": "VariableID:8:31" },
-      "secondary": { "fill": "VariableID:8:32", "label": "VariableID:8:33", "border": "VariableID:8:34" },
-      "ghost":     { "label": "VariableID:8:35", "border": "VariableID:8:36" },
-      "disabled":  { "fill": "VariableID:8:37", "label": "VariableID:8:38" }
+      "primary": {
+        "fill": "VariableID:8:29",
+        "fillPressed": "VariableID:8:30",
+        "label": "VariableID:8:31"
+      },
+      "secondary": {
+        "fill": "VariableID:8:32",
+        "label": "VariableID:8:33",
+        "border": "VariableID:8:34"
+      },
+      "ghost": {
+        "label": "VariableID:8:35",
+        "border": "VariableID:8:36"
+      },
+      "disabled": {
+        "fill": "VariableID:8:37",
+        "label": "VariableID:8:38"
+      }
     },
     "card": {
-      "fill": "VariableID:8:39", "border": "VariableID:8:40",
-      "radius": { "default": "VariableID:8:41", "sm": "VariableID:8:42" }
+      "fill": "VariableID:8:39",
+      "border": "VariableID:8:40",
+      "radius": {
+        "default": "VariableID:8:41",
+        "sm": "VariableID:8:42"
+      }
     },
     "tabBar": {
-      "fill": "VariableID:8:43", "border": "VariableID:8:44",
-      "iconActive": "VariableID:8:45", "iconInactive": "VariableID:8:46"
+      "fill": "VariableID:8:43",
+      "border": "VariableID:8:44",
+      "iconActive": "VariableID:8:45",
+      "iconInactive": "VariableID:8:46"
     },
     "zone": {
-      "fill":   { "active": "VariableID:8:47", "inactive": "VariableID:8:48" },
-      "border": { "active": "VariableID:8:49", "inactive": "VariableID:8:50" }
+      "fill": {
+        "active": "VariableID:8:47",
+        "inactive": "VariableID:8:48"
+      },
+      "border": {
+        "active": "VariableID:8:49",
+        "inactive": "VariableID:8:50"
+      }
     }
   },
   "components": {
@@ -138,28 +469,98 @@
       "metadataFile": "src/ui/Button.metadata.ts",
       "figmaNodeId": "7:83",
       "parityScore": null,
-      "variants": ["primary", "secondary", "ghost"],
-      "states": ["default", "pressed", "disabled", "loading"],
-      "props": ["label", "onPress", "variant", "disabled", "loading", "icon"]
+      "variants": [
+        "primary",
+        "secondary",
+        "ghost"
+      ],
+      "states": [
+        "default",
+        "pressed",
+        "disabled",
+        "loading"
+      ],
+      "props": [
+        "label",
+        "onPress",
+        "variant",
+        "disabled",
+        "loading",
+        "icon"
+      ]
     },
     "Card": {
       "sourceFile": "src/ui/Card.tsx",
       "metadataFile": "src/ui/Card.metadata.ts",
       "figmaNodeId": "6:56",
       "parityScore": null,
-      "variants": ["default", "sm"]
+      "variants": [
+        "default",
+        "sm"
+      ]
     },
-    "Overline":   { "sourceFile": "src/ui/Typography.tsx", "metadataFile": "src/ui/Typography.metadata.ts", "figmaNodeId": "6:63", "parityScore": null, "variants": [] },
-    "FieldLabel": { "sourceFile": "src/ui/Typography.tsx", "metadataFile": "src/ui/Typography.metadata.ts", "figmaNodeId": "6:66", "parityScore": null, "variants": [] },
-    "CardTitle":  { "sourceFile": "src/ui/Typography.tsx", "metadataFile": "src/ui/Typography.metadata.ts", "figmaNodeId": "6:69", "parityScore": null, "variants": [] },
-    "BodyText":   { "sourceFile": "src/ui/Typography.tsx", "metadataFile": "src/ui/Typography.metadata.ts", "figmaNodeId": "6:72", "parityScore": null, "variants": [] },
-    "MutedText":  { "sourceFile": "src/ui/Typography.tsx", "metadataFile": "src/ui/Typography.metadata.ts", "figmaNodeId": "6:75", "parityScore": null, "variants": [] },
-    "StatValue":  { "sourceFile": "src/ui/Typography.tsx", "metadataFile": "src/ui/Typography.metadata.ts", "figmaNodeId": "6:78", "parityScore": null, "variants": [] },
-    "Divider":    { "sourceFile": "src/ui/Divider.tsx",    "metadataFile": "src/ui/Divider.metadata.ts",    "figmaNodeId": "6:82", "parityScore": null, "variants": [] }
+    "Overline": {
+      "sourceFile": "src/ui/Typography.tsx",
+      "metadataFile": "src/ui/Typography.metadata.ts",
+      "figmaNodeId": "6:63",
+      "parityScore": null,
+      "variants": []
+    },
+    "FieldLabel": {
+      "sourceFile": "src/ui/Typography.tsx",
+      "metadataFile": "src/ui/Typography.metadata.ts",
+      "figmaNodeId": "6:66",
+      "parityScore": null,
+      "variants": []
+    },
+    "CardTitle": {
+      "sourceFile": "src/ui/Typography.tsx",
+      "metadataFile": "src/ui/Typography.metadata.ts",
+      "figmaNodeId": "6:69",
+      "parityScore": null,
+      "variants": []
+    },
+    "BodyText": {
+      "sourceFile": "src/ui/Typography.tsx",
+      "metadataFile": "src/ui/Typography.metadata.ts",
+      "figmaNodeId": "6:72",
+      "parityScore": null,
+      "variants": []
+    },
+    "MutedText": {
+      "sourceFile": "src/ui/Typography.tsx",
+      "metadataFile": "src/ui/Typography.metadata.ts",
+      "figmaNodeId": "6:75",
+      "parityScore": null,
+      "variants": []
+    },
+    "StatValue": {
+      "sourceFile": "src/ui/Typography.tsx",
+      "metadataFile": "src/ui/Typography.metadata.ts",
+      "figmaNodeId": "6:78",
+      "parityScore": null,
+      "variants": []
+    },
+    "Divider": {
+      "sourceFile": "src/ui/Divider.tsx",
+      "metadataFile": "src/ui/Divider.metadata.ts",
+      "figmaNodeId": "6:82",
+      "parityScore": null,
+      "variants": []
+    }
   },
   "patterns": {
-    "iconContainer": { "figmaNodeId": "6:87", "spec": "w-16 h-16 bg-secondary rounded-2xl · icon size={32} color={colors.primary}" },
-    "emptyState":    { "figmaNodeId": "6:94", "spec": "Card > iconContainer + View(items-center gap-2) > CardTitle + BodyText" },
-    "cardAnatomy":   { "figmaNodeId": "",     "spec": "Card > View(items-center gap-3) > Overline + CardTitle + BodyText · Divider · Button" }
+    "iconContainer": {
+      "figmaNodeId": "6:87",
+      "spec": "w-16 h-16 bg-secondary rounded-2xl \u00b7 icon size={32} color={colors.primary}"
+    },
+    "emptyState": {
+      "figmaNodeId": "6:94",
+      "spec": "Card > iconContainer + View(items-center gap-2) > CardTitle + BodyText"
+    },
+    "cardAnatomy": {
+      "figmaNodeId": "",
+      "spec": "Card > View(items-center gap-3) > Overline + CardTitle + BodyText \u00b7 Divider \u00b7 Button"
+    }
   }
 }
