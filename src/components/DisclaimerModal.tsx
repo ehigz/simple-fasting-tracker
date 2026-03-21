@@ -1,4 +1,4 @@
-import { Modal, View, Text, Pressable, ScrollView } from "react-native";
+import { Modal, View, Text, Pressable, ScrollView, Linking } from "react-native";
 
 interface DisclaimerModalProps {
   visible: boolean;
@@ -41,6 +41,24 @@ export function DisclaimerModal({ visible, onAccept }: DisclaimerModalProps) {
               The developer is not responsible for any health outcomes, adverse events, or injuries that result from use of this app or reliance on any information it displays.
             </Text>
           </ScrollView>
+
+          <Text className="text-muted-fg text-xs text-center mb-4">
+            By accepting you agree to our{" "}
+            <Text
+              className="text-primary underline"
+              onPress={() => Linking.openURL("https://simplefasting.io/terms")}
+            >
+              Terms of Use
+            </Text>
+            {" and "}
+            <Text
+              className="text-primary underline"
+              onPress={() => Linking.openURL("https://simplefasting.io/privacy")}
+            >
+              Privacy Policy
+            </Text>
+            .
+          </Text>
 
           <Pressable
             onPress={onAccept}

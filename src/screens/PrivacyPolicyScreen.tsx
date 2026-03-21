@@ -1,5 +1,5 @@
-import { ScrollView, View, Text, Pressable } from "react-native";
-import { ArrowLeft } from "lucide-react-native";
+import { ScrollView, View, Text, Pressable, Linking } from "react-native";
+import { ArrowLeft, ExternalLink } from "lucide-react-native";
 import { colors } from "../ui";
 
 interface Props {
@@ -18,6 +18,13 @@ export function PrivacyPolicyScreen({ onBack }: Props) {
       <ScrollView showsVerticalScrollIndicator={false} contentContainerClassName="pb-12 gap-3">
         <Text className="text-primary text-2xl font-bold mb-1">Privacy Policy</Text>
         <Text className="text-muted-fg text-xs mb-2">Contact: hello@simplefasting.io</Text>
+        <Pressable
+          onPress={() => Linking.openURL("https://simplefasting.io/privacy")}
+          className="flex-row items-center gap-1.5 mb-2 active:opacity-60"
+        >
+          <ExternalLink size={12} color={colors.accentPurple} />
+          <Text className="text-accent-purple text-xs">simplefasting.io/privacy</Text>
+        </Pressable>
 
         <Text className="text-muted-fg text-sm leading-relaxed">
           This app does not collect, transmit, or store any personal data on external servers. Everything you enter stays on your device and is never accessible to the developer or anyone else.

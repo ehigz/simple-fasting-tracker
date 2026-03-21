@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { View, Text, Pressable, ScrollView, Linking } from "react-native";
-import { ChevronRight, Mail } from "lucide-react-native";
+import { ChevronRight, ExternalLink, Mail } from "lucide-react-native";
 import { Card, CardTitle, BodyText, MutedText, Divider, colors } from "../ui";
 import { PrivacyPolicyScreen } from "./PrivacyPolicyScreen";
 import { TermsScreen } from "./TermsScreen";
@@ -21,6 +21,18 @@ function NavRow({
     >
       <Text className="text-primary text-base">{label}</Text>
       <ChevronRight size={18} color={colors.accentLight} />
+    </Pressable>
+  );
+}
+
+function ExternalNavRow({ label, url }: { label: string; url: string }) {
+  return (
+    <Pressable
+      onPress={() => Linking.openURL(url)}
+      className="flex-row items-center justify-between py-3 active:opacity-60"
+    >
+      <Text className="text-primary text-base">{label}</Text>
+      <ExternalLink size={18} color={colors.accentLight} />
     </Pressable>
   );
 }
@@ -48,6 +60,10 @@ function AboutRoot({ onNavigate }: { onNavigate: (v: View_) => void }) {
           <NavRow label="Privacy Policy" onPress={() => onNavigate("privacy")} />
           <Divider />
           <NavRow label="Terms of Use" onPress={() => onNavigate("terms")} />
+          <Divider />
+          <ExternalNavRow label="License" url="https://simplefasting.io/license" />
+          <Divider />
+          <ExternalNavRow label="Copyright" url="https://simplefasting.io/copyright" />
         </View>
 
         <Divider />
