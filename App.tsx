@@ -66,7 +66,7 @@ function AppContent() {
         <View style={styles.header}>
           <Overline>&#10022; Track Your Journey &#10022;</Overline>
           <Text style={styles.headerText}>Fasting made simple.</Text>
-          <MutedText className="text-center px-2">
+          <MutedText className="text-center px-2 text-primary">
             Discover when you'll reach each beneficial milestone and make informed decisions about your health.
           </MutedText>
         </View>
