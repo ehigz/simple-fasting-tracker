@@ -16,14 +16,14 @@
     ],
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.interfast.app"
+      "bundleIdentifier": "com.simplefasting.app"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#eeebf4"
       },
-      "package": "com.interfast.app"
+      "package": "com.simplefasting.app"
     },
     "plugins": [
       "@react-native-community/datetimepicker",

@@ -24,7 +24,7 @@
         <action android:name="android.intent.action.VIEW"/>
         <category android:name="android.intent.category.DEFAULT"/>
         <category android:name="android.intent.category.BROWSABLE"/>
-        <data android:scheme="com.interfast.app"/>
+        <data android:scheme="com.simplefasting.app"/>
         <data android:scheme="exp+interfast"/>
       </intent-filter>
     </activity>

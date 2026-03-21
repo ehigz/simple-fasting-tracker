@@ -86,9 +86,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace 'com.interfast.app'
+    namespace 'com.simplefasting.app'
     defaultConfig {
-        applicationId 'com.interfast.app'
+        applicationId 'com.simplefasting.app'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
