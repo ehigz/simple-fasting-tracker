@@ -119,17 +119,17 @@ export function FastingTracker() {
   const elapsedTime = getElapsedTime();
 
   const onDateChange = useCallback(
-    (_: DateTimePickerEvent, date?: Date) => {
+    (event: DateTimePickerEvent, date?: Date) => {
       setShowDatePicker(false);
-      if (date) setPickerDate(date);
+      if (event.type === "set" && date) setPickerDate(date);
     },
     [],
   );
 
   const onTimeChange = useCallback(
-    (_: DateTimePickerEvent, date?: Date) => {
+    (event: DateTimePickerEvent, date?: Date) => {
       setShowTimePicker(false);
-      if (date) setPickerTime(date);
+      if (event.type === "set" && date) setPickerTime(date);
     },
     [],
   );
@@ -192,7 +192,10 @@ export function FastingTracker() {
               <View>
                 <FieldLabel className="mb-2">Start Time</FieldLabel>
                 <Pressable
-                  onPress={() => setShowTimePicker(true)}
+                  onPress={() => {
+                    if (!pickerTime) setPickerTime(new Date());
+                    setShowTimePicker(true);
+                  }}
                   className="flex-row items-center bg-secondary px-4 py-4 rounded-2xl border border-primary/10"
                 >
                   <Clock size={16} color={colors.primary} opacity={0.5} />
