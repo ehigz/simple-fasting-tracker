@@ -1,0 +1,58 @@
+# Copyright Notice
+
+**App Name:** Simple Fasting
+**Developer:** Erik Higbee
+**Contact:** hello@simplefasting.io
+
+---
+
+## Ownership
+
+Copyright © 2026 Erik Higbee. All rights reserved.
+
+All content within this app — including but not limited to the
+source code, user interface design, graphics, text, milestone
+content, and documentation — is the original work of
+[YOUR FULL LEGAL NAME] and is protected by copyright law.
+
+This work is protected under:
+- The **Copyright Act** (Canada, R.S.C. 1985, c. C-42)
+- The **Berne Convention for the Protection of Literary and
+  Artistic Works**, to which Canada is a signatory, providing
+  automatic protection in 181 member countries
+- Applicable intellectual property laws in other jurisdictions
+
+## What This Means
+
+No part of this app may be reproduced, distributed, modified,
+reverse engineered, or used to create derivative works without
+the express written permission of [YOUR FULL LEGAL NAME].
+
+## Automatic Protection
+
+Under Canadian copyright law and the Berne Convention, copyright
+protection is automatic from the moment of creation and does not
+require registration. No copyright symbol or formal registration
+is required for protection to apply.
+
+## Reporting Infringement
+
+If you believe content in this app infringes your copyright,
+or if you become aware of unauthorized use of this app's content,
+please contact:
+
+**hello@simplefasting.io**
+
+Include a description of the work you believe has been infringed
+and the location where the alleged infringement appears.
+
+## Trademarks
+
+[APP NAME] and associated logos, if any, are the property of
+[YOUR FULL LEGAL NAME]. Nothing in this app should be construed
+as granting any license to use any trademark without express
+written permission.
+
+## Last Updated
+
+March 21, 2026

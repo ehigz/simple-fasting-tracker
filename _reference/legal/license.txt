@@ -1,0 +1,56 @@
+# Software License
+
+**App Name:** Simple Fasting
+**Developer:** Erik Higbee
+**Effective Date:** January 1, 2026
+**Contact:** hello@simplefasting.io
+
+---
+
+## License Grant
+
+This app is provided to you under a limited, personal, non-exclusive,
+non-transferable, revocable license to install and use the app on
+a device you own or control, solely for your own personal,
+non-commercial purposes.
+
+## What You May Not Do
+
+You may not:
+- Copy, modify, or distribute the app or any part of it
+- Reverse engineer, decompile, or disassemble the app
+- Rent, lease, lend, sell, or sublicense the app to any third party
+- Use the app for any commercial purpose
+- Remove or alter any proprietary notices or labels on the app
+
+## Ownership
+
+This license does not transfer any ownership rights to you.
+The app, including all code, design, content, milestone data,
+and associated materials, remains the sole and exclusive property
+of [YOUR FULL LEGAL NAME]. All rights not expressly granted here
+are reserved.
+
+## Third-Party Components
+
+This app does not currently incorporate third-party licensed
+components. If this changes in a future version, this section
+will be updated to reflect those licenses before the update
+is released.
+
+## Termination
+
+This license is effective until terminated. It terminates
+automatically if you violate any term. Upon termination you
+must delete all copies of the app in your possession.
+
+## Governing Law
+
+This license is governed by the laws of the Province of Ontario,
+Canada, without regard to conflict of law principles.
+
+## Changes to This License
+
+If this license changes materially, the effective date at the top
+of this page will be updated. Continued use of the app after
+changes are posted constitutes acceptance of the updated license.

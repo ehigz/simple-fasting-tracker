@@ -1,6 +1,6 @@
 # Terms of Use
 
-**Effective Date:** [EFFECTIVE DATE]
+**Effective Date:** March 21, 2026
 **Contact:** hello@simplefasting.io
 
 By using this app you agree to these terms. If you do not agree,

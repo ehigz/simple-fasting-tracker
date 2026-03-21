@@ -1,7 +1,7 @@
 # Privacy Policy
 
-**Effective Date:** [EFFECTIVE DATE]
-**Contact:** [CONTACT EMAIL]
+**Effective Date:** March 21, 2026
+**Contact:** hello@simplefasting.io
 
 ---
 
