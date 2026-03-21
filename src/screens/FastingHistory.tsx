@@ -123,7 +123,7 @@ export function FastingHistory() {
             onPress={handleClearHistory}
             className="px-3 py-1 rounded-lg border border-primary/[0.10] active:opacity-60"
           >
-            <MutedText className="text-xs">Clear all</MutedText>
+            <MutedText className="text-xs text-primary">Clear all</MutedText>
           </Pressable>
         )}
       </View>
