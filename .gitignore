@@ -41,6 +41,7 @@ app-example
 android/app/build/
 android/.gradle/
 android/build/
+_app-store-assets/keystore.txt
 *.apk
 
 debug/
