@@ -65,3 +65,4 @@ src/ui/audit-report.json
 # src/ui/design-system-manifest.json  ← Figma file key + variable IDs + component node IDs
 # src/ui/design-tokens.json           ← W3C token definitions with $extensions governance metadata
 .claude/scheduled_tasks.lock
+release.keystore
