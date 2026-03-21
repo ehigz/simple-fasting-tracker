@@ -67,3 +67,5 @@ src/ui/audit-report.json
 # src/ui/design-tokens.json           ← W3C token definitions with $extensions governance metadata
 .claude/scheduled_tasks.lock
 release.keystore
+release.keystore.properties
+gradle.properties.release
